@@ -465,6 +465,23 @@
   @media(prefers-color-scheme:dark){
     .btn-buddy-contact{background:#0a8a96!important;color:#fff!important}
   }
+
+  /* ARCHIVE PAIRS */
+  .pairs-section{margin-top:60px}
+  .pairs-section h2{font-size:1.8rem;margin-bottom:8px;color:#0a1f27}
+  .pairs-section .sub{color:#4a6168;margin-bottom:28px;font-size:.95rem}
+  .pair-card{background:#fff;border:1px solid rgba(13,39,49,.12);border-radius:18px;
+    padding:24px;margin-bottom:16px;box-shadow:0 4px 14px rgba(13,39,49,.05)}
+  .pair-card .pair-names{font-weight:700;font-size:1.05rem;color:#0a1f27;margin-bottom:4px}
+  .pair-card .pair-meta{font-size:.8rem;color:#0a8a96;font-weight:600;margin-bottom:10px}
+  .pair-card .pair-story{font-size:.92rem;color:#4a6168;line-height:1.6;font-style:italic}
+  .pairs-empty{text-align:center;color:#4a6168;padding:30px;background:#f3f6f5;
+    border-radius:16px;font-size:.95rem}
+  @media(prefers-color-scheme:dark){
+    .pair-card{background:#fff!important;color:#0d2731!important}
+    .pair-card .pair-names{color:#0a1f27!important}
+    .pair-card .pair-story{color:#4a6168!important}
+  }
   @media(max-width:880px){.buddy-grid{grid-template-columns:1fr}}
 
   /* DARK MODE additions */
@@ -784,6 +801,13 @@
       <button class="btn btn-primary" style="margin-top:24px;width:100%" onclick="submitForm()">Отправить</button>
       <div class="form-msg" id="formMsg"></div>
     </div>
+  <div class="narrow" style="margin-top:0;padding-top:0">
+    <div class="pairs-section">
+      <h2>Нашли друг друга 🤿</h2>
+      <p class="sub">Пары которые уже ныряли вместе — и написали об этом.</p>
+      <div id="pairs-list"><div class="pairs-empty">Пока историй нет — станьте первыми!</div></div>
+    </div>
+  </div>
   </div></section>
 </div>
 
@@ -1129,30 +1153,51 @@
     if(!el) return;
     el.innerHTML='<div class="buddy-loading">Загружаю список...</div>';
     try{
-      const r=await fetch('https://glubzhe-buddy.bercutishka.workers.dev');
+      const r=await fetch('https://glubzhe-buddy.bercutishka.workers.dev?action=active');
       const data=await r.json();
       if(!data.records||data.records.length===0){
         el.innerHTML='<div class="buddy-empty">Пока никого нет — будь первым 👇</div>';
-        return;
+      } else {
+        el.innerHTML='<div class="buddy-grid">'+data.records.map(function(rec){
+          const f=rec.fields;
+          const init=(f.Name||'?')[0].toUpperCase();
+          const tgHandle=f.Telegram?(f.Telegram.startsWith('@')?f.Telegram:'@'+f.Telegram):'';
+          const tgUrl=tgHandle?'https://t.me/'+tgHandle.replace('@',''):'';
+          return '<div class="buddy-card reveal">'
+            +'<div class="b-avatar">'+init+'</div>'
+            +'<div class="b-name">'+(f.Name||'')+'</div>'
+            +'<div class="b-level">'+(f.Level||'')+'</div>'
+            +'<div class="b-tags"><span class="b-tag">'+(f.Location||'—')+'</span></div>'
+            +'<div class="b-bio">'+(f.About||'')+'</div>'
+            +(tgUrl?'<a class="btn-buddy-contact" href="'+tgUrl+'" target="_blank" rel="noopener">Написать в Telegram</a>':'')
+            +'</div>';
+        }).join('')+'</div>';
       }
-      el.innerHTML='<div class="buddy-grid">'+data.records.map(function(rec){
-        const f=rec.fields;
-        const init=(f.Name||'?')[0].toUpperCase();
-        const tgHandle=f.Telegram?(f.Telegram.startsWith('@')?f.Telegram:'@'+f.Telegram):'';
-        const tgUrl=tgHandle?'https://t.me/'+tgHandle.replace('@',''):'';
-        return '<div class="buddy-card reveal">'
-          +'<div class="b-avatar">'+init+'</div>'
-          +'<div class="b-name">'+(f.Name||'')+'</div>'
-          +'<div class="b-level">'+(f.Level||'')+'</div>'
-          +'<div class="b-tags"><span class="b-tag">'+(f.Location||'—')+'</span></div>'
-          +'<div class="b-bio">'+(f.About||'')+'</div>'
-          +(tgUrl?'<a class="btn-buddy-contact" href="'+tgUrl+'" target="_blank" rel="noopener">Написать в Telegram</a>':'')
-          +'</div>';
-      }).join('')+'</div>';
       runReveal();
     }catch(e){
-      el.innerHTML='<div class="buddy-empty">Не удалось загрузить список. Попробуй позже.</div>';
+      el.innerHTML='<div class="buddy-empty">Не удалось загрузить список.</div>';
     }
+    // Загружаем архив пар
+    renderPairs();
+  }
+
+  async function renderPairs(){
+    const el=document.getElementById('pairs-list');
+    if(!el) return;
+    try{
+      const r=await fetch('https://glubzhe-buddy.bercutishka.workers.dev?action=archive');
+      const data=await r.json();
+      if(!data.records||data.records.length===0) return;
+      el.innerHTML=data.records.map(function(rec){
+        const f=rec.fields;
+        const buddy=f.BuddyName?f.Name+' + '+f.BuddyName:f.Name;
+        return '<div class="pair-card">'
+          +'<div class="pair-names">'+buddy+'</div>'
+          +'<div class="pair-meta">'+(f.Location||'')+(f.TripDate?' · '+f.TripDate:'')+'</div>'
+          +'<div class="pair-story">«'+(f.TripStory||'')+'»</div>'
+          +'</div>';
+      }).join('');
+    }catch(e){}
   }
 
   /* ────────── BUDDY FORM ────────── */
