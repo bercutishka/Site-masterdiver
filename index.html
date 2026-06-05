@@ -427,6 +427,17 @@
   @media(max-width:880px){.logbook-grid{grid-template-columns:1fr}}
 
   /* INCIDENTS (разборы) */
+
+  .blog-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+  .blog-filter{background:#fff;border:1.5px solid rgba(13,39,49,.15);color:#4a6168;
+    padding:7px 18px;border-radius:30px;cursor:pointer;font-size:.85rem;
+    font-family:'Outfit';transition:.2s;font-weight:500}
+  .blog-filter:hover{border-color:#0a8a96;color:#0a8a96}
+  .blog-filter.active{background:#0a8a96;border-color:#0a8a96;color:#fff;font-weight:600}
+  @media(prefers-color-scheme:dark){
+    .blog-filter{background:#fff!important;color:#4a6168!important}
+    .blog-filter.active{background:#0a8a96!important;color:#fff!important}
+  }
   .incident-card{background:#fff;border-left:4px solid #e8543f;border-radius:0 16px 16px 0;
     padding:22px 26px;box-shadow:0 4px 14px rgba(13,39,49,.05);margin-bottom:16px;transition:.25s;cursor:pointer}
   .incident-card:hover{transform:translateX(6px);box-shadow:0 8px 24px rgba(13,39,49,.1)}
@@ -999,7 +1010,7 @@
     document.getElementById('navlinks').classList.remove('open');
     window.scrollTo({top:0,behavior:'instant'});
     runReveal();
-    if(id==='home'){renderLogbookPreview();renderIncidentsPreview();}
+    if(id==='home'){renderLogbookPreview();renderIncidentsPreview();loadStats();}
     if(id==='logbook'){renderProgress('progress-logbook');renderLogbookFull();}
     if(id==='buddy'){renderBuddyList();}
   }
@@ -1046,6 +1057,7 @@
 
   /* ---------- SPOT PIN SYNC (map page) ---------- */
   document.querySelectorAll('.pin').forEach(p=>p.addEventListener('click',()=>openSpot(+p.dataset.i)));
+  loadStats();
   // Initial renders for home page
   renderProgress('progress-block');
   renderLogbookPreview();
@@ -1241,6 +1253,43 @@
     if(idx>=0) openArticle(idx);
   }
 
+
+  /* ────────── LIVE STATS FROM AIRTABLE ────────── */
+  async function loadStats(){
+    try{
+      const r=await fetch('https://glubzhe-buddy.bercutishka.workers.dev?action=stats');
+      const data=await r.json();
+      const diveCount=data.dive_count||'41';
+      const goal=parseInt(data.dive_goal||'100');
+      const current=parseInt(diveCount);
+      const el=document.getElementById('dive-count');
+      if(el) el.textContent=diveCount;
+      const fill=document.querySelector('.prog-fill');
+      if(fill) fill.style.width=Math.round(current/goal*100)+'%';
+      const pt=document.querySelector('.progress-title span');
+      if(pt) pt.textContent=diveCount+' из '+goal+'+ погружений';
+    }catch(e){}
+  }
+
+  /* ────────── BLOG FILTERS ────────── */
+  let activeBlogFilter='Все';
+  function renderBlogFilters(){
+    const cats=['Все',...new Set(posts.map(function(p){return p.cat;}))];
+    const el=document.getElementById('blog-filters');
+    if(!el) return;
+    el.innerHTML=cats.map(function(c){
+      const cls='blog-filter'+(c===activeBlogFilter?' active':'');
+      return '<button class="'+cls+'" onclick="renderBlog(this.dataset.cat)" data-cat="'+c+'">'+c+'</button>';
+    }).join('');
+  }
+  function renderBlog(filter){
+    activeBlogFilter=filter||'Все';
+    renderBlogFilters();
+    const filtered=filter==='Все'?posts:posts.filter(function(p){return p.cat===filter;});
+    const el=document.getElementById('blog-list');
+    if(el) el.innerHTML=filtered.map(postCard).join('');
+    runReveal();
+  }
 
   async function submitForm(){
     const n=document.getElementById('f-name').value.trim();
