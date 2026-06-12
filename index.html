@@ -397,6 +397,29 @@
   }
 
 
+
+  /* DIVE MAP / GEO CARDS */
+  .dive-map-wrap{background:#fff;border:1px solid rgba(13,39,49,.12);border-radius:24px;
+    padding:30px;box-shadow:0 6px 20px rgba(13,39,49,.06);margin-top:40px}
+  .dive-map-wrap h3{font-size:1.4rem;color:#0a1f27;margin-bottom:6px}
+  .dive-map-wrap .map-sub{color:#4a6168;font-size:.9rem;margin-bottom:20px}
+  .geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .geo-card{border-radius:18px;padding:24px;position:relative;overflow:hidden;color:#fff}
+  .geo-redsea{background:linear-gradient(135deg,#c0392b,#e8543f)}
+  .geo-indo{background:linear-gradient(135deg,#0a7d8c,#27d0d5)}
+  .geo-flag{font-size:1.8rem;margin-bottom:8px}
+  .geo-name{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;margin-bottom:4px}
+  .geo-places{font-size:.8rem;opacity:.85;margin-bottom:14px;line-height:1.5}
+  .geo-count{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:900;line-height:1}
+  .geo-count span{font-family:'Outfit';font-size:.8rem;font-weight:400;opacity:.85}
+  @media(max-width:880px){.geo-grid{grid-template-columns:1fr}}
+  @media(prefers-color-scheme:dark){
+    .dive-map-wrap{background:#fff!important}
+    .dive-map-wrap h3{color:#0a1f27!important}
+    .geo-redsea{background:linear-gradient(135deg,#c0392b,#e8543f)!important;color:#fff!important}
+    .geo-indo{background:linear-gradient(135deg,#0a7d8c,#27d0d5)!important;color:#fff!important}
+  }
+
   /* PROGRESS BAR */
   .progress-wrap{background:#fff;border:1px solid rgba(13,39,49,.12);border-radius:24px;padding:36px;box-shadow:0 6px 20px rgba(13,39,49,.06)}
   .progress-title{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
@@ -898,6 +921,9 @@
      body:'<p>\u0422\u0440\u0438 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u0438\u0445 \u043e\u0441\u0442\u0440\u043e\u0432\u0430 \u0443 \u0441\u0435\u0432\u0435\u0440\u043e-\u0437\u0430\u043f\u0430\u0434\u043d\u043e\u0433\u043e \u041b\u043e\u043c\u0431\u043e\u043a\u0430 \u2014 Gili Trawangan, Gili Meno \u0438 Gili Air \u2014 \u0438\u0434\u0435\u0430\u043b\u044c\u043d\u044b \u0434\u043b\u044f \u043f\u0435\u0440\u0432\u044b\u0445 \u043f\u043e\u0433\u0440\u0443\u0436\u0435\u043d\u0438\u0439: \u0442\u0451\u043f\u043b\u0430\u044f \u0432\u043e\u0434\u0430, \u0441\u043f\u043e\u043a\u043e\u0439\u043d\u044b\u0435 \u0441\u0430\u0439\u0442\u044b \u0438 \u043f\u043e\u0447\u0442\u0438 \u0433\u0430\u0440\u0430\u043d\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0432\u0441\u0442\u0440\u0435\u0447\u0438 \u0441 \u0437\u0435\u043b\u0451\u043d\u044b\u043c\u0438 \u0438 \u0431\u0438\u0441\u0441\u043e\u0432\u044b\u043c\u0438 \u0447\u0435\u0440\u0435\u043f\u0430\u0445\u0430\u043c\u0438. \u0418\u043c\u0435\u043d\u043d\u043e \u0437\u0434\u0435\u0441\u044c \u044f \u0447\u0430\u0449\u0435 \u0432\u0441\u0435\u0433\u043e \u043f\u0440\u043e\u0432\u043e\u0436\u0443 \u043a\u0443\u0440\u0441\u044b Open Water.</p><p>\u0414\u043b\u044f \u043e\u043f\u044b\u0442\u043d\u044b\u0445 \u0435\u0441\u0442\u044c \u0438 \u0434\u0440\u0438\u0444\u0442\u044b \u0441 \u0440\u0438\u0444\u043e\u0432\u044b\u043c\u0438 \u0430\u043a\u0443\u043b\u0430\u043c\u0438, \u0438 \u043f\u043e\u0434\u0432\u043e\u0434\u043d\u044b\u0435 \u0441\u043a\u0443\u043b\u044c\u043f\u0442\u0443\u0440\u044b \u2014 \u043a\u0440\u0443\u0433 \u0438\u0437 \u0444\u0438\u0433\u0443\u0440 Nest \u043d\u0430 Gili Meno, \u043e\u0431\u043b\u0435\u043f\u043b\u0435\u043d\u043d\u044b\u0439 \u043a\u043e\u0440\u0430\u043b\u043b\u0430\u043c\u0438.</p>',img:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMzIwIj4KPGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJnaSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI3ZDBkNSIvPgogICAgPHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiMwYTdkOGMiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAyMWIyZSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIzMjAiIGZpbGw9InVybCgjZ2kpIi8+CjwhLS0g0YfQtdGA0LXQv9Cw0YXQsCAtLT4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzgwLDE1MCkiIG9wYWNpdHk9Ii44NSI+CiAgPGVsbGlwc2UgY3g9IjAiIGN5PSIwIiByeD0iNTUiIHJ5PSIzOCIgZmlsbD0iIzJkN2EzYSIvPgogIDxlbGxpcHNlIGN4PSIwIiBjeT0iMCIgcng9IjQ4IiByeT0iMzIiIGZpbGw9IiMzYThhNDUiLz4KICA8IS0tINGD0LfQvtGAINC/0LDQvdGG0LjRgNGPIC0tPgogIDxwYXRoIGQ9Ik0tMjAsLTEwIEwwLC0yNSBMMjAsLTEwIEwyMCwxMCBMMCwyMCBMLTIwLDEwIFoiIGZpbGw9IiMyZDdhM2EiIHN0cm9rZT0iIzRhOWE1NSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPCEtLSDQs9C+0LvQvtCy0LAgLS0+CiAgPGVsbGlwc2UgY3g9IjU1IiBjeT0iLTUiIHJ4PSIxNSIgcnk9IjEyIiBmaWxsPSIjMmQ3YTNhIi8+CiAgPCEtLSDQu9Cw0YHRgtGLIC0tPgogIDxlbGxpcHNlIGN4PSItMzAiIGN5PSIzMCIgcng9IjI1IiByeT0iMTAiIGZpbGw9IiMyZDdhM2EiIHRyYW5zZm9ybT0icm90YXRlKC0zMCwtMzAsMzApIi8+CiAgPGVsbGlwc2UgY3g9IjMwIiBjeT0iMzIiIHJ4PSIyNSIgcnk9IjEwIiBmaWxsPSIjMmQ3YTNhIiB0cmFuc2Zvcm09InJvdGF0ZSgzMCwzMCwzMikiLz4KPC9nPgo8IS0tINC/0YPQt9GL0YDQuCDQvtGCINGH0LXRgNC10L/QsNGF0LggLS0+CjxjaXJjbGUgY3g9IjQ1MCIgY3k9IjExMCIgcj0iNCIgZmlsbD0id2hpdGUiIG9wYWNpdHk9Ii4zIi8+CjxjaXJjbGUgY3g9IjQ2NSIgY3k9Ijg4IiByPSIzIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iLjI1Ii8+CjxjaXJjbGUgY3g9IjQ0MCIgY3k9IjcyIiByPSIyIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iLjIiLz4KPCEtLSDQtNC90L4gLS0+CjxwYXRoIGQ9Ik0wLDI3MCBRMjAwLDI2MCA0MDAsMjcyIFQ4MDAsMjY4IEw4MDAsMzIwIEwwLDMyMCBaIiBmaWxsPSIjMDIxYjJlIiBvcGFjaXR5PSIuOSIvPgo8IS0tINCy0L7QtNC+0YDQvtGB0LvQuCAtLT4KPHBhdGggZD0iTTE1MCwyNzAgUTE1NSwyNDUgMTYwLDI3MCIgc3Ryb2tlPSIjMWE3YTJhIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG9wYWNpdHk9Ii42Ii8+CjxwYXRoIGQ9Ik02MDAsMjY4IFE2MDgsMjQwIDYxNSwyNjgiIHN0cm9rZT0iIzFhN2EyYSIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIiBvcGFjaXR5PSIuNiIvPgo8dGV4dCB4PSI0MDAiIHk9IjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjIiIGZpbGw9IiMwMjFiMmUiIG9wYWNpdHk9Ii45Ij7QntGB0YLRgNC+0LLQsCDQk9C40LvQuDwvdGV4dD4KPHRleHQgeD0iNDAwIiB5PSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMwMjFiMmUiIG9wYWNpdHk9Ii43Ij7Qp9C10YDQtdC/0LDRiNGM0Y8g0YHRgtC+0LvQuNGG0LAg0LzQuNGA0LAgwrcg0JjQvdC00L7QvdC10LfQuNGPPC90ZXh0Pgo8L3N2Zz4=',attr:'Gili Trawangan &mdash; <a href="https://commons.wikimedia.org/wiki/File:Gili_Trawangan_(16788754758).jpg" target="_blank">Kyle Taylor</a>, CC BY 2.0'},
   ];
   const posts=[
+    {cat:'Путь',ph:'ph-d',emoji:'\ud83c\udfca',title:'День, когда моя напарница потеряла сознание под водой',date:'7 янв 2026',read:'7 мин',
+     excerpt:'Седьмое января изменило моё отношение к дайвингу навсегда. История о том, почему я пошёл учиться на Rescue Diver — рассказываю как было.',
+     body:'<p>Это была обычная зимняя поездка. Мы ныряли с инструктором — я и моя напарница. План простой, глубина умеренная, условия нормальные. Ничто не предвещало.</p><h2>Момент</h2><p>В какой-то момент погружения я посмотрел на неё — и понял что что-то не так. Она не отвечала на сигналы. Тело обмякло. Регулятор ещё во рту, но глаза закрыты.</p><p>Первым среагировал инструктор. Я подхватил с другой стороны. Контролируемый подъём — не быстрый, как хочется в панике, а правильный, с выдохом. Поверхность. Переворот лицом вверх. Поддуть жилет. Буксировка к лодке.</p><p>На борту — первая помощь, кислород. Вызвали скорую. Реанимация. Всё закончилось хорошо — она восстановилась полностью.</p><h2>Что я понял о себе</h2><p>Те несколько минут я помню покадрово. И главное что я помню — я не знал что делать. Я просто следовал за инструктором. Делал что говорят. Если бы его не было рядом — я бы растерялся в самый важный момент.</p><blockquote>Самое страшное под водой — не опасность. Самое страшное — быть рядом и не уметь помочь.</blockquote><p>Это не давало мне покоя неделями. Я прокручивал сценарии: а если бы мы были вдвоём? А если бы это случилось на глубине больше? А если бы регулятор выпал?</p><h2>Что я сделал</h2><p>Записался на курс Rescue Diver. Не для галочки и не для красивой карточки — чтобы в следующий раз быть тем, кто знает что делать. Прошёл EFR — первая помощь и СЛР. Отработал сценарии спасения на поверхности и под водой, поиск пропавшего дайвера, буксировку, выход из паники.</p><p>Rescue оказался самым сложным и самым важным курсом из всех. На нём не учат нырять глубже или дольше. На нём учат думать, когда всё идёт не по плану.</p><h2>Зачем я это пишу</h2><p>Если ты ныряешь и думаешь «Rescue мне рано» или «зачем, со мной ничего не случится» — подумай не о себе. Подумай о человеке, который будет рядом с тобой под водой. Возможно, именно тебе придётся стать тем, кто среагирует.</p><p>Та история закончилась хорошо, потому что рядом был подготовленный человек. Я хочу, чтобы рядом с моими бади тоже был подготовленный человек. Поэтому — учусь дальше. Divemaster в процессе.</p>'},
     {cat:'\u0422\u0435\u0445\u043d\u0438\u043a\u0430',ph:'ph-c',emoji:'\u2696\ufe0f',title:'\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c \u043f\u043b\u0430\u0432\u0443\u0447\u0435\u0441\u0442\u0438: 5 \u043e\u0448\u0438\u0431\u043e\u043a \u043d\u043e\u0432\u0438\u0447\u043a\u043e\u0432',date:'12 \u043c\u0430\u044f 2026',read:'6 \u043c\u0438\u043d',
      excerpt:'\u041f\u043e\u0447\u0435\u043c\u0443 \u0432\u044b \u0442\u0440\u0430\u0442\u0438\u0442\u0435 \u0432\u043e\u0437\u0434\u0443\u0445 \u0432\u0434\u0432\u043e\u0435 \u0431\u044b\u0441\u0442\u0440\u0435\u0435 \u043e\u043f\u044b\u0442\u043d\u043e\u0433\u043e \u0434\u0430\u0439\u0432\u0435\u0440\u0430 \u0438 \u043a\u0430\u043a \u044d\u0442\u043e \u0438\u0441\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0431\u0443\u043a\u0432\u0430\u043b\u044c\u043d\u043e \u0437\u0430 \u043e\u0434\u043d\u043e \u043f\u043e\u0433\u0440\u0443\u0436\u0435\u043d\u0438\u0435.',
      body:'<p>\u041f\u043b\u0430\u0432\u0443\u0447\u0435\u0441\u0442\u044c \u2014 \u044d\u0442\u043e \u043d\u0430\u0432\u044b\u043a \u21161, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u043e\u0442\u043b\u0438\u0447\u0430\u0435\u0442 \u043d\u043e\u0432\u0438\u0447\u043a\u0430 \u043e\u0442 \u0443\u0432\u0435\u0440\u0435\u043d\u043d\u043e\u0433\u043e \u0434\u0430\u0439\u0432\u0435\u0440\u0430. \u0425\u043e\u0440\u043e\u0448\u0430\u044f \u043d\u043e\u0432\u043e\u0441\u0442\u044c: \u0435\u0433\u043e \u043c\u043e\u0436\u043d\u043e \u0437\u0430\u043c\u0435\u0442\u043d\u043e \u043f\u0440\u043e\u043a\u0430\u0447\u0430\u0442\u044c \u0437\u0430 \u043e\u0434\u0438\u043d-\u0434\u0432\u0430 \u043e\u0441\u043e\u0437\u043d\u0430\u043d\u043d\u044b\u0445 \u0434\u0430\u0439\u0432\u0430.</p><h2>\u041e\u0448\u0438\u0431\u043a\u0430 1. \u041f\u0435\u0440\u0435\u0433\u0440\u0443\u0437</h2><p>\u0411\u043e\u043b\u044c\u0448\u0438\u043d\u0441\u0442\u0432\u043e \u043d\u043e\u0432\u0438\u0447\u043a\u043e\u0432 \u0431\u0435\u0440\u0443\u0442 \u0441\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u043d\u043e\u0433\u043e \u0433\u0440\u0443\u0437\u043e\u0432 \u00ab\u043d\u0430 \u0432\u0441\u044f\u043a\u0438\u0439 \u0441\u043b\u0443\u0447\u0430\u0439\u00bb. \u041b\u0438\u0448\u043d\u0438\u0439 \u0441\u0432\u0438\u043d\u0435\u0446 \u0437\u0430\u0441\u0442\u0430\u0432\u043b\u044f\u0435\u0442 \u043d\u0430\u043a\u0430\u0447\u0438\u0432\u0430\u0442\u044c \u043a\u043e\u043c\u043f\u0435\u043d\u0441\u0430\u0442\u043e\u0440, \u0438 \u0432\u044b \u043f\u0440\u0435\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0435\u0441\u044c \u0432 \u0432\u043e\u0437\u0434\u0443\u0448\u043d\u044b\u0439 \u0448\u0430\u0440, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0431\u043e\u043b\u0442\u0430\u0435\u0442 \u0432\u0432\u0435\u0440\u0445-\u0432\u043d\u0438\u0437.</p><h2>\u041e\u0448\u0438\u0431\u043a\u0430 2. \u0420\u0435\u0437\u043a\u043e\u0435 \u0434\u044b\u0445\u0430\u043d\u0438\u0435</h2><p>\u041b\u0451\u0433\u043a\u0438\u0435 \u2014 \u0432\u0430\u0448 \u0433\u043b\u0430\u0432\u043d\u044b\u0439 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442 \u0442\u043e\u043d\u043a\u043e\u0439 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438. \u0413\u043b\u0443\u0431\u043e\u043a\u0438\u0439 \u0432\u0434\u043e\u0445 \u043f\u043e\u0434\u043d\u0438\u043c\u0430\u0435\u0442, \u043c\u0435\u0434\u043b\u0435\u043d\u043d\u044b\u0439 \u0432\u044b\u0434\u043e\u0445 \u043e\u043f\u0443\u0441\u043a\u0430\u0435\u0442. \u0420\u0435\u0437\u043a\u0438\u0435 \u0432\u0434\u043e\u0445\u0438 \u0441\u0431\u0438\u0432\u0430\u044e\u0442 \u0431\u0430\u043b\u0430\u043d\u0441 \u0438 \u0436\u0433\u0443\u0442 \u0432\u043e\u0437\u0434\u0443\u0445.</p><h2>\u041e\u0448\u0438\u0431\u043a\u0430 3. \u0420\u0443\u043a\u0438-\u0432\u0451\u0441\u043b\u0430</h2><p>\u0415\u0441\u043b\u0438 \u0432\u044b \u0433\u0440\u0435\u0431\u0451\u0442\u0435 \u0440\u0443\u043a\u0430\u043c\u0438, \u0437\u043d\u0430\u0447\u0438\u0442 \u043f\u043b\u0430\u0432\u0443\u0447\u0435\u0441\u0442\u044c \u043d\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043d\u0430. \u0420\u0443\u043a\u0438 \u0434\u043e\u043b\u0436\u043d\u044b \u0441\u043f\u043e\u043a\u043e\u0439\u043d\u043e \u043b\u0435\u0436\u0430\u0442\u044c \u2014 \u0434\u0432\u0438\u0433\u0430\u044e\u0442 \u0432\u0430\u0441 \u043d\u043e\u0433\u0438.</p><blockquote>\u0425\u043e\u0440\u043e\u0448\u0438\u0439 \u0434\u0430\u0439\u0432\u0435\u0440 \u0432\u0438\u0441\u0438\u0442 \u0432 \u0442\u043e\u043b\u0449\u0435 \u0432\u043e\u0434\u044b \u043d\u0435\u043f\u043e\u0434\u0432\u0438\u0436\u043d\u043e, \u0431\u0443\u0434\u0442\u043e \u0441\u043f\u0438\u0442.</blockquote><h2>\u041e\u0448\u0438\u0431\u043a\u0430 4. \u0418\u0433\u043d\u043e\u0440 \u0442\u0440\u0438\u043c\u0430</h2><p>\u0413\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0442\u0435\u043b\u0430 \u0441\u043d\u0438\u0436\u0430\u0435\u0442 \u0441\u043e\u043f\u0440\u043e\u0442\u0438\u0432\u043b\u0435\u043d\u0438\u0435 \u0438 \u0440\u0430\u0441\u0445\u043e\u0434 \u0432\u043e\u0437\u0434\u0443\u0445\u0430. \u0414\u0435\u0440\u0436\u0438\u0442\u0435 \u043a\u043e\u0440\u043f\u0443\u0441 \u043f\u0430\u0440\u0430\u043b\u043b\u0435\u043b\u044c\u043d\u043e \u0434\u043d\u0443.</p><h2>\u041e\u0448\u0438\u0431\u043a\u0430 5. \u0421\u043f\u0435\u0448\u043a\u0430</h2><p>\u041f\u043b\u0430\u0432\u0443\u0447\u0435\u0441\u0442\u044c \u043d\u0435 \u043b\u044e\u0431\u0438\u0442 \u0440\u0435\u0437\u043a\u0438\u0445 \u0434\u0432\u0438\u0436\u0435\u043d\u0438\u0439. \u0427\u0435\u043c \u043c\u0435\u0434\u043b\u0435\u043d\u043d\u0435\u0435 \u0438 \u0441\u043f\u043e\u043a\u043e\u0439\u043d\u0435\u0435 \u0432\u044b \u0434\u0432\u0438\u0433\u0430\u0435\u0442\u0435\u0441\u044c, \u0442\u0435\u043c \u0434\u043e\u043b\u044c\u0448\u0435 \u0434\u043b\u0438\u0442\u0441\u044f \u043f\u043e\u0433\u0440\u0443\u0436\u0435\u043d\u0438\u0435.</p>'},
@@ -1104,42 +1130,49 @@
   }
 
   /* ────────── RENDER: LOGBOOK PREVIEW (home) ────────── */
-  function renderLogbookPreview(){
+  function makeLogCard(f){
+    const num=f.DiveNumber||'';
+    const date=f.Date?f.Date.split('-').reverse().join('.'):'?';
+    return '<div class="log-card reveal">'
+      +'<div class="log-num">#'+num+'</div>'
+      +'<div class="log-place">'+(f.Place||'')+'</div>'
+      +'<div class="log-date">'+date+' \u00b7 '+(f.Location||'')+'</div>'
+      +'<div class="log-stats">'
+      +(f.Depth?'<div class="log-stat">\u2b07\ufe0f <b>'+f.Depth+'</b></div>':'')
+      +(f.Duration?'<div class="log-stat">\u23f1 <b>'+f.Duration+'</b></div>':'')
+      +(f.Visibility?'<div class="log-stat">\ud83d\udc41 <b>'+f.Visibility+'</b></div>':'')
+      +'</div>'
+      +(f.Notes?'<div class="log-note">'+f.Notes+'</div>':'')
+      +'</div>';
+  }
+  async function renderLogbookPreview(){
     const el=document.getElementById('logbook-preview');
     if(!el) return;
-    const preview=dives.slice(0,3);
-    el.innerHTML='<div class="logbook-grid">'+preview.map(d=>`
-      <div class="log-card reveal">
-        <div class="log-num">#${d.n}</div>
-        <div class="log-place">${d.place}</div>
-        <div class="log-date">${d.date} · ${d.loc}</div>
-        <div class="log-stats">
-          <div class="log-stat">⬇️ <b>${d.depth}</b></div>
-          <div class="log-stat">⏱ <b>${d.time}</b></div>
-          <div class="log-stat">👁 <b>${d.vis}</b></div>
-        </div>
-        <div class="log-note">${d.note}</div>
-      </div>`).join('')+'</div>';
-    runReveal();
+    try{
+      const r=await fetch('https://glubzhe-buddy.bercutishka.workers.dev?action=logbook&limit=3');
+      const data=await r.json();
+      if(!data.records||!data.records.length){el.innerHTML='';return;}
+      el.innerHTML='<div class="logbook-grid">'+data.records.map(function(rec){return makeLogCard(rec.fields);}).join('')+'</div>';
+      runReveal();
+    }catch(e){}
   }
 
   /* ────────── RENDER: LOGBOOK FULL ────────── */
-  function renderLogbookFull(){
+  async function renderLogbookFull(){
     const el=document.getElementById('logbook-full');
     if(!el) return;
-    el.innerHTML='<div class="logbook-grid">'+dives.map(d=>`
-      <div class="log-card reveal">
-        <div class="log-num">#${d.n}</div>
-        <div class="log-place">${d.place}</div>
-        <div class="log-date">${d.date} · ${d.loc}</div>
-        <div class="log-stats">
-          <div class="log-stat">⬇️ <b>${d.depth}</b></div>
-          <div class="log-stat">⏱ <b>${d.time}</b></div>
-          <div class="log-stat">👁 <b>${d.vis}</b></div>
-        </div>
-        <div class="log-note">${d.note}</div>
-      </div>`).join('')+'</div>';
-    runReveal();
+    el.innerHTML='<div class="buddy-loading">\u0417\u0430\u0433\u0440\u0443\u0436\u0430\u044e \u043b\u043e\u0433\u0431\u0443\u043a...</div>';
+    try{
+      const r=await fetch('https://glubzhe-buddy.bercutishka.workers.dev?action=logbook');
+      const data=await r.json();
+      if(!data.records||!data.records.length){
+        el.innerHTML='<div class="buddy-empty">\u041f\u043e\u043a\u0430 \u043d\u0435\u0442 \u0437\u0430\u043f\u0438\u0441\u0435\u0439.</div>';return;
+      }
+      el.innerHTML='<div class="logbook-grid">'+data.records.map(function(rec){return makeLogCard(rec.fields);}).join('')+'</div>';
+      runReveal();
+    }catch(e){
+      el.innerHTML='<div class="buddy-empty">\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c.</div>';
+    }
   }
 
   /* ────────── RENDER: INCIDENTS PREVIEW ────────── */
@@ -1479,6 +1512,25 @@
   </div></div>
   <section><div class="narrow">
     <div id="progress-logbook"></div>
+
+<div class="dive-map-wrap reveal">
+      <h3>География погружений</h3>
+      <p class="map-sub">Где я нырял и сколько раз.</p>
+      <div class="geo-grid">
+        <div class="geo-card geo-redsea">
+          <div class="geo-flag">🇪🇬</div>
+          <div class="geo-name">Красное море</div>
+          <div class="geo-places">Шарм-эль-Шейх · Дахаб · Тистлегорм · Рас-Мухаммад</div>
+          <div class="geo-count">34 <span>погружения</span></div>
+        </div>
+        <div class="geo-card geo-indo">
+          <div class="geo-flag">🇮🇩</div>
+          <div class="geo-name">Индонезия</div>
+          <div class="geo-places">Гили Траванган · черепаший риф</div>
+          <div class="geo-count">7 <span>погружений</span></div>
+        </div>
+      </div>
+    </div>
     <div style="margin-top:40px" id="logbook-full"></div>
   </div></section>
 </div>
