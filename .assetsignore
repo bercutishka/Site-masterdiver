@@ -1,0 +1,21 @@
+# Что НЕ загружать в Cloudflare как статические ассеты.
+# Синтаксис как у .gitignore. Файл должен лежать в корне assets-директории.
+# Без этого `assets.directory: "."` грузит весь репозиторий (включая node_modules) и деплой падает.
+
+node_modules
+src
+scripts
+.claude
+.git
+*.log
+
+# конфиги и служебные файлы — не часть сайта
+package.json
+package-lock.json
+wrangler.jsonc
+.assetsignore
+.gitignore
+.dev.vars
+.dev.vars.example
+CLAUDE.md
+README.md
