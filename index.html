@@ -1019,8 +1019,46 @@
     `<div class="review"><div class="stars">★★★★★</div><p>«${r.text}»</p>
       <div class="who"><div class="av">${r.name[0]}</div><div><b>${r.name}</b><span>${r.role}</span></div></div></div>`).join('');
 
+  /* ---------- HISTORY ROUTING ---------- */
+  // База пути: на GitHub Pages это /<repo>/, иначе корень (workers.dev / локально).
+  const BASE = location.hostname.endsWith('github.io')
+    ? '/' + (location.pathname.split('/').filter(Boolean)[0] || '') + '/'
+    : '/';
+  const DEFAULT_TITLE = document.title;
+  const PAGE_TITLES = {home:'Главная',logbook:'Логбук',blog:'Блог',spots:'Споты',gallery:'Галерея',about:'Обо мне',buddy:'Найти бади',book:'Контакт'};
+  const absUrl = (path)=>location.origin + path;
+
+  function setMeta(title, url){
+    document.title = title;
+    const c=document.querySelector('link[rel="canonical"]'); if(c) c.href=url;
+    const o=document.querySelector('meta[property="og:url"]'); if(o) o.setAttribute('content',url);
+  }
+
+  // Транслитерация заголовка в URL-slug: «Почему дайвер не всплыл» → pochemu-dayver-ne-vsplyl
+  const TRANSLIT={а:'a',б:'b',в:'v',г:'g',д:'d',е:'e',ё:'e',ж:'zh',з:'z',и:'i',й:'y',к:'k',л:'l',м:'m',н:'n',о:'o',п:'p',р:'r',с:'s',т:'t',у:'u',ф:'f',х:'h',ц:'c',ч:'ch',ш:'sh',щ:'sch',ъ:'',ы:'y',ь:'',э:'e',ю:'yu',я:'ya'};
+  function slugify(s){
+    return (s||'').toLowerCase().split('').map(ch=>TRANSLIT[ch]!==undefined?TRANSLIT[ch]:ch).join('')
+      .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,60);
+  }
+  const findPostBySlug = (slug)=>posts.findIndex(p=>slugify(p.title)===slug);
+  const findSpotBySlug = (slug)=>spots.findIndex(s=>slugify(s.t)===slug);
+
+  // Открыть экран, соответствующий текущему адресу (без записи в историю).
+  function routeFromLocation(){
+    let rel = location.pathname.indexOf(BASE)===0 ? location.pathname.slice(BASE.length) : location.pathname.replace(/^\//,'');
+    rel = decodeURIComponent(rel.replace(/\/+$/,''));
+    const seg = rel.split('/').filter(Boolean);
+    if(seg.length===0) return go('home',{noHistory:true});
+    if(seg[0]==='blog' && seg[1]){ const i=findPostBySlug(seg[1]); return i>=0 ? openArticle(i,{noHistory:true}) : go('blog',{noHistory:true}); }
+    if(seg[0]==='spots' && seg[1]){ const i=findSpotBySlug(seg[1]); return i>=0 ? openSpot(i,{noHistory:true}) : go('spots',{noHistory:true}); }
+    if(PAGE_TITLES[seg[0]]) return go(seg[0],{noHistory:true});
+    return go('home',{noHistory:true});
+  }
+  window.addEventListener('popstate', routeFromLocation);
+
   /* ---------- ROUTER ---------- */
-  function go(id){
+  function go(id, opts){
+    opts = opts || {};
     document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
     const pg=document.getElementById('page-'+id);
     (pg||document.getElementById('page-home')).classList.add('active');
@@ -1029,11 +1067,17 @@
     document.getElementById('navlinks').classList.remove('open');
     window.scrollTo({top:0,behavior:'instant'});
     runReveal();
-    if(id==='home'){renderLogbookPreview();renderIncidentsPreview();loadStats();}
+    if(id==='home'){renderProgress('progress-block');renderLogbookPreview();renderIncidentsPreview();loadStats();}
     if(id==='logbook'){renderProgress('progress-logbook');renderLogbookFull();}
     if(id==='buddy'){renderBuddyList();}
+    if(!opts.noHistory){
+      const url = (id==='home') ? BASE : BASE + id;
+      history.pushState({page:id}, '', url);
+      setMeta(id==='home' ? DEFAULT_TITLE : (PAGE_TITLES[id] ? PAGE_TITLES[id]+' — Глубже' : DEFAULT_TITLE), absUrl(url));
+    }
   }
-  function openSpot(i){
+  function openSpot(i, opts){
+    opts = opts || {};
     const s=spots[i];
     document.getElementById('sd-title').textContent=s.t;
     document.getElementById('sd-sub').textContent=s.sub;
@@ -1047,16 +1091,23 @@
       [['Глубина',s.depth],['Уровень',s.level],['Темп. воды',s.temp],['Видимость',s.vis]]
       .map(([k,v])=>`<div class="info-card"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
     document.getElementById('sd-body').innerHTML=s.body;
-    go('spot-detail');
+    go('spot-detail',{noHistory:true});
+    const url=BASE+'spots/'+slugify(s.t);
+    if(!opts.noHistory) history.pushState({page:'spot-detail',i}, '', url);
+    setMeta(s.t+' — Глубже', absUrl(url));
   }
-  function openArticle(i){
+  function openArticle(i, opts){
+    opts = opts || {};
     const p=posts[i];
     document.getElementById('art-title').textContent=p.title;
     document.getElementById('art-meta').innerHTML=`<span>${p.cat}</span><span><b>${p.date}</b></span><span>⏱ ${p.read}</span>`;
     const hero=document.getElementById('art-hero');
     hero.className='article-hero '+p.ph;hero.textContent=p.emoji;
     document.getElementById('art-body').innerHTML=p.body;
-    go('article');
+    go('article',{noHistory:true});
+    const url=BASE+'blog/'+slugify(p.title);
+    if(!opts.noHistory) history.pushState({page:'article',i}, '', url);
+    setMeta(p.title+' — Глубже', absUrl(url));
   }
 
   /* ---------- BUBBLES ---------- */
@@ -1076,11 +1127,7 @@
 
   /* ---------- SPOT PIN SYNC (map page) ---------- */
   document.querySelectorAll('.pin').forEach(p=>p.addEventListener('click',()=>openSpot(+p.dataset.i)));
-  loadStats();
-  // Initial renders for home page
-  renderProgress('progress-block');
-  renderLogbookPreview();
-  renderIncidentsPreview();
+  // Рендеры главной выполняет go('home') через routeFromLocation при старте.
 
 
   /* ---------- FORM ---------- */
@@ -1502,6 +1549,18 @@
       if(chatHistory.length<8) renderSugg();
     }, 450);
   }
+
+  /* ---------- ROUTING INIT ---------- */
+  (function(){
+    // Восстановление адреса после редиректа из 404.html (deep-link на GitHub Pages).
+    try{
+      const saved = sessionStorage.getItem('spa-path');
+      if(saved){ sessionStorage.removeItem('spa-path'); history.replaceState(null,'',saved); }
+    }catch(e){}
+    // Открыть экран по текущему URL и зафиксировать состояние стартовой записи истории.
+    routeFromLocation();
+    try{ history.replaceState(history.state||{page:'home'}, '', location.href); }catch(e){}
+  })();
 </script>
 
 <!-- ============ LOGBOOK ============ -->
