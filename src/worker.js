@@ -96,43 +96,59 @@ function validateBuddyPayload(body) {
 
 // ── Обработчики ──────────────────────────────────────────────────────────────
 
+// Сборка query-строки в формате, который ждёт Airtable:
+//   fields[]=A&fields[]=B   sort[0][field]=X&sort[0][direction]=desc
+function atQuery({ filterByFormula, sort, fields, maxRecords } = {}) {
+  const sp = new URLSearchParams();
+  if (filterByFormula) sp.set('filterByFormula', filterByFormula);
+  if (maxRecords != null) sp.set('maxRecords', String(maxRecords));
+  if (fields) for (const f of fields) sp.append('fields[]', f);
+  if (sort) sort.forEach((s, i) => {
+    sp.set(`sort[${i}][field]`, s.field);
+    sp.set(`sort[${i}][direction]`, s.direction || 'asc');
+  });
+  // URLSearchParams кодирует пробел как "+"; Airtable ждёт %20 (иначе пробел
+  // в значении вроде "Ищет бади" может сломать фильтр).
+  return sp.toString().replace(/\+/g, '%20');
+}
+
 async function handleGetActive(token) {
   // Только одобренные записи со статусом "Ищет бади"
-  const params = new URLSearchParams({
+  const q = atQuery({
     filterByFormula: `AND({Approved}=1, {Status}="Ищет бади")`,
-    sort: '[{"field":"Created","direction":"desc"}]',
+    sort: [{ field: 'Created', direction: 'desc' }],
     fields: ['Name', 'Level', 'Location', 'About', 'Telegram'],
   });
-  const data = await atFetch(token, `/${BASE_BUDDIES}/${TABLE_BUDDIES}?${params}`);
+  const data = await atFetch(token, `/${BASE_BUDDIES}/${TABLE_BUDDIES}?${q}`);
   return json({ records: data.records });
 }
 
 async function handleGetArchive(token) {
   // Пары, которые нашли бади
-  const params = new URLSearchParams({
+  const q = atQuery({
     filterByFormula: `{Status}="Нашёл бади"`,
-    sort: '[{"field":"Created","direction":"desc"}]',
+    sort: [{ field: 'Created', direction: 'desc' }],
     fields: ['Name', 'BuddyName', 'Location', 'TripDate', 'TripStory'],
   });
-  const data = await atFetch(token, `/${BASE_BUDDIES}/${TABLE_BUDDIES}?${params}`);
+  const data = await atFetch(token, `/${BASE_BUDDIES}/${TABLE_BUDDIES}?${q}`);
   return json({ records: data.records });
 }
 
 async function handleGetLogbook(token, url) {
   const limit = Math.min(parseInt(url.searchParams.get('limit') || '100', 10), 100);
-  const params = new URLSearchParams({
+  const q = atQuery({
     filterByFormula: `{Published}=1`,
-    sort: '[{"field":"DiveNumber","direction":"desc"}]',
-    maxRecords: String(limit),
+    sort: [{ field: 'DiveNumber', direction: 'desc' }],
+    maxRecords: limit,
     fields: ['Place', 'Location', 'Date', 'DiveNumber', 'Depth', 'Duration', 'Visibility', 'Notes'],
   });
-  const data = await atFetch(token, `/${BASE_LOGBOOK}/${TABLE_DIVES}?${params}`);
+  const data = await atFetch(token, `/${BASE_LOGBOOK}/${TABLE_DIVES}?${q}`);
   return json({ records: data.records });
 }
 
 async function handleGetStats(token) {
-  const params = new URLSearchParams({ fields: ['Key', 'Value'] });
-  const data = await atFetch(token, `/${BASE_SETTINGS}/${TABLE_SETTINGS}?${params}`);
+  const q = atQuery({ fields: ['Key', 'Value'] });
+  const data = await atFetch(token, `/${BASE_SETTINGS}/${TABLE_SETTINGS}?${q}`);
   const stats = {};
   for (const rec of data.records || []) {
     const k = rec.fields?.Key;
