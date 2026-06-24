@@ -1,0 +1,16 @@
+{
+  "name": "site-masterdiver",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Сайт-блог «Глубже» — фронтенд (GitHub Pages) + Cloudflare Worker (Airtable API)",
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "dev": "wrangler dev",
+    "deploy:dry": "wrangler deploy --dry-run",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}
