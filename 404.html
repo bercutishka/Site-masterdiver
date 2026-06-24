@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Глубже</title>
+<script>
+  // GitHub Pages отдаёт этот файл на любом неизвестном пути (например, прямая
+  // ссылка на статью /blog/<slug>). Сохраняем адрес и возвращаемся в SPA —
+  // index.html восстановит путь через history.replaceState и откроет нужный экран.
+  (function(){
+    var seg = location.pathname.split('/').filter(Boolean);
+    var base = (location.hostname.indexOf('github.io') !== -1 && seg.length) ? '/' + seg[0] + '/' : '/';
+    try { sessionStorage.setItem('spa-path', location.pathname + location.search + location.hash); } catch(e){}
+    location.replace(location.origin + base);
+  })();
+</script>
+</head>
+<body>Перенаправление…</body>
+</html>
