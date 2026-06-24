@@ -1,1 +1,259 @@
-# Site-masterdiver
+# Глубже — Site-masterdiver
+
+Личный сайт-блог про дайвинг (Павел Смотров): лендинг, блог с разборами аварий,
+открытый логбук погружений, поиск напарника-бади и контактная форма.
+Интерфейс на русском.
+
+- **Прод (сайт):** https://bercutishka.github.io/Site-masterdiver/
+- **API / воркер:** https://glubzhe-buddy.bercutishka.workers.dev
+
+> Для агента (Claude Code) рабочая памятка с правилами и приоритетами задач — в [`CLAUDE.md`](./CLAUDE.md).
+> Этот README — общее описание архитектуры и взаимосвязей.
+
+---
+
+## Содержание
+
+- [Архитектура в одном взгляде](#архитектура-в-одном-взгляде)
+- [Структура репозитория](#структура-репозитория)
+- [Фронтенд](#фронтенд-indexhtml)
+- [Бэкенд: Cloudflare Worker](#бэкенд-cloudflare-worker-srcworkerjs)
+- [Данные: Airtable](#данные-airtable)
+- [Потоки данных по фичам](#потоки-данных-по-фичам)
+- [Все взаимосвязи (карта зависимостей)](#все-взаимосвязи-карта-зависимостей)
+- [Деплой](#деплой)
+- [Локальная разработка](#локальная-разработка)
+- [Безопасность](#безопасность)
+- [Известные ограничения и дорожная карта](#известные-ограничения-и-дорожная-карта)
+
+---
+
+## Архитектура в одном взгляде
+
+Три внешних сервиса + один статический файл фронтенда. Воркер — единая точка:
+он и отдаёт статику, и проксирует API к Airtable.
+
+```
+                    ┌─────────────────────────────────────────────┐
+                    │  Браузер пользователя                        │
+                    │  index.html (SPA: HTML+CSS+JS в одном файле)  │
+                    └───────────────┬──────────────┬───────────────┘
+                                    │              │
+              статика + API (fetch) │              │ POST контактной формы
+                                    ▼              ▼
+        ┌───────────────────────────────┐   ┌──────────────┐
+        │ Cloudflare Worker             │   │  Formspree    │ → e-mail
+        │ glubzhe-buddy                 │   │ /f/xykagdvo   │   владельцу
+        │  • GET ?action=... → API      │   └──────────────┘
+        │  • POST / → заявка бади         │
+        │  • иначе → env.ASSETS (статика)│   ┌──────────────┐
+        │                               │   │  Telegram     │ ← прямые
+        └───────────────┬───────────────┘   │ @divemaster_… │   контакты
+                        │ REST + Bearer                     └──────────────┘
+                        ▼
+        ┌───────────────────────────────┐
+        │ Airtable (3 базы)             │
+        │  • Buddies (заявки бади)       │
+        │  • Dives   (логбук)            │
+        │  • Settings(статистика k/v)    │
+        └───────────────────────────────┘
+```
+
+Важная деталь: **сайт физически отдаётся с двух мест** — с GitHub Pages
+(`bercutishka.github.io`, основной прод) и с самого воркера через `env.ASSETS`
+(на домене `workers.dev`). Контент один и тот же (`index.html`), но за живыми
+данными фронтенд всегда ходит на воркер.
+
+---
+
+## Структура репозитория
+
+| Файл | Что это |
+|------|---------|
+| `index.html` | **Весь фронтенд в одном файле (~1.2 МБ).** SPA: данные в JS-массивах, стили в одном `<style>`, картинки вшиты как base64 data-URI. |
+| `src/worker.js` | Cloudflare Worker (ESM). API к Airtable + раздача статики. |
+| `wrangler.jsonc` | Конфиг воркера: `main` → `src/worker.js`, `assets` (раздача статики, `binding: ASSETS`, `run_worker_first`, `not_found_handling`). |
+| `404.html` | Редирект для deep-link на GitHub Pages: ловит прямой заход на `/blog/<slug>`, кладёт путь в `sessionStorage` и возвращает в SPA. |
+| `og-cover.jpg` | Превью для соцсетей (сейчас переиспользовано фото с сайта; идеал — 1200×630). |
+| `robots.txt`, `sitemap.xml` | SEO. |
+| `.assetsignore` | **Критично для деплоя.** При `assets.directory: "."` исключает из загрузки в Cloudflare `node_modules`, исходники и конфиги. Без него деплой падает на `Asset too large`. |
+| `.dev.vars.example` | Шаблон локального секрета `AIRTABLE_TOKEN` для `wrangler dev`. Реальный `.dev.vars` в `.gitignore`. |
+| `package.json` / `scripts/check.mjs` | npm-скрипты (`check`, `dev`, `deploy:dry`, `deploy`) и быстрая локальная проверка без установки зависимостей. |
+| `CLAUDE.md` | Памятка для агента: архитектура, правила, приоритеты задач. |
+| `.claude/` | Настройки агента (allowlist команд) и SessionStart-хук с ориентацией по проекту. |
+
+---
+
+## Фронтенд (`index.html`)
+
+Одностраничное приложение. Всё в одном файле: данные, разметка, стили, логика.
+
+- **SPA-роутинг** — функция `go(id)` переключает `display` у `<div class="page" id="page-XXX">`.
+  Экраны: `home, logbook, blog, article, spots, spot-detail, gallery, about, buddy, book`.
+- **Deep-link через History API:**
+  - `go / openArticle / openSpot` делают `history.pushState`, обновляют `<title>`, `canonical` и `og:url` (хелпер `setMeta`).
+  - `popstate` → `routeFromLocation()` восстанавливает экран по адресу (работают «Назад/Вперёд»).
+  - URL: статьи `/blog/<slug>`, споты `/spots/<slug>`, разделы `/blog`, `/about`, …
+  - `slug` — транслитерация заголовка (`slugify`), напр. `den-kogda-moya-naparnica-poteryala-soznanie-pod-vodoy`.
+  - `BASE` определяется автоматически: на `github.io` → `/Site-masterdiver/`, иначе `/`.
+  - Прямые ссылки: на GitHub Pages их ловит `404.html`; на `workers.dev` — `not_found_handling: single-page-application`.
+- **Контент** рендерится из JS-массивов: `posts` (блог), `spots`, `reviews`, `incidents`, `courses`.
+  Логбук, бади, статистика, архив пар — тянутся **живьём** с воркера через `fetch`.
+- **Чат-бот** — оффлайн, по ключевым словам (`botReply`), без LLM. Сознательный выбор: работает всегда и без сервера.
+- **Хелперы безопасности:** `esc()` (экранирование HTML), `cleanTgHandle()` (валидация Telegram-хэндла).
+
+---
+
+## Бэкенд: Cloudflare Worker (`src/worker.js`)
+
+Один воркер обслуживает **и API, и статику**. Решение в `fetch()`:
+есть `?action=` или метод `POST` → это API; иначе → `env.ASSETS.fetch(request)` (статика).
+
+> ⚠️ В `wrangler.jsonc` обязателен `run_worker_first: true`. Иначе Cloudflare отдаёт
+> статику первой: запрос `/?action=stats` совпадает с `index.html` (путь `/`) и воркер
+> не запускается. API живёт на корневом пути с query-параметрами, поэтому воркер должен
+> идти первым, а статику отдавать сам через `env.ASSETS`.
+
+### API-контракт (формат ответов фронтенд ждёт — не ломать)
+
+| Запрос | Ответ | Источник в Airtable | Фильтр |
+|--------|-------|---------------------|--------|
+| `GET ?action=active` | `{records:[{fields:{Name,Level,Location,About,Telegram}}]}` | Buddies | `Approved=1 AND Status="Ищет бади"` |
+| `GET ?action=archive` | `{records:[{fields:{Name,BuddyName,Location,TripDate,TripStory}}]}` | Buddies | `Status="Нашёл бади"` |
+| `GET ?action=logbook&limit=N` | `{records:[{fields:{...}}]}` | Dives | `Published=1`, sort `DiveNumber` desc |
+| `GET ?action=stats` | `{ключ:значение,...}` (напр. `dive_count`, `dive_goal`, `cert_level`) | Settings | — |
+| `POST /` (JSON `Name,Telegram,Level,Location,About`) | `{id}` 201 / `{error}` | Buddies (создание) | приходит неодобренной |
+
+Запросы к Airtable собираются хелпером `atQuery` в нужном формате
+(`fields[]=…`, `sort[0][field]=…`, пробелы как `%20`).
+
+### Секрет
+
+`env.AIRTABLE_TOKEN` — Airtable Personal Access Token (Bearer). Задаётся в Cloudflare:
+**Workers → glubzhe-buddy → Settings → Variables and Secrets** (тип **Secret**).
+Локально — в `.dev.vars` (см. `.dev.vars.example`). Нужны scopes
+`data.records:read` + `data.records:write` и доступ ко всем трём базам.
+
+---
+
+## Данные: Airtable
+
+| База | ID | Таблица (ID) | Назначение |
+|------|----|----|-----------|
+| Glubzhe_Base | `appNiVAITJeCbNs4Y` | Buddies (`tblcO2vomq30JfBwn`) | Заявки на поиск бади |
+| Глубже — Логбук | `appLyPznVpbWD6cfX` | Dives (`tblZNWL0FrvHMyQ4Z`) | Погружения |
+| Глубже — Настройки | `appkFcxA5bqDJYl67` | Settings (`tblOVx4OxYJNjdXRG`) | Key/Value статистика |
+
+**Buddies:** `Name`, `Telegram`, `Level`, `Location`, `About`,
+`Approved` (checkbox — гейт публикации/модерация),
+`Status` (singleSelect: «Ищет бади» / «Нашёл бади»),
+`BuddyName`, `TripStory`, `TripDate`, `Created` (формула `CREATED_TIME()`).
+
+**Dives:** `Place`, `Location`, `Date`, `DiveNumber`, `Depth`, `Duration`,
+`Visibility`, `Notes`, `Published` (checkbox).
+
+**Settings:** `Key`, `Value`, `Note`.
+
+> ⚠️ Боевые данные/схему Airtable менять только с явного согласия владельца.
+
+---
+
+## Потоки данных по фичам
+
+**Статистика на главной.** `loadStats()` → `GET ?action=stats` → воркер читает
+Settings → `{dive_count, dive_goal, cert_level}` → фронт рисует счётчик и прогресс-бар.
+
+**Логбук.** `renderLogbookPreview()` (главная, 3 записи) и `renderLogbookFull()`
+(страница «Логбук») → `GET ?action=logbook[&limit=N]` → воркер читает Dives с
+`Published=1` → карточки погружений.
+
+**Поиск бади (чтение).** `renderBuddyList()` → `GET ?action=active` (только
+`Approved=1 AND Status="Ищет бади"`); `renderPairs()` → `GET ?action=archive`
+(`Status="Нашёл бади"`). Поля экранируются `esc()` перед вставкой.
+
+**Поиск бади (заявка).** Форма → `submitBuddy()` (клиентская валидация + honeypot)
+→ `POST /` → воркер (серверная валидация, лимиты длины, honeypot `_hp`, rate-limit)
+→ создаёт запись в Buddies **без `Approved`** (ждёт ручной модерации) → `{id}`.
+
+**Контактная форма.** `submitForm()` → `POST https://formspree.io/f/xykagdvo`
+→ письмо владельцу. Airtable/воркер не задействованы.
+
+**Прямые контакты.** Ссылки на Telegram `@divemaster_glubzhe`.
+
+---
+
+## Все взаимосвязи (карта зависимостей)
+
+| Откуда | Куда | Зачем | Связующее звено |
+|--------|------|-------|-----------------|
+| `index.html` (фронт) | Cloudflare Worker | живые данные + приём заявки бади | `fetch` на `workers.dev` |
+| `index.html` | Formspree | контактная форма | `POST /f/xykagdvo` |
+| `index.html` | Telegram | прямой контакт | ссылка `t.me/...` |
+| Worker | Airtable | чтение/запись данных | REST + `Bearer AIRTABLE_TOKEN` |
+| Worker | статика | раздача `index.html` и ассетов | `env.ASSETS` (binding в `wrangler.jsonc`) |
+| `wrangler.jsonc` | `src/worker.js` | точка входа воркера | поле `main` |
+| `wrangler.jsonc` | `.assetsignore` | что НЕ грузить как статику | `assets.directory: "."` |
+| GitHub `main` | GitHub Pages | деплой фронтенда | автопубликация |
+| GitHub `main` | Cloudflare | деплой воркера | GitHub App «Cloudflare Workers and Pages» → `npx wrangler deploy` |
+| Cloudflare Secret | Worker | токен Airtable | `env.AIRTABLE_TOKEN` |
+| `404.html` | `index.html` | восстановление deep-link на Pages | `sessionStorage['spa-path']` |
+| Фронт ↔ Worker | — | **жёсткий контракт ответов** | формат JSON из таблицы выше |
+
+Точки, где «всё развалится», если поменять одну сторону, не поменяв другую:
+- формат ответов API (фронт парсит конкретные поля);
+- имена полей Airtable (воркер обращается по ним);
+- `AIRTABLE_TOKEN` в Cloudflare (без него — 401/500 на всех API);
+- `.assetsignore` (без него деплой падает);
+- `run_worker_first` (без него API на `/` не доходит до воркера).
+
+---
+
+## Деплой
+
+- **Фронтенд → GitHub Pages.** Автоматически из ветки `main`. Прямые ссылки на
+  внутренние пути ловит `404.html`.
+- **Воркер → Cloudflare.** Через GitHub App «Cloudflare Workers and Pages».
+  Билд-команда `npx wrangler deploy`, деплой при пуше/мердже в `main`. Cloudflare Build
+  сам делает `npm install` → появляется `node_modules`, поэтому `assets.directory: "."`
+  **обязан** сопровождаться `.assetsignore`.
+- **Перед пушем правок воркера:** `npm run check` (синтаксис) и `npm run deploy:dry` (dry-run).
+
+---
+
+## Локальная разработка
+
+```bash
+npm install          # поставить wrangler (для dev/deploy)
+npm run check        # быстрая проверка без установки: синтаксис воркера и
+                     # встроенного скрипта index.html, валидность wrangler.jsonc
+npm run dev          # локальный воркер (нужен .dev.vars с AIRTABLE_TOKEN)
+npm run deploy:dry   # wrangler deploy --dry-run — проверка конфига без деплоя
+```
+
+Только фронт без воркера: `python3 -m http.server` из корня репозитория.
+
+**Рабочий процесс:** ветка разработки `claude/website-analysis-recommendations-33ap6n`,
+PR в `main`, в `main` напрямую не пушить. Коммиты осмысленные, на русском.
+
+---
+
+## Безопасность
+
+- **Модерация бади:** публикуются только записи с `Approved=1`; новые заявки приходят неодобренными.
+- **Серверная валидация** в воркере: формат Telegram, допустимые `Level`, лимиты длины полей.
+- **Honeypot** (`_hp`) и **rate-limit** (5 запросов/10 мин по IP) на приём заявок.
+- **CORS** воркера — только `https://bercutishka.github.io`.
+- **Экранирование** пользовательских данных на фронте (`esc`) при выводе списков бади/пар.
+- Секрет Airtable хранится только в Cloudflare (в репозитории его нет).
+
+---
+
+## Известные ограничения и дорожная карта
+
+1. ✅ **Deep-link через History API** — сделано (свой URL/title у статей, «Назад», шаринг).
+   Ограничение GitHub Pages: прямой заход отдаёт HTTP 404 (через `404.html`-редирект),
+   поэтому боты-превью соцсетей без JS не видят og-теги конкретной статьи.
+2. **Пререндер / контент в статический HTML** — для полноценного SEO и превью статей.
+3. **Вынести base64-картинки в файлы** — сейчас они раздувают `index.html` (~1.2 МБ).
+4. **Доступность:** `aria-expanded` на бургер-меню, `aria-live` в чате, перевод фокуса в `go()`.
+5. **Аналитика** — пока не подключена.
