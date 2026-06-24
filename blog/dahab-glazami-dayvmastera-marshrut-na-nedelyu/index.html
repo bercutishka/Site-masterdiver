@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<base href="/Site-masterdiver/">
+<meta charset="UTF-8">
+<meta name="color-scheme" content="light only">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дахаб глазами дайвмастера: маршрут на неделю — Глубже</title>
+
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Глубже">
+<meta property="og:title"       content="Дахаб глазами дайвмастера: маршрут на неделю — Глубже">
+<meta property="og:description" content="Маршрут на семь дней: от спокойной Лагуны до Каньона и Blue Hole, без туристических ловушек.">
+<meta property="og:image"       content="https://bercutishka.github.io/Site-masterdiver/og-cover.jpg">
+<meta property="og:url"         content="https://bercutishka.github.io/Site-masterdiver/blog/dahab-glazami-dayvmastera-marshrut-na-nedelyu/">
+<meta property="og:locale"      content="ru_RU">
+<meta name="twitter:card"       content="summary_large_image">
+<meta name="twitter:title"      content="Дахаб глазами дайвмастера: маршрут на неделю — Глубже">
+<meta name="twitter:description" content="Маршрут на семь дней: от спокойной Лагуны до Каньона и Blue Hole, без туристических ловушек.">
+<meta name="twitter:image"      content="https://bercutishka.github.io/Site-masterdiver/og-cover.jpg">
+<meta name="description"        content="Маршрут на семь дней: от спокойной Лагуны до Каньона и Blue Hole, без туристических ловушек.">
+<link rel="canonical"           href="https://bercutishka.github.io/Site-masterdiver/blog/dahab-glazami-dayvmastera-marshrut-na-nedelyu/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ color-scheme: light;
+    --abyss:#063040;     /* тёмная бирюза только для баннеров/футера */
+    --deep:#0a4358;
+    --teal:#0a7d8c;
+    --aqua:#0a8a96;      /* акцент на светлом — тёмный аква */
+    --aqua-light:#1fb6bd;
+    --foam:#0a8a96;
+    --coral:#e8543f;     /* тёплый акцент, контрастный на светлом */
+    --sun:#d99412;       /* статистика — приглушённое золото, читается на светлом */
+    --bg:#f3f6f5;        /* основной светлый фон */
+    --bg-alt:#e7eeed;    /* чередующийся фон секций */
+    --card:#ffffff;
+    --text:#0d2731;      /* основной тёмный текст */
+    --text-dim:#4a6168;  /* второстепенный текст, тоже тёмный */
+    --line:rgba(13,39,49,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Outfit',sans-serif;background:#f3f6f5;color:#0d2731;overflow-x:hidden;line-height:1.65;-webkit-text-size-adjust:100%}
+  h1,h2,h3,h4{font-family:'Fraunces',serif;line-height:1.08;font-weight:900;color:#0a1f27}
+  ::selection{background:#e8543f;color:#fff}
+  a{color:inherit}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;
+    align-items:center;padding:16px 6vw;backdrop-filter:blur(14px);
+    background:rgba(6,48,64,.92);border-bottom:1px solid rgba(255,255,255,.1)}
+  .logo{font-family:'Fraunces',serif;font-weight:900;font-size:1.4rem;letter-spacing:-.5px;color:#8df3dd;cursor:pointer;background:none;border:none}
+  .logo span{color:#e8543f}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links button{color:#eaf6f5;background:none;border:none;font-family:'Outfit';font-size:.94rem;
+    font-weight:500;cursor:pointer;opacity:.9;transition:.2s;padding:6px 2px;border-bottom:2px solid transparent}
+  .nav-links button:hover{opacity:1;color:#8df3dd}
+  .nav-links button.active{color:#8df3dd;border-bottom-color:#e8543f;opacity:1}
+  .nav-cta{background:#e8543f!important;color:#fff!important;padding:9px 20px!important;
+    border-radius:40px!important;border:none!important;opacity:1!important}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+  .burger span{width:26px;height:2px;background:#8df3dd;transition:.3s}
+
+  /* PAGE SYSTEM */
+  .page{display:none;animation:fade .5s ease}
+  .page.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  .btn{display:inline-block;padding:14px 30px;border-radius:50px;font-weight:600;text-decoration:none;
+    font-size:.95rem;transition:transform .25s,box-shadow .25s;cursor:pointer;border:none;font-family:'Outfit'}
+  .btn-primary{background:#e8543f;color:#fff;box-shadow:0 10px 30px rgba(232,84,63,.35)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(232,84,63,.5)}
+  .btn-ghost{background:transparent;color:#0a8a96;border:1.5px solid #0a8a96}
+  .btn-ghost:hover{background:rgba(10,138,150,.1);transform:translateY(-3px)}
+  /* ghost button on dark band/hero stays light */
+  header .btn-ghost,.band .btn-ghost{color:#bff3ee;border-color:rgba(191,243,238,.6)}
+  header .btn-ghost:hover,.band .btn-ghost:hover{background:rgba(191,243,238,.14)}
+
+  /* HERO */
+  header{min-height:100vh;position:relative;display:flex;align-items:center;padding:130px 6vw 80px;
+    background:radial-gradient(120% 90% at 70% 8%,rgba(39,208,213,.32),transparent 55%),
+      radial-gradient(100% 80% at 8% 92%,rgba(10,125,140,.45),transparent 60%),
+      linear-gradient(180deg,#021b2e,#053a52 70%,#021b2e);overflow:hidden}
+  .rays{position:absolute;inset:0;opacity:.5;pointer-events:none;
+    background:repeating-linear-gradient(105deg,transparent 0 40px,rgba(141,243,221,.05) 40px 42px);animation:drift 18s linear infinite}
+  @keyframes drift{to{transform:translateX(-120px)}}
+  .bubbles{position:absolute;inset:0;pointer-events:none}
+  .bubbles i{position:absolute;bottom:-40px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.55),rgba(141,243,221,.1));animation:rise linear infinite}
+  @keyframes rise{to{transform:translateY(-115vh);opacity:0}}
+  .hero-inner{position:relative;z-index:2;max-width:920px}
+  .hero-inner h1{color:#fff}
+  .hero-split{max-width:1240px;width:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .hero-copy{min-width:0}
+  .hero-photo{position:relative}
+  .hero-photo img{width:100%;border-radius:24px;display:block;box-shadow:0 30px 70px rgba(0,0,0,.45);
+    border:3px solid rgba(255,255,255,.14)}
+  .photo-cap{position:absolute;left:16px;bottom:16px;background:rgba(6,48,64,.78);backdrop-filter:blur(6px);
+    color:#cfe6e4;font-size:.78rem;padding:7px 14px;border-radius:30px;letter-spacing:.5px}
+  .about-photo img{width:100%;height:100%;object-fit:cover;border-radius:24px;display:block}
+  .gallery figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+  .gallery figure:hover img{transform:scale(1.08)}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.8rem;letter-spacing:3px;
+    text-transform:uppercase;color:#8df3dd;margin-bottom:22px;font-weight:600}
+  .eyebrow::before{content:"";width:34px;height:1px;background:#8df3dd}
+  h1{font-size:clamp(3rem,9vw,6.8rem);letter-spacing:-2px}
+  h1 em{font-style:italic;font-weight:500;color:#8df3dd}
+  .hero-sub{font-size:clamp(1.05rem,2vw,1.3rem);max-width:580px;margin:26px 0 38px;color:#cfe6e4}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap}
+  .stats{display:flex;gap:48px;margin-top:60px;flex-wrap:wrap}
+  .stat b{font-family:'Fraunces',serif;font-size:2.6rem;color:#d99412;display:block;line-height:1}
+  .stat span{font-size:.84rem;color:#aed4d2;letter-spacing:1px}
+
+  /* SECTIONS */
+  section{padding:100px 6vw;position:relative}
+  .narrow{max-width:1180px;margin:0 auto}
+  .sec-head{margin-bottom:50px;max-width:680px}
+  .sec-head .eyebrow{color:#0a8a96}
+  .sec-head .eyebrow::before{background:#0a8a96}
+  .sec-head h2{font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:-1px}
+  .sec-head h2 em{color:#0a8a96;font-style:italic;font-weight:500}
+  .sec-head p{margin-top:14px;color:#4a6168}
+  .alt-bg{background:#e7eeed}
+
+  /* page header band */
+  .band{padding:150px 6vw 70px;background:radial-gradient(120% 100% at 80% 0%,rgba(39,208,213,.25),transparent 60%),linear-gradient(180deg,#053a52,#021b2e);position:relative;overflow:hidden}
+  .band .rays{opacity:.35}
+  .band-inner{position:relative;z-index:2;max-width:1180px;margin:0 auto}
+  .band h1{color:#fff}
+  .crumb{font-size:.82rem;color:#9fe9e1;letter-spacing:1px;margin-bottom:14px;cursor:pointer}
+  .crumb:hover{text-decoration:underline}
+  .band h1{font-size:clamp(2.4rem,6vw,4.2rem)}
+  .band p{margin-top:16px;max-width:620px;color:#cfe6e4;font-size:1.1rem}
+
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;grid-auto-rows:210px}
+  .gallery figure{position:relative;border-radius:18px;overflow:hidden;cursor:pointer}
+  .gallery figure figcaption{position:absolute;left:0;right:0;bottom:0;padding:42px 16px 14px;
+    font-size:.86rem;font-weight:600;color:#fff;background:linear-gradient(transparent,rgba(2,27,46,.92));
+    opacity:0;transition:.3s;transform:translateY(8px)}
+  .gallery figure:hover figcaption{opacity:1;transform:translateY(0)}
+  .ph{width:100%;height:100%;transition:transform .6s;display:flex;align-items:center;justify-content:center;font-size:2.4rem}
+  .gallery figure:hover .ph{transform:scale(1.08)}
+  .g1{grid-column:span 2;grid-row:span 2}.g-wide{grid-column:span 2}
+  .ph-a{background:linear-gradient(135deg,#0a7d8c,#27d0d5)}
+  .ph-b{background:linear-gradient(135deg,#053a52,#0a7d8c)}
+  .ph-c{background:linear-gradient(160deg,#27d0d5,#8df3dd)}
+  .ph-d{background:linear-gradient(135deg,#021b2e,#0a7d8c)}
+  .ph-e{background:linear-gradient(140deg,#ff6b5c,#ffd166)}
+  .ph-f{background:linear-gradient(135deg,#0a7d8c,#053a52)}
+  .ph-g{background:linear-gradient(150deg,#1a4f6b,#27d0d5)}
+  .ph-h{background:linear-gradient(135deg,#ffd166,#ff6b5c)}
+
+  /* CARDS GRID */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+
+  /* COURSES */
+  .course{background:#ffffff;border:1px solid rgba(13,39,49,.12);border-radius:22px;
+    padding:34px 30px;transition:.3s;position:relative;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 20px rgba(13,39,49,.06)}
+  .course:hover{transform:translateY(-6px);border-color:#0a8a96;box-shadow:0 14px 34px rgba(13,39,49,.12)}
+  .course.feat{background:linear-gradient(160deg,#ffffff,#eafafa);border-color:#e8543f;box-shadow:0 14px 34px rgba(232,84,63,.14)}
+  .tag{position:absolute;top:18px;right:18px;background:#e8543f;color:#fff;font-size:.7rem;
+    font-weight:700;letter-spacing:1px;padding:5px 12px;border-radius:30px}
+  .course h3{font-size:1.5rem;margin-bottom:6px}
+  .lvl{font-size:.76rem;letter-spacing:2px;text-transform:uppercase;color:#0a8a96;font-weight:700}
+  .price{font-family:'Fraunces',serif;font-size:2.3rem;color:#e8543f;margin:16px 0 4px}
+  .price small{font-size:.9rem;color:#4a6168;font-family:'Outfit'}
+  .course ul{list-style:none;margin:16px 0 24px;flex:1}
+  .course li{padding:7px 0;font-size:.92rem;color:#4a6168;display:flex;gap:10px;align-items:flex-start}
+  .course li::before{content:"◆";color:#0a8a96;font-size:.7rem;margin-top:5px}
+  .course .btn{width:100%;text-align:center;padding:13px}
+
+  /* SPOTS */
+  .spots-wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start}
+  .map{position:relative;background:linear-gradient(160deg,#0a4358,#063040);border-radius:24px;
+    aspect-ratio:4/3;overflow:hidden;border:1px solid rgba(13,39,49,.12)}
+  .map svg{width:100%;height:100%}
+  .pin{cursor:pointer}
+  .pin circle.dot{transition:.25s}
+  .pin:hover circle.dot{r:11;fill:#e8543f}
+  .pin .pulse{fill:#27d0d5;opacity:.4;animation:pulse 2.4s ease-out infinite}
+  @keyframes pulse{0%{r:6;opacity:.55}100%{r:22;opacity:0}}
+  .spot-list{display:flex;flex-direction:column;gap:14px}
+  .spot{background:#ffffff;border:1px solid rgba(13,39,49,.12);border-radius:16px;
+    padding:18px 22px;transition:.25s;cursor:pointer;box-shadow:0 4px 14px rgba(13,39,49,.05)}
+  .spot:hover,.spot.active{background:#eafafa;border-color:#0a8a96;transform:translateX(6px)}
+  .spot h4{font-family:'Fraunces';font-size:1.2rem;font-weight:600}
+  .spot .meta{display:flex;gap:16px;font-size:.82rem;color:#4a6168;margin-top:4px;flex-wrap:wrap}
+  .spot .meta b{color:#0a8a96;font-weight:700}
+
+  /* BLOG */
+  .post{background:#ffffff;border-radius:20px;overflow:hidden;
+    border:1px solid rgba(13,39,49,.12);transition:.3s;cursor:pointer;display:flex;flex-direction:column;box-shadow:0 6px 20px rgba(13,39,49,.06)}
+  .post:hover{transform:translateY(-6px);border-color:#0a8a96;box-shadow:0 14px 34px rgba(13,39,49,.12)}
+  .post .cover{height:175px;display:flex;align-items:center;justify-content:center;font-size:2.6rem}
+  .post .body{padding:24px;flex:1;display:flex;flex-direction:column}
+  .post .cat{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:#e8543f;font-weight:700}
+  .post h3{font-size:1.3rem;margin:10px 0;font-weight:600}
+  .post p{font-size:.92rem;color:#4a6168;flex:1}
+  .post .date{font-size:.8rem;color:#4a6168;opacity:.85;margin-top:14px}
+
+  /* ARTICLE */
+  .article{max-width:760px;margin:0 auto}
+  .article p{margin:20px 0;font-size:1.08rem;color:#0d2731}
+  .article h2{font-size:1.9rem;margin:44px 0 8px;color:#0a1f27}
+  .article h3{font-size:1.35rem;margin:32px 0 6px;color:#0a8a96}
+  .article ul{margin:18px 0 18px 22px}
+  .article li{margin:10px 0;color:#0d2731}
+  .article blockquote{border-left:3px solid #e8543f;padding:6px 22px;margin:28px 0;
+    font-family:'Fraunces';font-style:italic;font-size:1.3rem;color:#0a8a96}
+  .article-hero{height:280px;border-radius:22px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;font-size:3.4rem}
+  .meta-row{display:flex;gap:18px;color:#4a6168;font-size:.9rem;margin:18px 0 30px;flex-wrap:wrap}
+  .meta-row b{color:#0a8a96}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:50px;align-items:center}
+  .about-photo{aspect-ratio:3/4;border-radius:24px;background:linear-gradient(160deg,#0a7d8c,#063040);
+    display:flex;align-items:center;justify-content:center;font-size:5rem;border:1px solid rgba(13,39,49,.12)}
+  .about-text p{color:#0d2731;margin:16px 0;font-size:1.08rem}
+  .badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+  .badge{background:#eafafa;border:1px solid #0a8a96;color:#076670;
+    padding:8px 16px;border-radius:30px;font-size:.85rem;font-weight:600}
+
+  /* SPOT DETAIL */
+
+  .spot-hero-img{width:100%;height:260px;object-fit:cover;border-radius:8px;display:block;margin-bottom:6px}
+  .spot-attr{font-size:.68rem;color:#4a6168;margin-bottom:24px}
+  .spot-attr a{color:#0a8a96;text-decoration:none}
+  .spot-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:30px 0}
+  .info-card{background:#ffffff;border:1px solid rgba(13,39,49,.12);border-radius:16px;padding:22px;box-shadow:0 4px 14px rgba(13,39,49,.05)}
+  .info-card .k{font-size:.78rem;letter-spacing:1px;color:#4a6168;text-transform:uppercase}
+  .info-card .v{font-family:'Fraunces';font-size:1.5rem;color:#0a8a96;margin-top:4px}
+
+  /* FORM */
+  .book{background:#ffffff;
+    border:1px solid rgba(13,39,49,.12);border-radius:28px;padding:50px;max-width:760px;margin:0 auto;box-shadow:0 10px 34px rgba(13,39,49,.08)}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+  .field{display:flex;flex-direction:column;gap:8px}
+  .field.full{grid-column:span 2}
+  label{font-size:.84rem;letter-spacing:.5px;color:#4a6168;font-weight:600}
+  input,select,textarea{background:#fbfdfc;border:1.5px solid rgba(13,39,49,.12);border-radius:12px;
+    padding:14px 16px;color:#0d2731;font-family:'Outfit';font-size:.95rem;transition:.25s}
+  input::placeholder,textarea::placeholder{color:#8aa1a5}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:#0a8a96;background:#fff}
+  textarea{resize:vertical;min-height:90px}
+  .form-msg{margin-top:18px;padding:14px;border-radius:12px;background:#eafafa;
+    color:#076670;font-weight:600;display:none}
+
+  /* CTA strip */
+  .cta-strip{background:linear-gradient(120deg,#fff,#eafafa);
+    border:1px solid rgba(13,39,49,.12);border-radius:26px;padding:48px;text-align:center;max-width:900px;margin:0 auto;box-shadow:0 10px 30px rgba(13,39,49,.07)}
+  .cta-strip h2{font-size:2.2rem;margin-bottom:12px}
+  .cta-strip p{color:#4a6168;margin-bottom:26px}
+
+  /* FOOTER */
+  footer{padding:56px 6vw 36px;background:#063040;display:flex;
+    justify-content:space-between;flex-wrap:wrap;gap:24px;align-items:center}
+  footer .logo{font-size:1.6rem}
+  .socials{display:flex;gap:18px}
+  .socials button{color:#cfe6e4;opacity:.9;text-decoration:none;font-size:.9rem;transition:.2s;background:none;border:none;cursor:pointer;font-family:'Outfit'}
+  .socials button:hover{opacity:1;color:#9fe9e1}
+
+  .soc-link{color:#cfe6e4;opacity:.9;text-decoration:none;font-size:.9rem;transition:.2s;font-family:'Outfit'}
+  .soc-link:hover{opacity:1;color:#9fe9e1}
+  .copy{width:100%;font-size:.82rem;color:#9fb6b8;text-align:center;margin-top:18px}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:.8s cubic-bezier(.2,.7,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* REVIEWS */
+  .review{background:#ffffff;border:1px solid rgba(13,39,49,.12);border-radius:20px;padding:28px;
+    box-shadow:0 6px 20px rgba(13,39,49,.06);display:flex;flex-direction:column}
+  .review .stars{color:#f0a500;font-size:.95rem;letter-spacing:2px;margin-bottom:12px}
+  .review p{color:#0d2731;font-size:1rem;flex:1;font-style:italic}
+  .review .who{display:flex;align-items:center;gap:12px;margin-top:18px}
+  .review .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(140deg,#0a7d8c,#0a8a96);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:'Fraunces';font-size:1.1rem}
+  .review .who b{display:block;font-size:.95rem;color:#0a1f27}
+  .review .who span{font-size:.82rem;color:#4a6168}
+
+
+  /* TG STRIP */
+  #tg-strip{background:linear-gradient(135deg,#0088cc,#005fa3);padding:20px 6vw;position:relative;z-index:10}
+  .tg-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .tg-icon{font-size:2rem;flex-shrink:0}
+  .tg-inner div{flex:1;min-width:200px}
+  .tg-inner b{display:block;color:#fff;font-size:1.05rem;font-weight:700}
+  .tg-inner span{color:rgba(255,255,255,.8);font-size:.88rem}
+  .btn-tg{background:#fff;color:#0088cc;font-weight:700;padding:10px 24px;border-radius:30px;
+    text-decoration:none;font-size:.9rem;white-space:nowrap;transition:.2s;flex-shrink:0}
+  .btn-tg:hover{background:#e8f4fc;transform:translateY(-2px)}
+  @media(max-width:880px){.tg-inner{gap:14px}.btn-tg{width:100%;text-align:center}}
+
+  /* CHATBOT */
+  #chat-fab{position:fixed;right:22px;bottom:22px;z-index:300;width:62px;height:62px;border-radius:50%;
+    background:#e8543f;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(232,84,63,.45);
+    color:#fff;font-size:1.6rem;transition:transform .25s;display:flex;align-items:center;justify-content:center}
+  #chat-fab:hover{transform:scale(1.08)}
+  #chat-panel{position:fixed;right:22px;bottom:96px;z-index:300;width:380px;max-width:calc(100vw - 32px);
+    height:540px;max-height:calc(100vh - 130px);background:#fff;border-radius:22px;display:none;
+    flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(13,39,49,.28);border:1px solid rgba(13,39,49,.12)}
+  #chat-panel.open{display:flex;animation:fade .3s ease}
+  .chat-head{background:linear-gradient(135deg,#063040,#0a7d8c);padding:18px 20px;color:#fff;display:flex;align-items:center;gap:12px}
+  .chat-head .av{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;
+    align-items:center;justify-content:center;font-size:1.3rem}
+  .chat-head b{font-family:'Fraunces';font-size:1.05rem;display:block}
+  .chat-head span{font-size:.78rem;color:#bfe6e2}
+  .chat-head .x{margin-left:auto;background:none;border:none;color:#fff;font-size:1.3rem;cursor:pointer;opacity:.8}
+  .chat-head .x:hover{opacity:1}
+  .chat-body{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;background:#f3f6f5}
+  .msg{max-width:82%;padding:11px 15px;border-radius:16px;font-size:.92rem;line-height:1.5}
+  .msg.bot{background:#fff;border:1px solid rgba(13,39,49,.12);color:#0d2731;align-self:flex-start;border-bottom-left-radius:5px}
+  .msg.user{background:#0a7d8c;color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
+  .msg.typing{color:#4a6168;font-style:italic}
+  .chat-sugg{display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 12px;background:#f3f6f5}
+  .chat-sugg button{background:#fff;border:1px solid #0a8a96;color:#0a8a96;font-family:'Outfit';
+    font-size:.8rem;padding:7px 12px;border-radius:30px;cursor:pointer;transition:.2s}
+  .chat-sugg button:hover{background:#0a8a96;color:#fff}
+  .chat-input{display:flex;gap:8px;padding:14px;border-top:1px solid rgba(13,39,49,.12);background:#fff}
+  .chat-input input{flex:1;border:1.5px solid rgba(13,39,49,.12);border-radius:30px;padding:11px 16px;font-family:'Outfit';font-size:.92rem;color:#0d2731;background:#fbfdfc}
+  .chat-input input:focus{outline:none;border-color:#0a8a96}
+  .chat-input button{background:#e8543f;border:none;color:#fff;width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:1.1rem;flex-shrink:0}
+  .chat-input button:disabled{opacity:.5;cursor:default}
+  @media(max-width:880px){
+    #chat-panel{right:8px;bottom:88px;height:70vh}
+  }
+
+  /* ── ПРИНУДИТЕЛЬНАЯ СВЕТЛАЯ ТЕМА: перебиваем dark mode браузера ── */
+  @media (prefers-color-scheme: dark) {
+    html, body {
+      background: #f3f6f5 !important;
+      color: #0d2731 !important;
+    }
+    body * {
+      forced-color-adjust: none;
+    }
+    /* Все секции на светлом фоне */
+    section, .page, .narrow, .sec-head, .sec-head p,
+    .about-text p, .article p, .article li,
+    .post p, .post h3, .post .date,
+    .course li, .price small,
+    .meta-row, .review p {
+      background-color: inherit;
+      color: #0d2731 !important;
+    }
+    /* Белые карточки */
+    .course, .post, .review, .spot, .book, .info-card,
+    .cta-strip, .chat-body, .chat-input {
+      background: #ffffff !important;
+      color: #0d2731 !important;
+    }
+    /* alt-bg секции */
+    .alt-bg { background: #e7eeed !important; }
+    /* Аква акценты */
+    .sec-head .eyebrow, .lvl, .spot .meta b,
+    .post .body .cat + h3, .article h3,
+    .meta-row b, .info-card .v, .badge,
+    .article blockquote, .btn-ghost {
+      color: #0a8a96 !important;
+    }
+    /* Приглушённый текст */
+    .sec-head p, .price small, .course li, .post p,
+    .post .date, .meta-row, .spot .meta, .label,
+    .review .who span, .spot-attr, .about-text p,
+    label, .text-dim {
+      color: #4a6168 !important;
+    }
+    /* h1, h2, h3 заголовки на светлом фоне */
+    section h2, section h3, section h4,
+    .sec-head h2, .course h3, .post h3,
+    .spot h4, .cta-strip h2, .review .who b,
+    .about-text h2, .about-text h3 {
+      color: #0a1f27 !important;
+    }
+    /* Бейджи */
+    .badge { background: #eafafa !important; border-color: #0a8a96 !important; color: #076670 !important; }
+    /* Форма */
+    input, select, textarea {
+      background: #fbfdfc !important;
+      color: #0d2731 !important;
+      border-color: rgba(13,39,49,.12) !important;
+    }
+    input::placeholder, textarea::placeholder { color: #8aa1a5 !important; }
+    /* Чат */
+    .msg.bot { background: #fff !important; color: #0d2731 !important; }
+    .chat-sugg button { background: #fff !important; color: #0a8a96 !important; }
+    /* FAQ / accordion */
+    .faq-q, .faq-a, details, summary { background: #fff !important; color: #0d2731 !important; }
+    /* Линии */
+    .course, .post, .review, .spot, .book, .info-card {
+      border-color: rgba(13,39,49,.12) !important;
+    }
+    /* cta-strip */
+    .cta-strip { background: linear-gradient(120deg,#fff,#eafafa) !important; }
+    .cta-strip p { color: #4a6168 !important; }
+  }
+
+
+
+  /* DIVE MAP / GEO CARDS */
+  .dive-map-wrap{background:#fff;border:1px solid rgba(13,39,49,.12);border-radius:24px;
+    padding:30px;box-shadow:0 6px 20px rgba(13,39,49,.06);margin-top:40px}
+  .dive-map-wrap h3{font-size:1.4rem;color:#0a1f27;margin-bottom:6px}
+  .dive-map-wrap .map-sub{color:#4a6168;font-size:.9rem;margin-bottom:20px}
+  .geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .geo-card{border-radius:18px;padding:24px;position:relative;overflow:hidden;color:#fff}
+  .geo-redsea{background:linear-gradient(135deg,#c0392b,#e8543f)}
+  .geo-indo{background:linear-gradient(135deg,#0a7d8c,#27d0d5)}
+  .geo-flag{font-size:1.8rem;margin-bottom:8px}
+  .geo-name{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;margin-bottom:4px}
+  .geo-places{font-size:.8rem;opacity:.85;margin-bottom:14px;line-height:1.5}
+  .geo-count{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:900;line-height:1}
+  .geo-count span{font-family:'Outfit';font-size:.8rem;font-weight:400;opacity:.85}
+  @media(max-width:880px){.geo-grid{grid-template-columns:1fr}}
+  @media(prefers-color-scheme:dark){
+    .dive-map-wrap{background:#fff!important}
+    .dive-map-wrap h3{color:#0a1f27!important}
+    .geo-redsea{background:linear-gradient(135deg,#c0392b,#e8543f)!important;color:#fff!important}
+    .geo-indo{background:linear-gradient(135deg,#0a7d8c,#27d0d5)!important;color:#fff!important}
+  }
+
+  /* PROGRESS BAR */
+  .progress-wrap{background:#fff;border:1px solid rgba(13,39,49,.12);border-radius:24px;padding:36px;box-shadow:0 6px 20px rgba(13,39,49,.06)}
+  .progress-title{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+  .progress-title h3{font-size:1.4rem;color:#0a1f27}
+  .progress-title span{font-size:.9rem;color:#4a6168}
+  .prog-bar{height:14px;background:#e7eeed;border-radius:30px;overflow:hidden;margin-bottom:10px}
+  .prog-fill{height:100%;background:linear-gradient(90deg,#0a8a96,#27d0d5);border-radius:30px;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+  .prog-milestones{display:flex;justify-content:space-between;font-size:.78rem;color:#4a6168;margin-top:6px}
+  .prog-milestones b{color:#0a8a96}
+  .cert-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:24px}
+  .cert{background:#eafafa;border:1px solid #0a8a96;border-radius:16px;padding:14px 18px;flex:1;min-width:140px}
+  .cert .c-name{font-weight:700;color:#0a1f27;font-size:.95rem}
+  .cert .c-date{font-size:.78rem;color:#4a6168;margin-top:4px}
+  .cert .c-check{color:#0a8a96;font-size:1.1rem;margin-bottom:6px}
+
+  /* LOGBOOK */
+  .logbook-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .log-card{background:#fff;border:1px solid rgba(13,39,49,.12);border-radius:18px;padding:22px;
+    box-shadow:0 4px 14px rgba(13,39,49,.05);transition:.25s;cursor:pointer}
+  .log-card:hover{transform:translateY(-4px);border-color:#0a8a96;box-shadow:0 10px 28px rgba(13,39,49,.1)}
+  .log-num{font-family:'Fraunces',serif;font-size:2.2rem;color:#e8543f;line-height:1;margin-bottom:4px}
+  .log-place{font-weight:700;font-size:1rem;color:#0a1f27;margin-bottom:2px}
+  .log-date{font-size:.78rem;color:#4a6168;margin-bottom:10px}
+  .log-stats{display:flex;gap:12px;flex-wrap:wrap}
+  .log-stat{font-size:.78rem;background:#f3f6f5;padding:4px 10px;border-radius:20px;color:#4a6168}
+  .log-stat b{color:#0a8a96}
+  .log-note{font-size:.86rem;color:#4a6168;margin-top:10px;font-style:italic;border-top:1px solid rgba(13,39,49,.08);padding-top:10px}
+  @media(max-width:880px){.logbook-grid{grid-template-columns:1fr}}
+
+  /* INCIDENTS (разборы) */
+
+  .blog-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+  .blog-filter{background:#fff;border:1.5px solid rgba(13,39,49,.15);color:#4a6168;
+    padding:7px 18px;border-radius:30px;cursor:pointer;font-size:.85rem;
+    font-family:'Outfit';transition:.2s;font-weight:500}
+  .blog-filter:hover{border-color:#0a8a96;color:#0a8a96}
+  .blog-filter.active{background:#0a8a96;border-color:#0a8a96;color:#fff;font-weight:600}
+  @media(prefers-color-scheme:dark){
+    .blog-filter{background:#fff!important;color:#4a6168!important}
+    .blog-filter.active{background:#0a8a96!important;color:#fff!important}
+  }
+  .incident-card{background:#fff;border-left:4px solid #e8543f;border-radius:0 16px 16px 0;
+    padding:22px 26px;box-shadow:0 4px 14px rgba(13,39,49,.05);margin-bottom:16px;transition:.25s;cursor:pointer}
+  .incident-card:hover{transform:translateX(6px);box-shadow:0 8px 24px rgba(13,39,49,.1)}
+  .inc-tag{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:#e8543f;font-weight:700;margin-bottom:6px}
+  .inc-title{font-family:'Fraunces',serif;font-size:1.25rem;color:#0a1f27;margin-bottom:6px}
+  .inc-meta{font-size:.8rem;color:#4a6168;margin-bottom:8px}
+  .inc-summary{font-size:.9rem;color:#4a6168}
+
+  /* BUDDY PAGE */
+  .buddy-intro{max-width:680px;margin:0 auto 48px;text-align:center}
+  .buddy-intro p{color:#4a6168;font-size:1.05rem;margin-top:14px}
+  .buddy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:48px}
+  .buddy-card{background:#fff;border:1px solid rgba(13,39,49,.12);border-radius:20px;padding:28px;
+    box-shadow:0 6px 20px rgba(13,39,49,.06)}
+  .buddy-card .b-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(140deg,#0a7d8c,#27d0d5);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+    font-family:'Fraunces';font-size:1.4rem;margin-bottom:14px}
+  .buddy-card .b-name{font-weight:700;font-size:1.05rem;color:#0a1f27}
+  .buddy-card .b-level{font-size:.8rem;color:#0a8a96;font-weight:600;margin-bottom:10px}
+  .buddy-card .b-tags{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .buddy-card .b-tag{background:#f3f6f5;border:1px solid rgba(13,39,49,.1);color:#4a6168;
+    font-size:.75rem;padding:4px 10px;border-radius:20px}
+  .buddy-card .b-bio{font-size:.88rem;color:#4a6168;line-height:1.55}
+  .buddy-form-wrap{background:#fff;border:1px solid rgba(13,39,49,.12);border-radius:24px;
+    padding:40px;max-width:680px;margin:0 auto;box-shadow:0 10px 30px rgba(13,39,49,.07)}
+  .buddy-form-wrap h3{font-size:1.6rem;margin-bottom:8px}
+  .buddy-form-wrap p{color:#4a6168;margin-bottom:24px}
+
+  .btn-buddy-contact{display:inline-block;margin-top:14px;background:#0a8a96;color:#fff;
+    padding:9px 20px;border-radius:30px;text-decoration:none;font-size:.85rem;font-weight:600;
+    transition:.2s;font-family:'Outfit'}
+  .btn-buddy-contact:hover{background:#0a7d8c;transform:translateY(-2px)}
+  .buddy-loading{text-align:center;color:#4a6168;padding:40px;font-size:1rem}
+  .buddy-empty{text-align:center;color:#4a6168;padding:40px;font-size:1rem;
+    background:#f3f6f5;border-radius:16px}
+  @media(prefers-color-scheme:dark){
+    .btn-buddy-contact{background:#0a8a96!important;color:#fff!important}
+  }
+
+  /* ARCHIVE PAIRS */
+  .pairs-section{margin-top:60px}
+  .pairs-section h2{font-size:1.8rem;margin-bottom:8px;color:#0a1f27}
+  .pairs-section .sub{color:#4a6168;margin-bottom:28px;font-size:.95rem}
+  .pair-card{background:#fff;border:1px solid rgba(13,39,49,.12);border-radius:18px;
+    padding:24px;margin-bottom:16px;box-shadow:0 4px 14px rgba(13,39,49,.05)}
+  .pair-card .pair-names{font-weight:700;font-size:1.05rem;color:#0a1f27;margin-bottom:4px}
+  .pair-card .pair-meta{font-size:.8rem;color:#0a8a96;font-weight:600;margin-bottom:10px}
+  .pair-card .pair-story{font-size:.92rem;color:#4a6168;line-height:1.6;font-style:italic}
+  .pairs-empty{text-align:center;color:#4a6168;padding:30px;background:#f3f6f5;
+    border-radius:16px;font-size:.95rem}
+  @media(prefers-color-scheme:dark){
+    .pair-card{background:#fff!important;color:#0d2731!important}
+    .pair-card .pair-names{color:#0a1f27!important}
+    .pair-card .pair-story{color:#4a6168!important}
+  }
+  @media(max-width:880px){.buddy-grid{grid-template-columns:1fr}}
+
+  /* DARK MODE additions */
+  @media(prefers-color-scheme:dark){
+    .progress-wrap,.log-card,.incident-card,.buddy-card,.buddy-form-wrap{background:#fff!important;color:#0d2731!important}
+    .cert{background:#eafafa!important}
+    .log-stat{background:#f3f6f5!important}
+    .log-num{color:#e8543f!important}
+    .inc-title,.b-name{color:#0a1f27!important}
+    .prog-bar{background:#e7eeed!important}
+  }
+
+  @media(max-width:880px){
+    .hero-split{grid-template-columns:1fr;gap:32px}
+    .hero-photo{order:-1}
+    .nav-links{position:fixed;top:62px;right:0;flex-direction:column;background:rgba(6,48,64,.98);
+      padding:24px 30px;border-radius:0 0 0 18px;gap:18px;align-items:flex-start;display:none;
+      border:1px solid rgba(141,243,221,.16)}
+    .nav-links.open{display:flex}
+    .burger{display:flex}
+    .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:150px}
+    .g1{grid-column:span 2}.g-wide{grid-column:span 2}
+    .grid-3{grid-template-columns:1fr}
+    .spots-wrap,.about-grid,.spot-detail-grid,.form-grid{grid-template-columns:1fr}
+    .field.full{grid-column:span 1}
+    .book,.cta-strip{padding:30px 22px}
+    .stats{gap:30px}
+  }
+  /* a11y: программный фокус на заголовке экрана не рисует рамку */
+  [tabindex="-1"]:focus{outline:none}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Павел Смотров",
+  "jobTitle": "PADI Rescue Diver, кандидат в Divemaster",
+  "description": "Блог о пути в дайвинге. 41 погружение, Rescue Diver PADI, учусь на Divemaster. Разбираю реальные аварийные случаи, веду логбук, ищу бади для совместных погружений.",
+  "url": "https://bercutishka.github.io/Site-masterdiver/",
+  "sameAs": [
+    "https://t.me/divemaster_glubzhe"
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav aria-label="Основная навигация">
+  <button class="logo" onclick="go('home')">Глубже<span>.</span></button>
+  <div class="nav-links" id="navlinks">
+    <button data-nav="home" onclick="go('home')">Главная</button>
+    <button data-nav="logbook" onclick="go('logbook')">Логбук</button>
+    <button data-nav="blog" onclick="go('blog')">Блог</button>
+    <button data-nav="spots" onclick="go('spots')">Споты</button>
+    <button data-nav="gallery" onclick="go('gallery')">Галерея</button>
+    <button data-nav="about" onclick="go('about')">Обо мне</button>
+    <button class="nav-cta" onclick="go('buddy')">Найти бади</button>
+    <button onclick="sharesite()" style="opacity:.7;font-size:1.1rem;padding:6px 8px" title="Поделиться">⬆️</button>
+  </div>
+  <button class="burger" aria-label="Меню" aria-expanded="false" aria-controls="navlinks" onclick="toggleNav(this)"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ============ HOME ============ -->
+<div class="page" id="page-home">
+  <header>
+    <div class="rays"></div>
+    <div class="bubbles" id="bubbles"></div>
+    <div class="hero-inner hero-split">
+      <div class="hero-copy">
+        <span class="eyebrow">Dive · Photo · Stories</span>
+        <h1>Я живу там, где <em>заканчивается</em> воздух.</h1>
+        <p class="hero-sub">Меня зовут Павел Смотров. Я Rescue Diver PADI, иду к Divemaster и подводный фотограф. Веду группы, учу нырять с нуля и снимаю синюю тишину на глубине.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary" onclick="go('book')">Найти бади</button>
+          <button class="btn btn-ghost" onclick="go('gallery')">Смотреть кадры</button>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>41</b><span>ПОГРУЖЕНИЙ</span></div>
+          <div class="stat"><b>42 м</b><span>МАКС. ГЛУБИНА</span></div>
+          <div class="stat"><b>9</b><span>СТРАН</span></div>
+          <div class="stat"><b>120+</b><span>УЧЕНИКОВ</span></div>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="img/pavel-smotrov-na-pogruzhenii-v-krasnom-more.jpg" alt="Павел Смотров на погружении в Красном море">
+        <span class="photo-cap">Красное море · под лучами света</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="alt-bg">
+    <div class="narrow">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Подводный архив</span>
+        <h2>Избранные <em>кадры</em></h2>
+        <p>Рифы, затонувшие корабли и встречи, ради которых стоит спускаться. Полная галерея — отдельной страницей.</p>
+      </div>
+      <div class="gallery reveal">
+        <figure class="g1" onclick="go('gallery')"><img loading="lazy" src="img/pavel-na-rife.jpg" alt="Павел на рифе"><figcaption>Селфи на рифе · Красное море</figcaption></figure>
+        
+        
+        
+        
+      </div>
+      <div style="text-align:center;margin-top:34px" class="reveal">
+        <button class="btn btn-ghost" onclick="go('gallery')">Вся галерея →</button>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section>
+    <div class="narrow">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Читатели и бади</span>
+        <h2>Что <em>говорят</em></h2>
+        <p>Читатели блога, люди с которыми нырял, те кто нашёл бади через сайт.</p>
+      </div>
+      <div class="grid-3 reveal" id="reviews"></div>
+    </div>
+  </section>
+
+  <section class="alt-bg">
+    <div class="narrow">
+      <div class="cta-strip reveal">
+        <h2>Готов спуститься глубже?</h2>
+        <p>Оставь заявку — отвечу в течение дня и подберём дату под твой уровень.</p>
+        <button class="btn btn-primary" onclick="go('book')">Найти бади</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<div class="page" id="page-about">
+  <div class="band"><div class="rays"></div><div class="band-inner">
+    <div class="crumb" onclick="go('home')">← На главную</div>
+    <h1>Обо мне</h1>
+    <p>41 погружение, Rescue Diver PADI, иду к Divemaster. Учусь, ошибаюсь, разбираю — и пишу об этом открыто.</p>
+  </div></div>
+  <section><div class="narrow">
+    <div class="about-grid">
+      <div class="about-photo"><img loading="lazy" src="img/pavel-smotrov.jpg" alt="Павел Смотров"></div>
+      <div class="about-text">
+        <h2 style="font-size:2rem">Павел Смотров</h2>
+        <p>Пришёл в дайвинг через пробное погружение в отпуске — и понял, что хочу разобраться как это работает по-настоящему. Сейчас у меня 41 погружение, сертификат Rescue Diver PADI и активный курс Divemaster.</p>
+        <p>Этот сайт — мой открытый логбук и блог. Пишу про то, что происходит на погружениях, разбираю реальные аварийные случаи из открытых источников, и ищу людей, которым интересно нырять вместе.</p>
+        <p>Не инструктор, не гид — просто человек в процессе, который думает вслух. Если тебе близко то, что я пишу, или ищешь бади для поездки — напиши.</p>
+        <div class="badges">
+          <span class="badge">PADI Rescue Diver</span>
+          <span class="badge">Advanced OWD</span>
+          <span class="badge">Deep Diver 40m</span>
+          <span class="badge">EFR</span>
+          <span class="badge">Nitrox</span>
+          <span class="badge">→ Divemaster</span>
+        </div>
+      </div>
+    </div>
+  </div></section>
+  <section><div class="narrow">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Прогресс</span>
+      <h2>Путь к <em>Divemaster</em></h2>
+      <p>Открытый счётчик — где я сейчас и куда иду.</p>
+    </div>
+    <div id="progress-block"></div>
+  </div></section>
+
+  <section class="alt-bg"><div class="narrow">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Последние записи</span>
+      <h2>Из <em>логбука</em></h2>
+    </div>
+    <div id="logbook-preview"></div>
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn btn-ghost" onclick="go('logbook')">Весь логбук →</button>
+    </div>
+  </div></section>
+
+  <section><div class="narrow">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Разборы аварий</span>
+      <h2>Что пошло <em>не так</em></h2>
+      <p>Реальные случаи из открытых источников — разбираю что произошло и почему.</p>
+    </div>
+    <div id="incidents-preview"></div>
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn btn-ghost" onclick="go('blog')">Все разборы →</button>
+    </div>
+  </div></section>
+
+  <section class="alt-bg"><div class="narrow">
+    <div class="cta-strip">
+      <h2>Ищешь бади?</h2>
+      <p>Подбираю партнёров для совместных погружений — по уровню, локации и стилю дайвинга.</p>
+      <button class="btn btn-primary" onclick="go('buddy')">Найти бади →</button>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============ GALLERY ============ -->
+<div class="page" id="page-gallery">
+  <div class="band"><div class="rays"></div><div class="band-inner">
+    <div class="crumb" onclick="go('home')">← На главную</div>
+    <h1>Галерея</h1>
+    <p>Подводный архив с погружений по Красному морю, Индонезии и Средиземке. Наведи на снимок, чтобы увидеть подпись.</p>
+  </div></div>
+  <section><div class="narrow">
+        <div class="gallery">
+      
+      <figure><img loading="lazy" src="img/selfi-na-rife.jpg" alt="Селфи на рифе"><figcaption>Селфи на рифе</figcaption></figure>
+      <figure><img loading="lazy" src="img/brifing-pered-pogruzheniem.jpg" alt="Брифинг перед погружением"><figcaption>Брифинг перед заходом</figcaption></figure>
+      <figure><img loading="lazy" src="img/v-polnom-snaryazhenii-na-palube.jpg" alt="В полном снаряжении на палубе"><figcaption>Готов к спуску · Синай</figcaption></figure>
+      
+      <figure class="g-wide"><img loading="lazy" src="img/ballony-s-naytroksom-na-bote.jpg" alt="Баллоны с найтроксом на боте"><figcaption>Найтрокс на боте перед дайвом</figcaption></figure>
+      
+      
+      <figure class="g-wide"><img loading="lazy" src="img/pered-pogruzheniem.jpg" alt="Перед погружением"><figcaption>Перед заходом в воду · Шарм</figcaption></figure>
+      
+    </div>
+  </div></section>
+</div>
+
+<!-- COURSES removed -->
+<!-- ============ SPOTS ============ -->
+<div class="page" id="page-spots">
+  <div class="band"><div class="rays"></div><div class="band-inner">
+    <div class="crumb" onclick="go('home')">← На главную</div>
+    <h1>Дайв-споты</h1>
+    <p>Места, куда я регулярно вожу группы. Нажми на точку на карте или на карточку — откроется описание.</p>
+  </div></div>
+  <section><div class="narrow">
+    <div class="spots-wrap">
+      <div class="map">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+          <path d="M0,210 Q60,180 120,200 T260,195 T400,205 L400,300 L0,300 Z" fill="rgba(2,27,46,.6)"/>
+          <path d="M0,235 Q80,215 160,232 T400,238 L400,300 L0,300 Z" fill="rgba(10,125,140,.3)"/>
+          <g class="pin" data-i="0" transform="translate(95,120)"><circle class="pulse"/><circle class="dot" r="7" fill="#0a8a96"/></g>
+          <g class="pin" data-i="1" transform="translate(210,95)"><circle class="pulse"/><circle class="dot" r="7" fill="#0a8a96"/></g>
+          <g class="pin" data-i="2" transform="translate(300,150)"><circle class="pulse"/><circle class="dot" r="7" fill="#0a8a96"/></g>
+          <g class="pin" data-i="3" transform="translate(160,170)"><circle class="pulse"/><circle class="dot" r="7" fill="#0a8a96"/></g>
+        </svg>
+      </div>
+      <div class="spot-list" id="spot-list"></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============ SPOT DETAIL ============ -->
+<div class="page" id="page-spot-detail">
+  <div class="band"><div class="rays"></div><div class="band-inner">
+    <div class="crumb" onclick="go('spots')">← Все споты</div>
+    <h1 id="sd-title"></h1>
+    <p id="sd-sub"></p>
+  </div></div>
+  <section><div class="narrow article">
+    <div class="article-hero" id="sd-hero"></div>
+    <div class="spot-detail-grid" id="sd-cards"></div>
+    <div id="sd-body"></div>
+    <div style="margin-top:36px"><button class="btn btn-primary" onclick="go('book')">Хочу сюда нырнуть</button></div>
+  </div></section>
+</div>
+
+<!-- ============ BLOG ============ -->
+<div class="page" id="page-blog">
+  <div class="band"><div class="rays"></div><div class="band-inner">
+    <div class="crumb" onclick="go('home')">← На главную</div>
+    <h1>Журнал</h1>
+    <p>Заметки о технике, снаряжении и местах. Пишу из опыта, без воды (кроме той, что вокруг).</p>
+  </div></div>
+  <section><div class="narrow">
+    <div class="grid-3" id="blog-list"></div>
+  </div></section>
+</div>
+
+<!-- ============ ARTICLE ============ -->
+<div class="page active" id="page-article">
+  <div class="band"><div class="rays"></div><div class="band-inner">
+    <div class="crumb" onclick="go('blog')">← В журнал</div>
+    <h1 id="art-title">Дахаб глазами дайвмастера: маршрут на неделю</h1>
+    <div class="meta-row" id="art-meta"><span>Путешествие</span><span><b>28 апр 2026</b></span><span>⏱ 8 мин</span></div>
+  </div></div>
+  <section><div class="narrow article">
+    <div class="article-hero ph-e" id="art-hero">U0001f3dd️</div>
+    <div id="art-body"><p>Дахаб — мой любимый дом на Красном море. Здесь нет суеты Шарма, зато есть десятки сайтов в шаговой доступности от берега. Вот как бы я спланировал неделю.</p><h3>День 1–2. Акклиматизация</h3><p>Начинаем с Лагуны и Lighthouse — спокойные входы с берега, идеально для настройки снаряжения и плавучести.</p><h3>День 3–4. Рифы</h3><p>Eel Garden и Caves: сады угрей, черепахи и первые стены. Здесь уже интереснее по рельефу.</p><h3>День 5. Каньон</h3><p>Знаменитая расщелина с лучами света. Нужен уверенный контроль глубины.</p><h3>День 6–7. Blue Hole</h3><p>Финал недели — внешний риф Blue Hole через дрифт от The Bells. Без Арки, зато с потрясающей стеной.</p></div>
+    <div style="margin-top:40px;border-top:1px solid rgba(141,243,221,.16);padding-top:30px">
+      <button class="btn btn-ghost" onclick="go('blog')">← Читать другие статьи</button>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============ BOOK ============ -->
+<div class="page" id="page-book">
+  <div class="band"><div class="rays"></div><div class="band-inner">
+    <div class="crumb" onclick="go('home')">← На главную</div>
+    <h1>Написать мне</h1>
+    <p>Есть вопрос, хочешь обсудить погружение или просто нашёл что-то интересное — пиши.</p>
+  </div></div>
+  <section><div class="narrow">
+    <div class="book">
+      <div class="form-grid">
+        <div class="field"><label>Имя</label><input id="f-name" type="text" placeholder="Как тебя зовут"></div>
+        <div class="field"><label>Telegram / Email</label><input id="f-contact" type="text" placeholder="@ник или email"></div>
+        <div class="field"><label>Тема</label>
+          <select id="f-type">
+            <option>Хочу найти бади для погружений</option>
+            <option>Вопрос по блогу или разбору</option>
+            <option>Предложить тему для статьи</option>
+            <option>Просто написать</option>
+          </select></div>
+        <div class="field"><label>Твой уровень</label>
+          <select id="f-lvl"><option>Начинающий (OWD и ниже)</option><option>Advanced / Rescue</option><option>Divemaster+</option><option>Пока не ныряю</option></select></div>
+        <div class="field full"><label>Сообщение</label><textarea id="f-msg" placeholder="Расскажи о себе, своём опыте, что ищешь…"></textarea></div>
+      </div>
+      <input id="f-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button class="btn btn-primary" style="margin-top:24px;width:100%" onclick="submitForm()">Отправить</button>
+      <div class="form-msg" id="formMsg"></div>
+    </div>
+  <div class="narrow" style="margin-top:0;padding-top:0">
+    <div class="pairs-section">
+      <h2>Нашли друг друга 🤿</h2>
+      <p class="sub">Пары которые уже ныряли вместе — и написали об этом.</p>
+      <div id="pairs-list"><div class="pairs-empty">Пока историй нет — станьте первыми!</div></div>
+    </div>
+  </div>
+  </div></section>
+</div>
+
+<!-- ============ CHATBOT ============ -->
+<button id="chat-fab" onclick="toggleChat()" aria-label="Открыть чат" aria-expanded="false" aria-controls="chat-panel">💬</button>
+<div id="chat-panel" role="dialog" aria-label="Чат-помощник «Глубже»" aria-hidden="true">
+  <div class="chat-head">
+    <div class="av" aria-hidden="true">🤿</div>
+    <div>
+      <b>Помощник Глубже</b>
+      <span>Про дайвинг, споты, логбук и бади</span>
+    </div>
+    <button class="x" onclick="toggleChat()" aria-label="Закрыть чат">✕</button>
+  </div>
+  <div class="chat-body" id="chat-body" role="log" aria-live="polite" aria-label="История чата"></div>
+  <div class="chat-sugg" id="chat-sugg"></div>
+  <div class="chat-input">
+    <input id="chat-input" type="text" placeholder="Напишите вопрос…" aria-label="Сообщение" onkeydown="if(event.key==='Enter')sendChat()">
+    <button id="chat-send" onclick="sendChat()" aria-label="Отправить">➤</button>
+  </div>
+</div>
+
+
+<div id="tg-strip">
+  <div class="tg-inner">
+    <span class="tg-icon">✈️</span>
+    <div>
+      <b>Блог «Глубже» в Telegram</b>
+      <span>Логбук, разборы аварий, заметки с погружений — в реальном времени</span>
+    </div>
+    <a class="btn-tg" href="https://t.me/divemaster_glubzhe" target="_blank" rel="noopener">Подписаться</a>
+  </div>
+</div>
+<footer>
+  <button class="logo" onclick="go('home')">Глубже<span>.</span></button>
+  <div class="socials">
+    <button onclick="go('about')">Обо мне</button>
+    <button onclick="go('blog')">Блог</button>
+    <button onclick="go('logbook')">Логбук</button>
+    <button onclick="go('buddy')">Найти бади</button>
+    <button onclick="go('book')">Контакт</button>
+    <a class="soc-link" href="https://t.me/divemaster_glubzhe" target="_blank" rel="noopener">Telegram</a>
+  </div>
+  <div class="copy">© 2026 Глубже — Павел Смотров, Rescue Diver PADI, учусь на Divemaster.</div>
+</footer>
+
+<script>
+  /* ---------- DATA ---------- */
+  const courses=[
+    {lvl:'Старт',name:'Try Dive',price:'4 900 ₽',unit:'/ занятие',feat:false,
+     items:['Первое погружение с инструктором','Снаряжение включено','Бассейн + базовая теория','Глубина до 6 м']},
+    {lvl:'Базовый',name:'Open Water Diver',price:'38 000 ₽',unit:'/ курс',feat:true,
+     items:['Международный сертификат PADI','4 погружения на открытой воде','Теория + онлайн e-learning','Глубина до 18 м']},
+    {lvl:'Продвинутый',name:'Advanced + Rescue',price:'52 000 ₽',unit:'/ курс',feat:false,
+     items:['Глубоководная и навигационная специализации','Спасательные навыки','Работа с экстренными ситуациями','Глубина до 30–40 м']},
+,
+    {cat:'Разбор',ph:'ph-d',emoji:'⚠️',title:'Почему дайвер не всплыл: история с утяжелением',date:'1 июн 2026',read:'7 мин',
+     excerpt:'Реальный случай из отчёта DAN: дайвер с избыточным весом не смог контролировать плавучесть после отказа BCD. Разбираем что пошло не так.',
+     body:'<p>Этот случай произошёл в Красном море в 2023 году. Дайвер с опытом около 50 погружений ушёл под воду с арендованным BCD незнакомой модели. На глубине 18 метров поддув перестал работать.</p><h2>Что произошло</h2><p>Дайвер запаниковал и попытался резко всплыть, скинув пояс с грузами. В спешке он скинул только один груз вместо обоих — нарушился баланс, он перевернулся вниз головой. Напарник не успел среагировать вовремя. Финал — декомпрессионная остановка пропущена, DCS лёгкой степени, госпитализация.</p><h2>Что пошло не так</h2><p>Первая ошибка — незнакомое снаряжение без предварительной проверки в бассейне. Вторая — избыточный вес (он взял «с запасом» потому что боялся всплыть случайно). Третья — паника вместо первого шага: остановиться, дышать, оценить.</p><blockquote>Аварийный сброс грузов — это последний резерв, не первый шаг.</blockquote><h2>Что нужно было сделать</h2><p>При отказе поддува: сначала попробовать ртом надуть BCD, затем медленно подняться используя ластование, информировать напарника сигналом. Сброс грузов — только если ничего другое не работает и вы уже контролируете ситуацию.</p><h2>Урок</h2><p>Я лично после прочтения этого кейса пересмотрел свою схему утяжеления. Теперь проверяю плавучесть с новым снаряжением всегда — даже если спешу на лодку.</p>'},
+    {cat:'Разбор',ph:'ph-g',emoji:'🧠',title:'Паника на глубине: физиология и как её остановить',date:'29 мая 2026',read:'9 мин',
+     excerpt:'Большинство смертей при дайвинге начинаются не с отказа оборудования. Разбираю физиологию паники и конкретные приёмы — по данным DAN и PADI.',
+     body:'<p>По статистике DAN (Divers Alert Network), в большинстве смертельных случаев при дайвинге снаряжение было исправно. Причина — паника. Это не слабость характера. Это автоматическая реакция нервной системы, которую можно научиться прерывать.</p><h2>Что происходит в теле</h2><p>Мозг воспринимает угрозу → выброс адреналина → сужение сосудов → учащение сердцебиения → резкое учащение дыхания → рост расхода воздуха → потеря контроля плавучести. Весь цикл занимает секунды.</p><blockquote>Дыхание — единственный параметр, который мы можем сознательно контролировать во время стресса.</blockquote><h2>Триггеры</h2><p>Самые частые: потеря ориентации (темнота, муть), оборудование ведёт себя непривычно, потеря напарника из вида, ощущение нехватки воздуха (даже если воздуха ещё много).</p><h2>Что работает</h2><p>STOP — Stop, Think, Observe, Plan. Буквально остановиться. Не двигаться. Один медленный вдох — длинный выдох. Это разрывает физиологический цикл. Потом — оценить ситуацию. Потом — действовать.</p><h2>Как тренируется</h2><p>На курсе Rescue мы специально отрабатываем стрессовые сценарии — в том числе на себе. Это единственный способ создать мышечную память спокойной реакции до того, как она понадобится по-настоящему.</p>'},
+    {cat:'Разбор',ph:'ph-c',emoji:'💨',title:'Азотный наркоз: когда глубина бьёт в голову',date:'24 мая 2026',read:'6 мин',
+     excerpt:'На 30+ метрах азот начинает действовать как слабый анестетик. Разбираю реальные истории и объясняю почему это опасно именно тогда, когда кажется хорошо.',
+     body:'<p>Азотный наркоз — одна из тех вещей, про которые на курсе рассказывают, но пока не почувствуешь сам, не очень понимаешь. Я почувствовал на своём 28-м погружении, на 33 метрах.</p><h2>Как это было</h2><p>Всё шло нормально, потом я вдруг заметил, что смотрю на рыбу уже минуты три и мне очень хорошо. Напарник показал ок — я показал отлично. Потом посмотрел на манометр и не сразу понял что там написано.</p><p>Это не было страшно. Это было очень хорошо. И вот именно это — проблема.</p><h2>Физиология</h2><p>Под давлением азот растворяется в липидах нервных клеток и замедляет передачу нервных импульсов. Эффект похож на лёгкое алкогольное опьянение. Глубина наступления индивидуальна — у одних на 25 метрах, у других на 40.</p><blockquote>Мартини-эффект: каждые 10 метров — как ещё один бокал вина на пустой желудок.</blockquote><h2>Почему это опасно</h2><p>Потому что принятие решений нарушается незаметно. Вы можете не заметить что не следите за давлением. Или пропустить сигнал напарника. Или решить что арка на 55 метрах — отличная идея.</p><h2>Что делать</h2><p>Признать, что это происходит. Показать напарнику сигнал наркоз. Подняться на 5–10 метров — эффект проходит быстро. Не стесняться: это не слабость, это физиология.</p>'}  ];
+  const spots=[
+    {t:'Blue Hole \u00b7 \u0414\u0430\u0445\u0430\u0431',emoji:'\U0001f573\ufe0f',ph:'ph-a',depth:'\u0440\u0438\u0444 5\u201340 \u043c (\u0434\u043d\u043e ~130 \u043c)',level:'OWD / Advanced',temp:'21\u201328\u00b0C',vis:'25\u201335 \u043c',
+     sub:'\u041b\u0435\u0433\u0435\u043d\u0434\u0430\u0440\u043d\u0430\u044f \u0432\u043e\u0440\u043e\u043d\u043a\u0430 \u0443 \u0431\u0435\u0440\u0435\u0433\u0430 \u0414\u0430\u0445\u0430\u0431\u0430. \u041a\u0440\u0430\u0441\u0438\u0432\u0430\u044f \u0438 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u0430\u044f \u2014 \u0435\u0441\u043b\u0438 \u0443\u0432\u0430\u0436\u0430\u0442\u044c \u043b\u0438\u043c\u0438\u0442\u044b.',
+     body:'<p>Blue Hole \u2014 \u044d\u0442\u043e \u043f\u043e\u0447\u0442\u0438 \u0438\u0434\u0435\u0430\u043b\u044c\u043d\u043e \u043a\u0440\u0443\u0433\u043b\u0430\u044f \u043f\u0440\u043e\u0432\u0430\u043b\u044c\u043d\u0430\u044f \u0432\u043e\u0440\u043e\u043d\u043a\u0430 \u043e\u043a\u043e\u043b\u043e 60 \u043c\u0435\u0442\u0440\u043e\u0432 \u0432 \u0434\u0438\u0430\u043c\u0435\u0442\u0440\u0435, \u043f\u0440\u044f\u043c\u043e \u0443 \u0431\u0435\u0440\u0435\u0433\u0430 \u0432 8 \u043a\u043c \u043a \u0441\u0435\u0432\u0435\u0440\u0443 \u043e\u0442 \u0414\u0430\u0445\u0430\u0431\u0430. \u0412\u0445\u043e\u0434 \u043f\u0440\u044f\u043c\u043e \u0441 \u0431\u0435\u0440\u0435\u0433\u0430 \u043f\u043e \u043a\u0430\u043c\u0435\u043d\u043d\u044b\u043c \u0441\u0442\u0443\u043f\u0435\u043d\u044f\u043c \u2014 \u043b\u043e\u0434\u043a\u0430 \u043d\u0435 \u043d\u0443\u0436\u043d\u0430. \u0412\u043d\u0443\u0442\u0440\u0438 \u043e\u043d\u0430 \u0443\u0445\u043e\u0434\u0438\u0442 \u043d\u0430 \u0433\u043b\u0443\u0431\u0438\u043d\u0443 \u043f\u043e\u0440\u044f\u0434\u043a\u0430 120\u2013130 \u043c\u0435\u0442\u0440\u043e\u0432.</p><h3>\u0427\u0442\u043e \u0441 \u0440\u0435\u043f\u0443\u0442\u0430\u0446\u0438\u0435\u0439</h3><p>\u0417\u0430 Blue Hole \u0442\u044f\u043d\u0435\u0442\u0441\u044f \u043f\u0440\u043e\u0437\u0432\u0438\u0449\u0435 \u00ab\u043a\u043b\u0430\u0434\u0431\u0438\u0449\u0435 \u0434\u0430\u0439\u0432\u0435\u0440\u043e\u0432\u00bb, \u043d\u043e \u0432\u0430\u0436\u043d\u043e \u043e\u0442\u0434\u0435\u043b\u0438\u0442\u044c \u0444\u0430\u043a\u0442\u044b \u043e\u0442 \u043c\u0438\u0444\u043e\u0432. \u041f\u043e\u0447\u0442\u0438 \u0432\u0441\u0435 \u0442\u0440\u0430\u0433\u0435\u0434\u0438\u0438 \u0441\u0432\u044f\u0437\u0430\u043d\u044b \u0441 \u00ab\u0410\u0440\u043a\u043e\u0439\u00bb \u2014 26-\u043c\u0435\u0442\u0440\u043e\u0432\u044b\u043c \u0442\u043e\u043d\u043d\u0435\u043b\u0435\u043c, \u0432\u0435\u0440\u0445 \u043a\u043e\u0442\u043e\u0440\u043e\u0433\u043e \u043b\u0435\u0436\u0438\u0442 \u043d\u0430 52\u201356 \u043c\u0435\u0442\u0440\u0430\u0445. \u042d\u0442\u043e \u0434\u0430\u043b\u0435\u043a\u043e \u0437\u0430 \u043f\u0440\u0435\u0434\u0435\u043b\u0430\u043c\u0438 \u0440\u0435\u043a\u0440\u0435\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0445 \u043b\u0438\u043c\u0438\u0442\u043e\u0432 \u0438 \u0442\u0435\u0440\u0440\u0438\u0442\u043e\u0440\u0438\u044f \u0442\u043e\u043b\u044c\u043a\u043e \u0442\u0435\u0445-\u0434\u0430\u0439\u0432\u0435\u0440\u043e\u0432 \u0441 \u0442\u0440\u0438\u043c\u0438\u043a\u0441\u043e\u043c \u0438 \u0440\u0435\u0437\u0435\u0440\u0432\u043d\u044b\u043c \u0441\u043d\u0430\u0440\u044f\u0436\u0435\u043d\u0438\u0435\u043c.</p><blockquote>\u041d\u0430 \u0440\u0435\u043a\u0440\u0435\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0445 \u0433\u043b\u0443\u0431\u0438\u043d\u0430\u0445 \u044d\u0442\u043e \u043e\u0434\u0438\u043d \u0438\u0437 \u043a\u0440\u0430\u0441\u0438\u0432\u0435\u0439\u0448\u0438\u0445 \u0431\u0435\u0440\u0435\u0433\u043e\u0432\u044b\u0445 \u0434\u0430\u0439\u0432\u043e\u0432 \u043c\u0438\u0440\u0430.</blockquote><h3>\u041a\u0430\u043a \u043d\u044b\u0440\u044f\u0435\u043c \u043c\u044b</h3><p>\u041a\u043b\u0430\u0441\u0441\u0438\u043a\u0430 \u2014 \u0434\u0440\u0438\u0444\u0442 \u043e\u0442 \u0441\u043e\u0441\u0435\u0434\u043d\u0435\u0433\u043e \u0441\u0430\u0439\u0442\u0430 The Bells: \u0432\u0445\u043e\u0434 \u0432 \u0443\u0437\u043a\u0443\u044e \u0440\u0430\u0441\u0449\u0435\u043b\u0438\u043d\u0443, \u0432\u044b\u0445\u043e\u0434 \u043d\u0430 \u0441\u0442\u0435\u043d\u0443 \u043e\u043a\u043e\u043b\u043e 28 \u043c\u0435\u0442\u0440\u043e\u0432 \u0438 \u043f\u043b\u0430\u0432\u043d\u044b\u0439 \u0434\u0440\u0438\u0444\u0442 \u0432\u0434\u043e\u043b\u044c \u0440\u0438\u0444\u0430 \u0434\u043e \u00ab\u0441\u0435\u0434\u043b\u0430\u00bb \u043d\u0430 7 \u043c\u0435\u0442\u0440\u0430\u0445, \u0433\u0434\u0435 \u043c\u044b \u0434\u0435\u043b\u0430\u0435\u043c \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0443 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438. \u042f \u0440\u0430\u0431\u043e\u0442\u0430\u044e \u0442\u043e\u043b\u044c\u043a\u043e \u043c\u0430\u043b\u044b\u043c\u0438 \u0433\u0440\u0443\u043f\u043f\u0430\u043c\u0438, \u0441 \u043a\u0438\u0441\u043b\u043e\u0440\u043e\u0434\u043e\u043c \u043d\u0430 \u0431\u0435\u0440\u0435\u0433\u0443 \u0438 \u0436\u0451\u0441\u0442\u043a\u0438\u043c \u043b\u0438\u043c\u0438\u0442\u043e\u043c \u043f\u043e \u0433\u043b\u0443\u0431\u0438\u043d\u0435. \u0410\u0440\u043a\u0430 \u2014 \u043d\u0438\u043a\u043e\u0433\u0434\u0430.</p>',img:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMzIwIj4KPGRlZnM+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJiaCIgY3g9IjUwJSIgY3k9IjQwJSIgcj0iNjAlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjFiMmUiLz4KICAgIDxzdG9wIG9mZnNldD0iNDAlIiBzdG9wLWNvbG9yPSIjMGE0MzU4IiBzdG9wLW9wYWNpdHk9Ii45NSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMjdkMGQ1IiBzdG9wLW9wYWNpdHk9Ii43Ii8+CiAgPC9yYWRpYWxHcmFkaWVudD4KICA8cmFkaWFsR3JhZGllbnQgaWQ9ImhvbGUiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjQ1JSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDAwIiBzdG9wLW9wYWNpdHk9Ii45NSIvPgogICAgPHN0b3Agb2Zmc2V0PSI4MCUiIHN0b3AtY29sb3I9IiMwMjFiMmUiIHN0b3Atb3BhY2l0eT0iLjYiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0idHJhbnNwYXJlbnQiLz4KICA8L3JhZGlhbEdyYWRpZW50Pgo8L2RlZnM+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iMzIwIiBmaWxsPSJ1cmwoI2JoKSIvPgo8ZWxsaXBzZSBjeD0iNDAwIiBjeT0iMTU1IiByeD0iMTIwIiByeT0iMTMwIiBmaWxsPSJ1cmwoI2hvbGUpIi8+CjxwYXRoIGQ9Ik0wLDI2MCBRMjAwLDI0MCA0MDAsMjYwIFQ4MDAsMjYwIEw4MDAsMzIwIEwwLDMyMCBaIiBmaWxsPSIjMGE0MzU4IiBvcGFjaXR5PSIuOCIvPgo8cGF0aCBkPSJNMCwyODUgUTIwMCwyNzAgNDAwLDI4NSBUODAwLDI4NSBMODAwLDMyMCBMMCwzMjAgWiIgZmlsbD0iIzA1M2E1MiIgb3BhY2l0eT0iLjYiLz4KPGNpcmNsZSBjeD0iMjAwIiBjeT0iMTEwIiByPSIzIiBmaWxsPSIjOGRmM2RkIiBvcGFjaXR5PSIuNyIvPgo8Y2lyY2xlIGN4PSIyODAiIGN5PSI4NSIgcj0iMiIgZmlsbD0iIzhkZjNkZCIgb3BhY2l0eT0iLjUiLz4KPGNpcmNsZSBjeD0iNTYwIiBjeT0iOTUiIHI9IjMiIGZpbGw9IiM4ZGYzZGQiIG9wYWNpdHk9Ii43Ii8+CjxjaXJjbGUgY3g9IjY0MCIgY3k9IjEyMCIgcj0iMiIgZmlsbD0iIzhkZjNkZCIgb3BhY2l0eT0iLjUiLz4KPGNpcmNsZSBjeD0iMzgwIiBjeT0iMjAwIiByPSIyLjUiIGZpbGw9IiMyN2QwZDUiIG9wYWNpdHk9Ii40Ii8+Cjx0ZXh0IHg9IjQwMCIgeT0iNTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzZXJpZiIgZm9udC1zaXplPSIyMiIgZmlsbD0iIzhkZjNkZCIgb3BhY2l0eT0iLjkiPkJsdWUgSG9sZSDCtyDQlNCw0YXQsNCxPC90ZXh0Pgo8dGV4dCB4PSI0MDAiIHk9Ijc1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iI2NmZTZlNCIgb3BhY2l0eT0iLjciPn4xMzAg0Lwgwrcg0JrRgNCw0YHQvdC+0LUg0LzQvtGA0LUgwrcg0JXQs9C40L/QtdGCPC90ZXh0Pgo8L3N2Zz4=',attr:'Freediving at the Blue Hole &mdash; <a href="https://commons.wikimedia.org/wiki/File:Free_divers_at_the_Blue_Hole.jpg" target="_blank">Brocken Inaglory</a>, CC BY-SA 3.0'},
+    {t:'SS Thistlegorm',emoji:'\U0001f6a2',ph:'ph-d',depth:'16\u201330 \u043c',level:'Advanced, 50+ \u0434\u0430\u0439\u0432\u043e\u0432',temp:'22\u201328\u00b0C',vis:'15\u201325 \u043c',
+     sub:'\u0411\u0440\u0438\u0442\u0430\u043d\u0441\u043a\u043e\u0435 \u0441\u0443\u0434\u043d\u043e, \u043f\u043e\u0442\u043e\u043f\u043b\u0435\u043d\u043d\u043e\u0435 \u0432 1941-\u043c. \u041e\u0434\u0438\u043d \u0438\u0437 \u043b\u0443\u0447\u0448\u0438\u0445 \u0440\u044d\u043a-\u0434\u0430\u0439\u0432\u043e\u0432 \u043c\u0438\u0440\u0430.',
+     body:'<p>SS Thistlegorm \u2014 \u0431\u0440\u0438\u0442\u0430\u043d\u0441\u043a\u043e\u0435 \u0433\u0440\u0443\u0437\u043e\u0432\u043e\u0435 \u0441\u0443\u0434\u043d\u043e \u0434\u043b\u0438\u043d\u043e\u0439 \u043e\u043a\u043e\u043b\u043e 126 \u043c\u0435\u0442\u0440\u043e\u0432, \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u043d\u043e\u0435 \u0432 1940 \u0433\u043e\u0434\u0443. \u0412 \u043d\u043e\u0447\u044c \u043d\u0430 6 \u043e\u043a\u0442\u044f\u0431\u0440\u044f 1941 \u0433\u043e\u0434\u0430 \u043e\u043d\u043e \u0441\u0442\u043e\u044f\u043b\u043e \u043d\u0430 \u044f\u043a\u043e\u0440\u0435 \u0443 Sha\u2019ab Ali, \u043e\u0436\u0438\u0434\u0430\u044f \u043f\u0440\u043e\u0445\u043e\u0434\u0430 \u0447\u0435\u0440\u0435\u0437 \u0421\u0443\u044d\u0446\u043a\u0438\u0439 \u043a\u0430\u043d\u0430\u043b, \u0438 \u0431\u044b\u043b\u043e \u043f\u043e\u0442\u043e\u043f\u043b\u0435\u043d\u043e \u0434\u0432\u0443\u043c\u044f \u043d\u0435\u043c\u0435\u0446\u043a\u0438\u043c\u0438 \u0431\u043e\u043c\u0431\u0430\u0440\u0434\u0438\u0440\u043e\u0432\u0449\u0438\u043a\u0430\u043c\u0438 Heinkel He 111. \u041f\u043e\u0433\u0438\u0431\u043b\u0438 \u0434\u0435\u0432\u044f\u0442\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u043a \u2014 \u044d\u0442\u043e \u0432\u043e\u0435\u043d\u043d\u043e\u0435 \u0437\u0430\u0445\u043e\u0440\u043e\u043d\u0435\u043d\u0438\u0435, \u0438 \u043d\u044b\u0440\u044f\u0442\u044c \u0437\u0434\u0435\u0441\u044c \u043d\u0443\u0436\u043d\u043e \u0441 \u0443\u0432\u0430\u0436\u0435\u043d\u0438\u0435\u043c.</p><h3>\u041f\u043e\u0434\u0432\u043e\u0434\u043d\u044b\u0439 \u043c\u0443\u0437\u0435\u0439</h3><p>\u0421\u0443\u0434\u043d\u043e \u0432\u0435\u0437\u043b\u043e \u0432\u043e\u0435\u043d\u043d\u044b\u0439 \u0433\u0440\u0443\u0437 \u0434\u043b\u044f \u0431\u0440\u0438\u0442\u0430\u043d\u0441\u043a\u0438\u0445 \u0432\u043e\u0439\u0441\u043a \u0432 \u0415\u0433\u0438\u043f\u0442\u0435. \u0414\u043e \u0441\u0438\u0445 \u043f\u043e\u0440 \u0432 \u0442\u0440\u044e\u043c\u0430\u0445 \u043b\u0435\u0436\u0430\u0442 \u043c\u043e\u0442\u043e\u0446\u0438\u043a\u043b\u044b BSA \u0438 Norton, \u0433\u0440\u0443\u0437\u043e\u0432\u0438\u043a\u0438 Bedford, \u0432\u0438\u043d\u0442\u043e\u0432\u043a\u0438, \u0440\u0435\u0437\u0438\u043d\u043e\u0432\u044b\u0435 \u0441\u0430\u043f\u043e\u0433\u0438 \u0438 \u0434\u0430\u0436\u0435 \u0436\u0435\u043b\u0435\u0437\u043d\u043e\u0434\u043e\u0440\u043e\u0436\u043d\u044b\u0435 \u0432\u0430\u0433\u043e\u043d\u044b. \u0412 \u043d\u0430\u0447\u0430\u043b\u0435 1950-\u0445 \u0440\u044d\u043a \u043d\u0430\u0448\u0451\u043b \u0416\u0430\u043a-\u0418\u0432 \u041a\u0443\u0441\u0442\u043e \u0438 \u043f\u043e\u043a\u0430\u0437\u0430\u043b \u0432 \u00ab\u041c\u0438\u0440\u0435 \u0442\u0438\u0448\u0438\u043d\u044b\u00bb, \u043f\u043e\u0441\u043b\u0435 \u0447\u0435\u0433\u043e \u043c\u0435\u0441\u0442\u043e \u0441\u043d\u043e\u0432\u0430 \u0437\u0430\u0431\u044b\u043b\u0438 \u043f\u043e\u0447\u0442\u0438 \u043d\u0430 \u0441\u043e\u0440\u043e\u043a \u043b\u0435\u0442 \u2014 \u043f\u043e\u043a\u0430 \u0432 1990-\u0445 \u0435\u0433\u043e \u043d\u0435 \u043f\u0435\u0440\u0435\u043e\u0442\u043a\u0440\u044b\u043b\u0438.</p><h3>\u041a\u043e\u043c\u0443 \u043f\u043e\u0434\u0445\u043e\u0434\u0438\u0442</h3><p>\u0413\u043b\u0443\u0431\u0438\u043d\u0430, \u0442\u0435\u0447\u0435\u043d\u0438\u044f \u0438 \u0437\u0430\u043a\u0440\u044b\u0442\u044b\u0435 \u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u0430 \u0434\u0435\u043b\u0430\u044e\u0442 \u0435\u0433\u043e \u043d\u0435\u0434\u0435\u0442\u0441\u043a\u0438\u043c \u0434\u0430\u0439\u0432\u043e\u043c. \u041d\u0443\u0436\u0435\u043d \u0443\u0440\u043e\u0432\u0435\u043d\u044c Advanced \u0438 \u0436\u0435\u043b\u0430\u0442\u0435\u043b\u044c\u043d\u043e \u043e\u043f\u044b\u0442 \u043e\u0442 50 \u043f\u043e\u0433\u0440\u0443\u0436\u0435\u043d\u0438\u0439. Nitrox \u043e\u0447\u0435\u043d\u044c \u043f\u043e\u043c\u043e\u0433\u0430\u0435\u0442 \u043f\u0440\u043e\u0434\u043b\u0438\u0442\u044c \u0434\u043e\u043d\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f. \u041b\u0443\u0447\u0448\u0435 \u0432\u0441\u0435\u0433\u043e \u0438\u0434\u0442\u0438 \u0441 \u044f\u0445\u0442\u044b: \u0440\u0430\u043d\u043d\u0438\u0439 \u0437\u0430\u0445\u043e\u0434 \u0434\u043e \u0434\u043d\u0435\u0432\u043d\u044b\u0445 \u043b\u043e\u0434\u043e\u043a \u0438\u0437 \u0428\u0430\u0440\u043c\u0430 \u2014 \u044d\u0442\u043e \u043f\u0443\u0441\u0442\u043e\u0439 \u0440\u044d\u043a \u0438 \u043d\u043e\u0447\u043d\u043e\u0439 \u0434\u0430\u0439\u0432.</p>',img:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMzIwIj4KPGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJ0ZyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAyMWIyZSIvPgogICAgPHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiMwNTNhNTIiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhNDM1OCIvPgogIDwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIzMjAiIGZpbGw9InVybCgjdGcpIi8+CjwhLS0g0LrQvtGA0L/Rg9GBINC60L7RgNCw0LHQu9GPIC0tPgo8cmVjdCB4PSIxMDAiIHk9IjE0MCIgd2lkdGg9IjYwMCIgaGVpZ2h0PSI4MCIgcng9IjgiIGZpbGw9IiMxYTNhNGEiIHN0cm9rZT0iIzI3ZDBkNSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2Utb3BhY2l0eT0iLjQiLz4KPHJlY3QgeD0iMjAwIiB5PSIxMDAiIHdpZHRoPSIyNTAiIGhlaWdodD0iNDUiIHJ4PSI0IiBmaWxsPSIjMGYyYTM4IiBzdHJva2U9IiMyN2QwZDUiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLW9wYWNpdHk9Ii4zIi8+CjxyZWN0IHg9IjMxMCIgeT0iNzAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIzNSIgcng9IjMiIGZpbGw9IiMwYTFmMmUiLz4KPCEtLSDQuNC70LvRjtC80LjQvdCw0YLQvtGA0YsgLS0+CjxjaXJjbGUgY3g9IjE2MCIgY3k9IjE4MCIgcj0iMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI3ZDBkNSIgc3Ryb2tlLXdpZHRoPSIxLjUiIG9wYWNpdHk9Ii41Ii8+CjxjaXJjbGUgY3g9IjIyMCIgY3k9IjE4MCIgcj0iMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI3ZDBkNSIgc3Ryb2tlLXdpZHRoPSIxLjUiIG9wYWNpdHk9Ii41Ii8+CjxjaXJjbGUgY3g9IjUwMCIgY3k9IjE4MCIgcj0iMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI3ZDBkNSIgc3Ryb2tlLXdpZHRoPSIxLjUiIG9wYWNpdHk9Ii41Ii8+CjxjaXJjbGUgY3g9IjU4MCIgY3k9IjE4MCIgcj0iMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI3ZDBkNSIgc3Ryb2tlLXdpZHRoPSIxLjUiIG9wYWNpdHk9Ii41Ii8+CjwhLS0g0LTQvdC+IC8g0LLQvtC00L7RgNC+0YHQu9C4IC0tPgo8cGF0aCBkPSJNMCwyNjAgUTEwMCwyNTAgMjAwLDI1OCBUNDAwLDI1NSBUNjAwLDI2MCBUODAwLDI1OCBMODAwLDMyMCBMMCwzMjAgWiIgZmlsbD0iIzAyMWIyZSIgb3BhY2l0eT0iLjkiLz4KPHBhdGggZD0iTTUwLDI2MCBRNTUsMjMwIDYwLDI2MCIgc3Ryb2tlPSIjMGE3ZDhjIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiIG9wYWNpdHk9Ii43Ii8+CjxwYXRoIGQ9Ik04MCwyNjIgUTg1LDIzOCA5MCwyNjIiIHN0cm9rZT0iIzBhN2Q4YyIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBvcGFjaXR5PSIuNyIvPgo8cGF0aCBkPSJNNjgwLDI2MCBRNjg1LDIzNSA2OTAsMjYwIiBzdHJva2U9IiMwYTdkOGMiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgb3BhY2l0eT0iLjciLz4KPCEtLSDQv9GD0LfRi9GA0LggLS0+CjxjaXJjbGUgY3g9IjMwMCIgY3k9IjEyMCIgcj0iMyIgZmlsbD0iIzhkZjNkZCIgb3BhY2l0eT0iLjQiLz4KPGNpcmNsZSBjeD0iMzIwIiBjeT0iOTUiIHI9IjIiIGZpbGw9IiM4ZGYzZGQiIG9wYWNpdHk9Ii4zIi8+CjxjaXJjbGUgY3g9IjM1MCIgY3k9IjEwOCIgcj0iMi41IiBmaWxsPSIjOGRmM2RkIiBvcGFjaXR5PSIuMzUiLz4KPHRleHQgeD0iNDAwIiB5PSI1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNlcmlmIiBmb250LXNpemU9IjIyIiBmaWxsPSIjOGRmM2RkIiBvcGFjaXR5PSIuOSI+U1MgVGhpc3RsZWdvcm08L3RleHQ+Cjx0ZXh0IHg9IjQwMCIgeT0iNzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjY2ZlNmU0IiBvcGFjaXR5PSIuNyI+0JfQsNGC0L7QvdGD0LsgNiDQvtC60YIuIDE5NDEgwrcgMzAg0Lwgwrcg0JrRgNCw0YHQvdC+0LUg0LzQvtGA0LU8L3RleHQ+Cjwvc3ZnPg==',attr:'SS Thistlegorm wreck &mdash; <a href="https://commons.wikimedia.org/wiki/File:Pecio_SS_Thistlegorm,_mar_Rojo,_Egipto,_2022-03-29,_DD_10.jpg" target="_blank">Diego Delso</a>, CC BY-SA 4.0'},
+    {t:'Ras Mohammed',emoji:'\U0001fab8',ph:'ph-e',depth:'10\u201330 \u043c',level:'OWD+',temp:'22\u201329\u00b0C',vis:'20\u201340 \u043c',
+     sub:'\u041f\u0435\u0440\u0432\u044b\u0439 \u043c\u043e\u0440\u0441\u043a\u043e\u0439 \u0437\u0430\u043f\u043e\u0432\u0435\u0434\u043d\u0438\u043a \u0415\u0433\u0438\u043f\u0442\u0430 \u043d\u0430 \u044e\u0436\u043d\u043e\u0439 \u043e\u043a\u043e\u043d\u0435\u0447\u043d\u043e\u0441\u0442\u0438 \u0421\u0438\u043d\u0430\u044f.',
+     body:'<p>\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0439 \u043f\u0430\u0440\u043a Ras Mohammed \u2014 \u043e\u0434\u043d\u043e \u0438\u0437 \u043b\u0443\u0447\u0448\u0438\u0445 \u043c\u0435\u0441\u0442 \u041a\u0440\u0430\u0441\u043d\u043e\u0433\u043e \u043c\u043e\u0440\u044f. \u041e\u0442\u0432\u0435\u0441\u043d\u044b\u0435 \u0441\u0442\u0435\u043d\u044b Shark Reef \u0438 Yolanda Reef \u0443\u0445\u043e\u0434\u044f\u0442 \u0432 \u0441\u0438\u043d\u044e\u044e \u0431\u0435\u0437\u0434\u043d\u0443, \u0430 \u0442\u0435\u0447\u0435\u043d\u0438\u0435 \u0441\u043e\u0431\u0438\u0440\u0430\u0435\u0442 \u043e\u0431\u043b\u0430\u043a\u0430 \u0441\u0442\u0435\u043a\u043b\u044f\u043d\u043d\u044b\u0445 \u0440\u044b\u0431, \u0442\u0443\u043d\u0446\u0430, \u0431\u0430\u0440\u0440\u0430\u043a\u0443\u0434 \u0438 \u0438\u043d\u043e\u0433\u0434\u0430 \u0441\u0435\u0440\u044b\u0445 \u0440\u0438\u0444\u043e\u0432\u044b\u0445 \u0430\u043a\u0443\u043b. \u041d\u0430 Yolanda Reef \u0440\u0430\u0437\u0431\u0440\u043e\u0441\u0430\u043d\u044b \u043e\u0441\u0442\u0430\u0442\u043a\u0438 \u0433\u0440\u0443\u0437\u0430 \u0441\u0443\u0445\u043e\u0433\u0440\u0443\u0437\u0430 \u2014 \u0441\u0430\u043d\u0442\u0435\u0445\u043d\u0438\u043a\u0430 \u0438 \u0434\u0430\u0436\u0435 \u0432\u0430\u043d\u043d\u044b, \u0441\u0442\u0430\u0432\u0448\u0438\u0435 \u0441\u0432\u043e\u0435\u043e\u0431\u0440\u0430\u0437\u043d\u043e\u0439 \u0434\u043e\u0441\u0442\u043e\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c\u044e.</p><p>\u041f\u043e\u0434\u0445\u043e\u0434\u0438\u0442 \u0443\u0436\u0435 \u043f\u043e\u0441\u043b\u0435 \u043a\u0443\u0440\u0441\u0430 Open Water, \u043d\u043e \u0438\u0437-\u0437\u0430 \u0442\u0435\u0447\u0435\u043d\u0438\u0439 \u044d\u0442\u043e \u0447\u0430\u0449\u0435 \u0434\u0440\u0438\u0444\u0442-\u0434\u0430\u0439\u0432: \u043c\u044b \u043f\u043b\u044b\u0432\u0451\u043c \u043f\u043e \u0442\u0435\u0447\u0435\u043d\u0438\u044e \u0438 \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u043c \u0440\u0438\u0444\u0443 \u0441\u0430\u043c\u043e\u043c\u0443 \u043f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0442\u044c \u043d\u0430\u043c \u0436\u0438\u0437\u043d\u044c.</p>',img:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMzIwIj4KPGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJybSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBhN2Q4YyIvPgogICAgPHN0b3Agb2Zmc2V0PSI2MCUiIHN0b3AtY29sb3I9IiMwNTNhNTIiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAyMWIyZSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIzMjAiIGZpbGw9InVybCgjcm0pIi8+CjwhLS0g0LLQtdGA0YLQuNC60LDQu9GM0L3QsNGPINGB0YLQtdC90LAg0YDQuNGE0LAg0YHQu9C10LLQsCAtLT4KPHBhdGggZD0iTTAsMCBMNjAsMCBRNzAsODAgNjUsMTYwIFE2MCwyNDAgNTUsMzIwIEwwLDMyMCBaIiBmaWxsPSIjMGE0MzU4IiBvcGFjaXR5PSIuOCIvPgo8IS0tINC60L7RgNCw0LvQu9GLIC0tPgo8ZWxsaXBzZSBjeD0iMTIwIiBjeT0iMjgwIiByeD0iMzAiIHJ5PSI1MCIgZmlsbD0iI2U4NTQzZiIgb3BhY2l0eT0iLjYiLz4KPGVsbGlwc2UgY3g9IjE3MCIgY3k9IjI5MCIgcng9IjIwIiByeT0iMzUiIGZpbGw9IiNmZjhjNmIiIG9wYWNpdHk9Ii41Ii8+CjxlbGxpcHNlIGN4PSI2NTAiIGN5PSIyODUiIHJ4PSIyNSIgcnk9IjQ1IiBmaWxsPSIjZTg1NDNmIiBvcGFjaXR5PSIuNSIvPgo8ZWxsaXBzZSBjeD0iNzAwIiBjeT0iMjkyIiByeD0iMTgiIHJ5PSIzMCIgZmlsbD0iI2ZmNmI1YyIgb3BhY2l0eT0iLjQiLz4KPCEtLSDRgdGC0LDRjyDRgNGL0LEgLS0+CjxnIGZpbGw9IiM4ZGYzZGQiIG9wYWNpdHk9Ii42Ij4KPGVsbGlwc2UgY3g9IjM1MCIgY3k9IjE1MCIgcng9IjgiIHJ5PSI0Ii8+PGVsbGlwc2UgY3g9IjM3MCIgY3k9IjE0NSIgcng9IjgiIHJ5PSI0Ii8+CjxlbGxpcHNlIGN4PSIzOTAiIGN5PSIxNTUiIHJ4PSI4IiByeT0iNCIvPjxlbGxpcHNlIGN4PSI0MTAiIGN5PSIxNDgiIHJ4PSI4IiByeT0iNCIvPgo8ZWxsaXBzZSBjeD0iNDMwIiBjeT0iMTU4IiByeD0iOCIgcnk9IjQiLz48ZWxsaXBzZSBjeD0iNDUwIiBjeT0iMTQ0IiByeD0iOCIgcnk9IjQiLz4KPC9nPgo8cGF0aCBkPSJNMCwyNjAgUTIwMCwyNDggNDAwLDI1OCBUODAwLDI1NSBMODAwLDMyMCBMMCwzMjAgWiIgZmlsbD0iIzAyMWIyZSIgb3BhY2l0eT0iLjg1Ii8+Cjx0ZXh0IHg9IjQwMCIgeT0iNTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzZXJpZiIgZm9udC1zaXplPSIyMiIgZmlsbD0iIzhkZjNkZCIgb3BhY2l0eT0iLjkiPtCg0LDRgS3QnNGD0YXQsNC80LzQsNC0PC90ZXh0Pgo8dGV4dCB4PSI0MDAiIHk9IjcyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iI2NmZTZlNCIgb3BhY2l0eT0iLjciPtCd0LDRhi4g0L/QsNGA0Logwrcg0KjQsNGA0Lwt0Y3Qu9GMLdCo0LXQudGFIMK3INCV0LPQuNC/0LXRgjwvdGV4dD4KPC9zdmc+',attr:'Коралловый риф, Ras Muhammad &mdash; <a href="https://commons.wikimedia.org/wiki/File:Coral_reef_in_Ras_Muhammad_nature_park.JPG" target="_blank">reibai</a>, CC BY-SA 3.0'},
+    {t:'\u041e\u0441\u0442\u0440\u043e\u0432\u0430 \u0413\u0438\u043b\u0438',emoji:'\U0001f422',ph:'ph-f',depth:'5\u201325 \u043c',level:'\u043b\u044e\u0431\u043e\u0439',temp:'27\u201330\u00b0C',vis:'15\u201325 \u043c',
+     sub:'\u0418\u043d\u0434\u043e\u043d\u0435\u0437\u0438\u044f. \u0422\u0451\u043f\u043b\u0430\u044f \u0432\u043e\u0434\u0430, \u0447\u0435\u0440\u0435\u043f\u0430\u0445\u0438 \u0438 \u0438\u0434\u0435\u0430\u043b\u044c\u043d\u043e\u0435 \u043c\u0435\u0441\u0442\u043e \u0434\u043b\u044f \u043d\u043e\u0432\u0438\u0447\u043a\u043e\u0432.',
+     body:'<p>\u0422\u0440\u0438 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u0438\u0445 \u043e\u0441\u0442\u0440\u043e\u0432\u0430 \u0443 \u0441\u0435\u0432\u0435\u0440\u043e-\u0437\u0430\u043f\u0430\u0434\u043d\u043e\u0433\u043e \u041b\u043e\u043c\u0431\u043e\u043a\u0430 \u2014 Gili Trawangan, Gili Meno \u0438 Gili Air \u2014 \u0438\u0434\u0435\u0430\u043b\u044c\u043d\u044b \u0434\u043b\u044f \u043f\u0435\u0440\u0432\u044b\u0445 \u043f\u043e\u0433\u0440\u0443\u0436\u0435\u043d\u0438\u0439: \u0442\u0451\u043f\u043b\u0430\u044f \u0432\u043e\u0434\u0430, \u0441\u043f\u043e\u043a\u043e\u0439\u043d\u044b\u0435 \u0441\u0430\u0439\u0442\u044b \u0438 \u043f\u043e\u0447\u0442\u0438 \u0433\u0430\u0440\u0430\u043d\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0432\u0441\u0442\u0440\u0435\u0447\u0438 \u0441 \u0437\u0435\u043b\u0451\u043d\u044b\u043c\u0438 \u0438 \u0431\u0438\u0441\u0441\u043e\u0432\u044b\u043c\u0438 \u0447\u0435\u0440\u0435\u043f\u0430\u0445\u0430\u043c\u0438. \u0418\u043c\u0435\u043d\u043d\u043e \u0437\u0434\u0435\u0441\u044c \u044f \u0447\u0430\u0449\u0435 \u0432\u0441\u0435\u0433\u043e \u043f\u0440\u043e\u0432\u043e\u0436\u0443 \u043a\u0443\u0440\u0441\u044b Open Water.</p><p>\u0414\u043b\u044f \u043e\u043f\u044b\u0442\u043d\u044b\u0445 \u0435\u0441\u0442\u044c \u0438 \u0434\u0440\u0438\u0444\u0442\u044b \u0441 \u0440\u0438\u0444\u043e\u0432\u044b\u043c\u0438 \u0430\u043a\u0443\u043b\u0430\u043c\u0438, \u0438 \u043f\u043e\u0434\u0432\u043e\u0434\u043d\u044b\u0435 \u0441\u043a\u0443\u043b\u044c\u043f\u0442\u0443\u0440\u044b \u2014 \u043a\u0440\u0443\u0433 \u0438\u0437 \u0444\u0438\u0433\u0443\u0440 Nest \u043d\u0430 Gili Meno, \u043e\u0431\u043b\u0435\u043f\u043b\u0435\u043d\u043d\u044b\u0439 \u043a\u043e\u0440\u0430\u043b\u043b\u0430\u043c\u0438.</p>',img:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMzIwIj4KPGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJnaSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI3ZDBkNSIvPgogICAgPHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiMwYTdkOGMiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAyMWIyZSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIzMjAiIGZpbGw9InVybCgjZ2kpIi8+CjwhLS0g0YfQtdGA0LXQv9Cw0YXQsCAtLT4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzgwLDE1MCkiIG9wYWNpdHk9Ii44NSI+CiAgPGVsbGlwc2UgY3g9IjAiIGN5PSIwIiByeD0iNTUiIHJ5PSIzOCIgZmlsbD0iIzJkN2EzYSIvPgogIDxlbGxpcHNlIGN4PSIwIiBjeT0iMCIgcng9IjQ4IiByeT0iMzIiIGZpbGw9IiMzYThhNDUiLz4KICA8IS0tINGD0LfQvtGAINC/0LDQvdGG0LjRgNGPIC0tPgogIDxwYXRoIGQ9Ik0tMjAsLTEwIEwwLC0yNSBMMjAsLTEwIEwyMCwxMCBMMCwyMCBMLTIwLDEwIFoiIGZpbGw9IiMyZDdhM2EiIHN0cm9rZT0iIzRhOWE1NSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPCEtLSDQs9C+0LvQvtCy0LAgLS0+CiAgPGVsbGlwc2UgY3g9IjU1IiBjeT0iLTUiIHJ4PSIxNSIgcnk9IjEyIiBmaWxsPSIjMmQ3YTNhIi8+CiAgPCEtLSDQu9Cw0YHRgtGLIC0tPgogIDxlbGxpcHNlIGN4PSItMzAiIGN5PSIzMCIgcng9IjI1IiByeT0iMTAiIGZpbGw9IiMyZDdhM2EiIHRyYW5zZm9ybT0icm90YXRlKC0zMCwtMzAsMzApIi8+CiAgPGVsbGlwc2UgY3g9IjMwIiBjeT0iMzIiIHJ4PSIyNSIgcnk9IjEwIiBmaWxsPSIjMmQ3YTNhIiB0cmFuc2Zvcm09InJvdGF0ZSgzMCwzMCwzMikiLz4KPC9nPgo8IS0tINC/0YPQt9GL0YDQuCDQvtGCINGH0LXRgNC10L/QsNGF0LggLS0+CjxjaXJjbGUgY3g9IjQ1MCIgY3k9IjExMCIgcj0iNCIgZmlsbD0id2hpdGUiIG9wYWNpdHk9Ii4zIi8+CjxjaXJjbGUgY3g9IjQ2NSIgY3k9Ijg4IiByPSIzIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iLjI1Ii8+CjxjaXJjbGUgY3g9IjQ0MCIgY3k9IjcyIiByPSIyIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iLjIiLz4KPCEtLSDQtNC90L4gLS0+CjxwYXRoIGQ9Ik0wLDI3MCBRMjAwLDI2MCA0MDAsMjcyIFQ4MDAsMjY4IEw4MDAsMzIwIEwwLDMyMCBaIiBmaWxsPSIjMDIxYjJlIiBvcGFjaXR5PSIuOSIvPgo8IS0tINCy0L7QtNC+0YDQvtGB0LvQuCAtLT4KPHBhdGggZD0iTTE1MCwyNzAgUTE1NSwyNDUgMTYwLDI3MCIgc3Ryb2tlPSIjMWE3YTJhIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG9wYWNpdHk9Ii42Ii8+CjxwYXRoIGQ9Ik02MDAsMjY4IFE2MDgsMjQwIDYxNSwyNjgiIHN0cm9rZT0iIzFhN2EyYSIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIiBvcGFjaXR5PSIuNiIvPgo8dGV4dCB4PSI0MDAiIHk9IjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjIiIGZpbGw9IiMwMjFiMmUiIG9wYWNpdHk9Ii45Ij7QntGB0YLRgNC+0LLQsCDQk9C40LvQuDwvdGV4dD4KPHRleHQgeD0iNDAwIiB5PSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMwMjFiMmUiIG9wYWNpdHk9Ii43Ij7Qp9C10YDQtdC/0LDRiNGM0Y8g0YHRgtC+0LvQuNGG0LAg0LzQuNGA0LAgwrcg0JjQvdC00L7QvdC10LfQuNGPPC90ZXh0Pgo8L3N2Zz4=',attr:'Gili Trawangan &mdash; <a href="https://commons.wikimedia.org/wiki/File:Gili_Trawangan_(16788754758).jpg" target="_blank">Kyle Taylor</a>, CC BY 2.0'},
+  ];
+  const posts=[
+    {cat:'Путь',ph:'ph-d',emoji:'\ud83c\udfca',title:'День, когда моя напарница потеряла сознание под водой',date:'7 янв 2026',read:'7 мин',
+     excerpt:'Седьмое января изменило моё отношение к дайвингу навсегда. История о том, почему я пошёл учиться на Rescue Diver — рассказываю как было.',
+     body:'<p>Это была обычная зимняя поездка. Мы ныряли с инструктором — я и моя напарница. План простой, глубина умеренная, условия нормальные. Ничто не предвещало.</p><h2>Момент</h2><p>В какой-то момент погружения я посмотрел на неё — и понял что что-то не так. Она не отвечала на сигналы. Тело обмякло. Регулятор ещё во рту, но глаза закрыты.</p><p>Первым среагировал инструктор. Я подхватил с другой стороны. Контролируемый подъём — не быстрый, как хочется в панике, а правильный, с выдохом. Поверхность. Переворот лицом вверх. Поддуть жилет. Буксировка к лодке.</p><p>На борту — первая помощь, кислород. Вызвали скорую. Реанимация. Всё закончилось хорошо — она восстановилась полностью.</p><h2>Что я понял о себе</h2><p>Те несколько минут я помню покадрово. И главное что я помню — я не знал что делать. Я просто следовал за инструктором. Делал что говорят. Если бы его не было рядом — я бы растерялся в самый важный момент.</p><blockquote>Самое страшное под водой — не опасность. Самое страшное — быть рядом и не уметь помочь.</blockquote><p>Это не давало мне покоя неделями. Я прокручивал сценарии: а если бы мы были вдвоём? А если бы это случилось на глубине больше? А если бы регулятор выпал?</p><h2>Что я сделал</h2><p>Записался на курс Rescue Diver. Не для галочки и не для красивой карточки — чтобы в следующий раз быть тем, кто знает что делать. Прошёл EFR — первая помощь и СЛР. Отработал сценарии спасения на поверхности и под водой, поиск пропавшего дайвера, буксировку, выход из паники.</p><p>Rescue оказался самым сложным и самым важным курсом из всех. На нём не учат нырять глубже или дольше. На нём учат думать, когда всё идёт не по плану.</p><h2>Зачем я это пишу</h2><p>Если ты ныряешь и думаешь «Rescue мне рано» или «зачем, со мной ничего не случится» — подумай не о себе. Подумай о человеке, который будет рядом с тобой под водой. Возможно, именно тебе придётся стать тем, кто среагирует.</p><p>Та история закончилась хорошо, потому что рядом был подготовленный человек. Я хочу, чтобы рядом с моими бади тоже был подготовленный человек. Поэтому — учусь дальше. Divemaster в процессе.</p>'},
+    {cat:'\u0422\u0435\u0445\u043d\u0438\u043a\u0430',ph:'ph-c',emoji:'\u2696\ufe0f',title:'\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c \u043f\u043b\u0430\u0432\u0443\u0447\u0435\u0441\u0442\u0438: 5 \u043e\u0448\u0438\u0431\u043e\u043a \u043d\u043e\u0432\u0438\u0447\u043a\u043e\u0432',date:'12 \u043c\u0430\u044f 2026',read:'6 \u043c\u0438\u043d',
+     excerpt:'\u041f\u043e\u0447\u0435\u043c\u0443 \u0432\u044b \u0442\u0440\u0430\u0442\u0438\u0442\u0435 \u0432\u043e\u0437\u0434\u0443\u0445 \u0432\u0434\u0432\u043e\u0435 \u0431\u044b\u0441\u0442\u0440\u0435\u0435 \u043e\u043f\u044b\u0442\u043d\u043e\u0433\u043e \u0434\u0430\u0439\u0432\u0435\u0440\u0430 \u0438 \u043a\u0430\u043a \u044d\u0442\u043e \u0438\u0441\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0431\u0443\u043a\u0432\u0430\u043b\u044c\u043d\u043e \u0437\u0430 \u043e\u0434\u043d\u043e \u043f\u043e\u0433\u0440\u0443\u0436\u0435\u043d\u0438\u0435.',
+     body:'<p>\u041f\u043b\u0430\u0432\u0443\u0447\u0435\u0441\u0442\u044c \u2014 \u044d\u0442\u043e \u043d\u0430\u0432\u044b\u043a \u21161, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u043e\u0442\u043b\u0438\u0447\u0430\u0435\u0442 \u043d\u043e\u0432\u0438\u0447\u043a\u0430 \u043e\u0442 \u0443\u0432\u0435\u0440\u0435\u043d\u043d\u043e\u0433\u043e \u0434\u0430\u0439\u0432\u0435\u0440\u0430. \u0425\u043e\u0440\u043e\u0448\u0430\u044f \u043d\u043e\u0432\u043e\u0441\u0442\u044c: \u0435\u0433\u043e \u043c\u043e\u0436\u043d\u043e \u0437\u0430\u043c\u0435\u0442\u043d\u043e \u043f\u0440\u043e\u043a\u0430\u0447\u0430\u0442\u044c \u0437\u0430 \u043e\u0434\u0438\u043d-\u0434\u0432\u0430 \u043e\u0441\u043e\u0437\u043d\u0430\u043d\u043d\u044b\u0445 \u0434\u0430\u0439\u0432\u0430.</p><h2>\u041e\u0448\u0438\u0431\u043a\u0430 1. \u041f\u0435\u0440\u0435\u0433\u0440\u0443\u0437</h2><p>\u0411\u043e\u043b\u044c\u0448\u0438\u043d\u0441\u0442\u0432\u043e \u043d\u043e\u0432\u0438\u0447\u043a\u043e\u0432 \u0431\u0435\u0440\u0443\u0442 \u0441\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u043d\u043e\u0433\u043e \u0433\u0440\u0443\u0437\u043e\u0432 \u00ab\u043d\u0430 \u0432\u0441\u044f\u043a\u0438\u0439 \u0441\u043b\u0443\u0447\u0430\u0439\u00bb. \u041b\u0438\u0448\u043d\u0438\u0439 \u0441\u0432\u0438\u043d\u0435\u0446 \u0437\u0430\u0441\u0442\u0430\u0432\u043b\u044f\u0435\u0442 \u043d\u0430\u043a\u0430\u0447\u0438\u0432\u0430\u0442\u044c \u043a\u043e\u043c\u043f\u0435\u043d\u0441\u0430\u0442\u043e\u0440, \u0438 \u0432\u044b \u043f\u0440\u0435\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0435\u0441\u044c \u0432 \u0432\u043e\u0437\u0434\u0443\u0448\u043d\u044b\u0439 \u0448\u0430\u0440, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0431\u043e\u043b\u0442\u0430\u0435\u0442 \u0432\u0432\u0435\u0440\u0445-\u0432\u043d\u0438\u0437.</p><h2>\u041e\u0448\u0438\u0431\u043a\u0430 2. \u0420\u0435\u0437\u043a\u043e\u0435 \u0434\u044b\u0445\u0430\u043d\u0438\u0435</h2><p>\u041b\u0451\u0433\u043a\u0438\u0435 \u2014 \u0432\u0430\u0448 \u0433\u043b\u0430\u0432\u043d\u044b\u0439 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442 \u0442\u043e\u043d\u043a\u043e\u0439 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438. \u0413\u043b\u0443\u0431\u043e\u043a\u0438\u0439 \u0432\u0434\u043e\u0445 \u043f\u043e\u0434\u043d\u0438\u043c\u0430\u0435\u0442, \u043c\u0435\u0434\u043b\u0435\u043d\u043d\u044b\u0439 \u0432\u044b\u0434\u043e\u0445 \u043e\u043f\u0443\u0441\u043a\u0430\u0435\u0442. \u0420\u0435\u0437\u043a\u0438\u0435 \u0432\u0434\u043e\u0445\u0438 \u0441\u0431\u0438\u0432\u0430\u044e\u0442 \u0431\u0430\u043b\u0430\u043d\u0441 \u0438 \u0436\u0433\u0443\u0442 \u0432\u043e\u0437\u0434\u0443\u0445.</p><h2>\u041e\u0448\u0438\u0431\u043a\u0430 3. \u0420\u0443\u043a\u0438-\u0432\u0451\u0441\u043b\u0430</h2><p>\u0415\u0441\u043b\u0438 \u0432\u044b \u0433\u0440\u0435\u0431\u0451\u0442\u0435 \u0440\u0443\u043a\u0430\u043c\u0438, \u0437\u043d\u0430\u0447\u0438\u0442 \u043f\u043b\u0430\u0432\u0443\u0447\u0435\u0441\u0442\u044c \u043d\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043d\u0430. \u0420\u0443\u043a\u0438 \u0434\u043e\u043b\u0436\u043d\u044b \u0441\u043f\u043e\u043a\u043e\u0439\u043d\u043e \u043b\u0435\u0436\u0430\u0442\u044c \u2014 \u0434\u0432\u0438\u0433\u0430\u044e\u0442 \u0432\u0430\u0441 \u043d\u043e\u0433\u0438.</p><blockquote>\u0425\u043e\u0440\u043e\u0448\u0438\u0439 \u0434\u0430\u0439\u0432\u0435\u0440 \u0432\u0438\u0441\u0438\u0442 \u0432 \u0442\u043e\u043b\u0449\u0435 \u0432\u043e\u0434\u044b \u043d\u0435\u043f\u043e\u0434\u0432\u0438\u0436\u043d\u043e, \u0431\u0443\u0434\u0442\u043e \u0441\u043f\u0438\u0442.</blockquote><h2>\u041e\u0448\u0438\u0431\u043a\u0430 4. \u0418\u0433\u043d\u043e\u0440 \u0442\u0440\u0438\u043c\u0430</h2><p>\u0413\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0442\u0435\u043b\u0430 \u0441\u043d\u0438\u0436\u0430\u0435\u0442 \u0441\u043e\u043f\u0440\u043e\u0442\u0438\u0432\u043b\u0435\u043d\u0438\u0435 \u0438 \u0440\u0430\u0441\u0445\u043e\u0434 \u0432\u043e\u0437\u0434\u0443\u0445\u0430. \u0414\u0435\u0440\u0436\u0438\u0442\u0435 \u043a\u043e\u0440\u043f\u0443\u0441 \u043f\u0430\u0440\u0430\u043b\u043b\u0435\u043b\u044c\u043d\u043e \u0434\u043d\u0443.</p><h2>\u041e\u0448\u0438\u0431\u043a\u0430 5. \u0421\u043f\u0435\u0448\u043a\u0430</h2><p>\u041f\u043b\u0430\u0432\u0443\u0447\u0435\u0441\u0442\u044c \u043d\u0435 \u043b\u044e\u0431\u0438\u0442 \u0440\u0435\u0437\u043a\u0438\u0445 \u0434\u0432\u0438\u0436\u0435\u043d\u0438\u0439. \u0427\u0435\u043c \u043c\u0435\u0434\u043b\u0435\u043d\u043d\u0435\u0435 \u0438 \u0441\u043f\u043e\u043a\u043e\u0439\u043d\u0435\u0435 \u0432\u044b \u0434\u0432\u0438\u0433\u0430\u0435\u0442\u0435\u0441\u044c, \u0442\u0435\u043c \u0434\u043e\u043b\u044c\u0448\u0435 \u0434\u043b\u0438\u0442\u0441\u044f \u043f\u043e\u0433\u0440\u0443\u0436\u0435\u043d\u0438\u0435.</p>'},
+    {cat:'\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c',ph:'ph-g',emoji:'\U0001fa7a',title:'\u0410\u0437\u043e\u0442, \u0434\u0435\u043a\u043e\u043c\u043f\u0440\u0435\u0441\u0441\u0438\u044f \u0438 \u043f\u043e\u0447\u0435\u043c\u0443 \u043c\u044b \u0432\u0441\u043f\u043b\u044b\u0432\u0430\u0435\u043c \u043c\u0435\u0434\u043b\u0435\u043d\u043d\u043e',date:'19 \u043c\u0430\u044f 2026',read:'7 \u043c\u0438\u043d',
+     excerpt:'\u041f\u043e\u043d\u044f\u0442\u043d\u044b\u043c \u044f\u0437\u044b\u043a\u043e\u043c \u2014 \u0447\u0442\u043e \u043f\u0440\u043e\u0438\u0441\u0445\u043e\u0434\u0438\u0442 \u0441 \u0430\u0437\u043e\u0442\u043e\u043c \u0432 \u043e\u0440\u0433\u0430\u043d\u0438\u0437\u043c\u0435 \u043d\u0430 \u0433\u043b\u0443\u0431\u0438\u043d\u0435 \u0438 \u043f\u043e\u0447\u0435\u043c\u0443 \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438 \u2014 \u043d\u0435 \u0444\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c.',
+     body:'<p>\u041a\u0430\u0436\u0434\u044b\u0439 \u043a\u0443\u0440\u0441 \u043d\u0430\u0447\u0438\u043d\u0430\u0435\u0442\u0441\u044f \u0441 \u0444\u0440\u0430\u0437\u044b \u00ab\u043d\u0438\u043a\u043e\u0433\u0434\u0430 \u043d\u0435 \u0437\u0430\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0439 \u0434\u044b\u0445\u0430\u043d\u0438\u0435 \u0438 \u0432\u0441\u043f\u043b\u044b\u0432\u0430\u0439 \u043c\u0435\u0434\u043b\u0435\u043d\u043d\u043e\u00bb. \u0420\u0430\u0437\u0431\u0435\u0440\u0451\u043c, \u043f\u043e\u0447\u0435\u043c\u0443 \u044d\u0442\u043e \u043d\u0435 \u043f\u0440\u043e\u0441\u0442\u043e \u043f\u0440\u0430\u0432\u0438\u043b\u043e \u00ab\u043f\u043e\u0442\u043e\u043c\u0443 \u0447\u0442\u043e \u0442\u0430\u043a \u043d\u0430\u0434\u043e\u00bb.</p><h2>\u041e\u0442\u043a\u0443\u0434\u0430 \u0431\u0435\u0440\u0451\u0442\u0441\u044f \u0430\u0437\u043e\u0442</h2><p>\u0412\u043e\u0437\u0434\u0443\u0445 \u0432 \u0431\u0430\u043b\u043b\u043e\u043d\u0435 \u043f\u0440\u0438\u043c\u0435\u0440\u043d\u043e \u043d\u0430 78% \u0441\u043e\u0441\u0442\u043e\u0438\u0442 \u0438\u0437 \u0430\u0437\u043e\u0442\u0430. \u041d\u0430 \u0433\u043b\u0443\u0431\u0438\u043d\u0435 \u0434\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0440\u0430\u0441\u0442\u0451\u0442, \u0438 \u0430\u0437\u043e\u0442 \u043f\u043e\u0434 \u0434\u0430\u0432\u043b\u0435\u043d\u0438\u0435\u043c \u043d\u0430\u0447\u0438\u043d\u0430\u0435\u0442 \u0440\u0430\u0441\u0442\u0432\u043e\u0440\u044f\u0442\u044c\u0441\u044f \u0432 \u0442\u043a\u0430\u043d\u044f\u0445 \u0442\u0435\u043b\u0430 \u2014 \u043a\u0430\u043a \u0443\u0433\u043b\u0435\u043a\u0438\u0441\u043b\u044b\u0439 \u0433\u0430\u0437 \u0432 \u0437\u0430\u043a\u0440\u044b\u0442\u043e\u0439 \u0431\u0443\u0442\u044b\u043b\u043a\u0435 \u0433\u0430\u0437\u0438\u0440\u043e\u0432\u043a\u0438.</p><h2>\u0427\u0442\u043e \u0431\u0443\u0434\u0435\u0442, \u0435\u0441\u043b\u0438 \u0432\u0441\u043f\u043b\u044b\u0442\u044c \u0440\u0435\u0437\u043a\u043e</h2><p>\u0415\u0441\u043b\u0438 \u0431\u044b\u0441\u0442\u0440\u043e \u0441\u043d\u0438\u0437\u0438\u0442\u044c \u0434\u0430\u0432\u043b\u0435\u043d\u0438\u0435 (\u0442\u043e \u0435\u0441\u0442\u044c \u0431\u044b\u0441\u0442\u0440\u043e \u0432\u0441\u043f\u043b\u044b\u0442\u044c), \u0430\u0437\u043e\u0442 \u043d\u0435 \u0443\u0441\u043f\u0435\u0432\u0430\u0435\u0442 \u043f\u043b\u0430\u0432\u043d\u043e \u0432\u044b\u0439\u0442\u0438 \u0447\u0435\u0440\u0435\u0437 \u043b\u0451\u0433\u043a\u0438\u0435 \u0438 \u043e\u0431\u0440\u0430\u0437\u0443\u0435\u0442 \u043f\u0443\u0437\u044b\u0440\u044c\u043a\u0438 \u0432 \u043a\u0440\u043e\u0432\u0438 \u0438 \u0442\u043a\u0430\u043d\u044f\u0445. \u042d\u0442\u043e \u0438 \u0435\u0441\u0442\u044c \u0434\u0435\u043a\u043e\u043c\u043f\u0440\u0435\u0441\u0441\u0438\u043e\u043d\u043d\u0430\u044f \u0431\u043e\u043b\u0435\u0437\u043d\u044c \u2014 \u043e\u0442 \u0431\u043e\u043b\u0438 \u0432 \u0441\u0443\u0441\u0442\u0430\u0432\u0430\u0445 \u0434\u043e \u0441\u0435\u0440\u044c\u0451\u0437\u043d\u044b\u0445 \u043d\u0435\u0432\u0440\u043e\u043b\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u043f\u043e\u0441\u043b\u0435\u0434\u0441\u0442\u0432\u0438\u0439.</p><blockquote>\u041f\u0440\u0430\u0432\u0438\u043b\u043e \u043f\u0440\u043e\u0441\u0442\u043e\u0435: \u043d\u0435 \u0431\u044b\u0441\u0442\u0440\u0435\u0435 18 \u043c\u0435\u0442\u0440\u043e\u0432 \u0432 \u043c\u0438\u043d\u0443\u0442\u0443, \u0430 \u043b\u0443\u0447\u0448\u0435 \u0435\u0449\u0451 \u043c\u0435\u0434\u043b\u0435\u043d\u043d\u0435\u0435.</blockquote><h2>\u0417\u0430\u0447\u0435\u043c \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438</h2><p>\u0422\u0440\u0438 \u043c\u0438\u043d\u0443\u0442\u044b \u043d\u0430 5 \u043c\u0435\u0442\u0440\u0430\u0445 \u0432 \u043a\u043e\u043d\u0446\u0435 \u043f\u043e\u0433\u0440\u0443\u0436\u0435\u043d\u0438\u044f \u0434\u0430\u044e\u0442 \u043e\u0440\u0433\u0430\u043d\u0438\u0437\u043c\u0443 \u0432\u0440\u0435\u043c\u044f \u0434\u043e\u0432\u044b\u0432\u0435\u0441\u0442\u0438 \u043b\u0438\u0448\u043d\u0438\u0439 \u0430\u0437\u043e\u0442 \u0441\u043f\u043e\u043a\u043e\u0439\u043d\u043e. \u042d\u0442\u043e \u043d\u0435 \u0444\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c, \u0430 \u0441\u0442\u0440\u0430\u0445\u043e\u0432\u043a\u0430.</p><h2>\u0410 \u043d\u0430\u0440\u043a\u043e\u0437</h2><p>\u041d\u0430 \u0431\u043e\u043b\u044c\u0448\u043e\u0439 \u0433\u043b\u0443\u0431\u0438\u043d\u0435 \u0430\u0437\u043e\u0442 \u0434\u0430\u0451\u0442 \u044d\u0444\u0444\u0435\u043a\u0442, \u043f\u043e\u0445\u043e\u0436\u0438\u0439 \u043d\u0430 \u043b\u0451\u0433\u043a\u043e\u0435 \u043e\u043f\u044c\u044f\u043d\u0435\u043d\u0438\u0435 \u2014 \u0430\u0437\u043e\u0442\u043d\u044b\u0439 \u043d\u0430\u0440\u043a\u043e\u0437. \u041e\u043d \u043e\u0431\u0440\u0430\u0442\u0438\u043c: \u0434\u043e\u0441\u0442\u0430\u0442\u043e\u0447\u043d\u043e \u043f\u043e\u0434\u043d\u044f\u0442\u044c\u0441\u044f \u043d\u0430 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u043c\u0435\u0442\u0440\u043e\u0432. \u0418\u043c\u0435\u043d\u043d\u043e \u043f\u043e\u044d\u0442\u043e\u043c\u0443 \u0440\u0435\u043a\u0440\u0435\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u043b\u0438\u043c\u0438\u0442\u044b \u2014 18, 30 \u0438 40 \u043c\u0435\u0442\u0440\u043e\u0432 \u043f\u043e \u0443\u0440\u043e\u0432\u043d\u044f\u043c \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0438 \u2014 \u043d\u0435 \u0441\u043b\u0443\u0447\u0430\u0439\u043d\u044b.</p>'},
+    {cat:'\u0418\u0441\u0442\u043e\u0440\u0438\u044f',ph:'ph-d',emoji:'\u2693',title:'Thistlegorm: \u043a\u043e\u0440\u0430\u0431\u043b\u044c, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0441\u0442\u0430\u043b \u043c\u0443\u0437\u0435\u0435\u043c',date:'5 \u043c\u0430\u044f 2026',read:'6 \u043c\u0438\u043d',
+     excerpt:'\u0418\u0441\u0442\u043e\u0440\u0438\u044f \u0441\u0430\u043c\u043e\u0433\u043e \u0437\u043d\u0430\u043c\u0435\u043d\u0438\u0442\u043e\u0433\u043e \u0440\u044d\u043a-\u0434\u0430\u0439\u0432\u0430 \u041a\u0440\u0430\u0441\u043d\u043e\u0433\u043e \u043c\u043e\u0440\u044f: \u043e\u0442 \u0431\u043e\u043c\u0431\u0451\u0436\u043a\u0438 1941 \u0433\u043e\u0434\u0430 \u0434\u043e \u041a\u0443\u0441\u0442\u043e \u0438 \u0441\u043e\u0432\u0440\u0435\u043c\u0435\u043d\u043d\u044b\u0445 \u0434\u0430\u0439\u0432\u0435\u0440\u043e\u0432.',
+     body:'<p>SS Thistlegorm \u2014 \u0431\u0440\u0438\u0442\u0430\u043d\u0441\u043a\u043e\u0435 \u0433\u0440\u0443\u0437\u043e\u0432\u043e\u0435 \u0441\u0443\u0434\u043d\u043e, \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u043d\u043e\u0435 \u0432 1940 \u0433\u043e\u0434\u0443 \u0432 \u0421\u0430\u043d\u0434\u0435\u0440\u043b\u0435\u043d\u0434\u0435. \u0414\u043b\u0438\u043d\u0430 \u2014 \u043e\u043a\u043e\u043b\u043e 126 \u043c\u0435\u0442\u0440\u043e\u0432, \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0438\u0442\u0441\u044f \u0441 \u0448\u043e\u0442\u043b\u0430\u043d\u0434\u0441\u043a\u043e\u0433\u043e \u043a\u0430\u043a \u00ab\u0441\u0438\u043d\u0438\u0439 \u0447\u0435\u0440\u0442\u043e\u043f\u043e\u043b\u043e\u0445\u00bb.</p><h2>\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0439 \u0440\u0435\u0439\u0441</h2><p>\u0412 \u043e\u043a\u0442\u044f\u0431\u0440\u0435 1941 \u0433\u043e\u0434\u0430 \u0441\u0443\u0434\u043d\u043e \u0441\u0442\u043e\u044f\u043b\u043e \u043d\u0430 \u044f\u043a\u043e\u0440\u0435 \u0443 Sha\u2019ab Ali \u0432 \u041a\u0440\u0430\u0441\u043d\u043e\u043c \u043c\u043e\u0440\u0435, \u043e\u0436\u0438\u0434\u0430\u044f \u043f\u0440\u043e\u0445\u043e\u0434\u0430 \u0447\u0435\u0440\u0435\u0437 \u0421\u0443\u044d\u0446\u043a\u0438\u0439 \u043a\u0430\u043d\u0430\u043b. \u0414\u0432\u0430 \u043d\u0435\u043c\u0435\u0446\u043a\u0438\u0445 \u0431\u043e\u043c\u0431\u0430\u0440\u0434\u0438\u0440\u043e\u0432\u0449\u0438\u043a\u0430 Heinkel He 111, \u0432\u043e\u0437\u0432\u0440\u0430\u0449\u0430\u044f\u0441\u044c \u043d\u0430 \u0431\u0430\u0437\u0443, \u0441\u043b\u0443\u0447\u0430\u0439\u043d\u043e \u043d\u0430\u0442\u043a\u043d\u0443\u043b\u0438\u0441\u044c \u043d\u0430 \u043a\u043e\u043d\u0432\u043e\u0439. \u0411\u043e\u043c\u0431\u0430 \u043f\u043e\u043f\u0430\u043b\u0430 \u0432 \u0442\u0440\u044e\u043c \u0441 \u0431\u043e\u0435\u043f\u0440\u0438\u043f\u0430\u0441\u0430\u043c\u0438, \u0438 \u0441\u0443\u0434\u043d\u043e \u0437\u0430\u0442\u043e\u043d\u0443\u043b\u043e \u0437\u0430 \u0441\u0447\u0438\u0442\u0430\u043d\u043d\u044b\u0435 \u043c\u0438\u043d\u0443\u0442\u044b. \u041f\u043e\u0433\u0438\u0431\u043b\u0438 \u0434\u0435\u0432\u044f\u0442\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u043a.</p><h2>\u0412\u0442\u043e\u0440\u0430\u044f \u0436\u0438\u0437\u043d\u044c</h2><p>\u0412 \u043d\u0430\u0447\u0430\u043b\u0435 1950-\u0445 \u0440\u044d\u043a \u043d\u0430\u0448\u0451\u043b \u0416\u0430\u043a-\u0418\u0432 \u041a\u0443\u0441\u0442\u043e \u0438 \u043f\u043e\u043a\u0430\u0437\u0430\u043b \u0432 \u0444\u0438\u043b\u044c\u043c\u0435 \u00ab\u041c\u0438\u0440 \u0442\u0438\u0448\u0438\u043d\u044b\u00bb. \u041f\u043e\u0442\u043e\u043c \u043c\u0435\u0441\u0442\u043e \u0441\u043d\u043e\u0432\u0430 \u0437\u0430\u0431\u044b\u043b\u0438 \u043f\u043e\u0447\u0442\u0438 \u043d\u0430 \u0441\u043e\u0440\u043e\u043a \u043b\u0435\u0442 \u2014 \u0438 \u0442\u043e\u043b\u044c\u043a\u043e \u0432 1990-\u0445 \u043e\u043d\u043e \u0441\u043d\u043e\u0432\u0430 \u0441\u0442\u0430\u043b\u043e \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u043c \u0434\u043b\u044f \u0434\u0430\u0439\u0432\u0435\u0440\u043e\u0432.</p><h2>\u0427\u0442\u043e \u0432\u0438\u0434\u043d\u043e \u0441\u0435\u0439\u0447\u0430\u0441</h2><p>\u0421\u043f\u0443\u0441\u0442\u044f \u0431\u043e\u043b\u0435\u0435 80 \u043b\u0435\u0442 \u0433\u0440\u0443\u0437 \u043e\u0441\u0442\u0430\u0451\u0442\u0441\u044f \u043d\u0430 \u043c\u0435\u0441\u0442\u0435: \u043c\u043e\u0442\u043e\u0446\u0438\u043a\u043b\u044b, \u0433\u0440\u0443\u0437\u043e\u0432\u0438\u043a\u0438, \u0441\u0430\u043f\u043e\u0433\u0438, \u0432\u0438\u043d\u0442\u043e\u0432\u043a\u0438. \u041a\u043e\u0440\u043f\u0443\u0441 \u043e\u0431\u0440\u043e\u0441 \u043a\u043e\u0440\u0430\u043b\u043b\u0430\u043c\u0438 \u0438 \u0441\u0442\u0430\u043b \u0438\u0441\u043a\u0443\u0441\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u043c \u0440\u0438\u0444\u043e\u043c \u0441 \u0431\u043e\u0433\u0430\u0442\u043e\u0439 \u0436\u0438\u0437\u043d\u044c\u044e. \u042d\u0442\u043e \u0432\u043e\u0435\u043d\u043d\u043e\u0435 \u0437\u0430\u0445\u043e\u0440\u043e\u043d\u0435\u043d\u0438\u0435 \u2014 \u0438 \u043d\u044b\u0440\u044f\u0442\u044c \u0437\u0434\u0435\u0441\u044c \u043d\u0443\u0436\u043d\u043e \u0431\u0435\u0440\u0435\u0436\u043d\u043e, \u043d\u0438\u0447\u0435\u0433\u043e \u043d\u0435 \u0442\u0440\u043e\u0433\u0430\u044f.</p>'},
+    {cat:'\u041f\u0443\u0442\u0435\u0448\u0435\u0441\u0442\u0432\u0438\u0435',ph:'ph-e',emoji:'\U0001f3dd\ufe0f',title:'\u0414\u0430\u0445\u0430\u0431 \u0433\u043b\u0430\u0437\u0430\u043c\u0438 \u0434\u0430\u0439\u0432\u043c\u0430\u0441\u0442\u0435\u0440\u0430: \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u043d\u0430 \u043d\u0435\u0434\u0435\u043b\u044e',date:'28 \u0430\u043f\u0440 2026',read:'8 \u043c\u0438\u043d',
+     excerpt:'\u041c\u0430\u0440\u0448\u0440\u0443\u0442 \u043d\u0430 \u0441\u0435\u043c\u044c \u0434\u043d\u0435\u0439: \u043e\u0442 \u0441\u043f\u043e\u043a\u043e\u0439\u043d\u043e\u0439 \u041b\u0430\u0433\u0443\u043d\u044b \u0434\u043e \u041a\u0430\u043d\u044c\u043e\u043d\u0430 \u0438 Blue Hole, \u0431\u0435\u0437 \u0442\u0443\u0440\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u043b\u043e\u0432\u0443\u0448\u0435\u043a.',
+     body:'<p>\u0414\u0430\u0445\u0430\u0431 \u2014 \u043c\u043e\u0439 \u043b\u044e\u0431\u0438\u043c\u044b\u0439 \u0434\u043e\u043c \u043d\u0430 \u041a\u0440\u0430\u0441\u043d\u043e\u043c \u043c\u043e\u0440\u0435. \u0417\u0434\u0435\u0441\u044c \u043d\u0435\u0442 \u0441\u0443\u0435\u0442\u044b \u0428\u0430\u0440\u043c\u0430, \u0437\u0430\u0442\u043e \u0435\u0441\u0442\u044c \u0434\u0435\u0441\u044f\u0442\u043a\u0438 \u0441\u0430\u0439\u0442\u043e\u0432 \u0432 \u0448\u0430\u0433\u043e\u0432\u043e\u0439 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u0438 \u043e\u0442 \u0431\u0435\u0440\u0435\u0433\u0430. \u0412\u043e\u0442 \u043a\u0430\u043a \u0431\u044b \u044f \u0441\u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043b \u043d\u0435\u0434\u0435\u043b\u044e.</p><h3>\u0414\u0435\u043d\u044c 1\u20132. \u0410\u043a\u043a\u043b\u0438\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f</h3><p>\u041d\u0430\u0447\u0438\u043d\u0430\u0435\u043c \u0441 \u041b\u0430\u0433\u0443\u043d\u044b \u0438 Lighthouse \u2014 \u0441\u043f\u043e\u043a\u043e\u0439\u043d\u044b\u0435 \u0432\u0445\u043e\u0434\u044b \u0441 \u0431\u0435\u0440\u0435\u0433\u0430, \u0438\u0434\u0435\u0430\u043b\u044c\u043d\u043e \u0434\u043b\u044f \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0441\u043d\u0430\u0440\u044f\u0436\u0435\u043d\u0438\u044f \u0438 \u043f\u043b\u0430\u0432\u0443\u0447\u0435\u0441\u0442\u0438.</p><h3>\u0414\u0435\u043d\u044c 3\u20134. \u0420\u0438\u0444\u044b</h3><p>Eel Garden \u0438 Caves: \u0441\u0430\u0434\u044b \u0443\u0433\u0440\u0435\u0439, \u0447\u0435\u0440\u0435\u043f\u0430\u0445\u0438 \u0438 \u043f\u0435\u0440\u0432\u044b\u0435 \u0441\u0442\u0435\u043d\u044b. \u0417\u0434\u0435\u0441\u044c \u0443\u0436\u0435 \u0438\u043d\u0442\u0435\u0440\u0435\u0441\u043d\u0435\u0435 \u043f\u043e \u0440\u0435\u043b\u044c\u0435\u0444\u0443.</p><h3>\u0414\u0435\u043d\u044c 5. \u041a\u0430\u043d\u044c\u043e\u043d</h3><p>\u0417\u043d\u0430\u043c\u0435\u043d\u0438\u0442\u0430\u044f \u0440\u0430\u0441\u0449\u0435\u043b\u0438\u043d\u0430 \u0441 \u043b\u0443\u0447\u0430\u043c\u0438 \u0441\u0432\u0435\u0442\u0430. \u041d\u0443\u0436\u0435\u043d \u0443\u0432\u0435\u0440\u0435\u043d\u043d\u044b\u0439 \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c \u0433\u043b\u0443\u0431\u0438\u043d\u044b.</p><h3>\u0414\u0435\u043d\u044c 6\u20137. Blue Hole</h3><p>\u0424\u0438\u043d\u0430\u043b \u043d\u0435\u0434\u0435\u043b\u0438 \u2014 \u0432\u043d\u0435\u0448\u043d\u0438\u0439 \u0440\u0438\u0444 Blue Hole \u0447\u0435\u0440\u0435\u0437 \u0434\u0440\u0438\u0444\u0442 \u043e\u0442 The Bells. \u0411\u0435\u0437 \u0410\u0440\u043a\u0438, \u0437\u0430\u0442\u043e \u0441 \u043f\u043e\u0442\u0440\u044f\u0441\u0430\u044e\u0449\u0435\u0439 \u0441\u0442\u0435\u043d\u043e\u0439.</p>'},
+    {cat:'\u0421\u043d\u0430\u0440\u044f\u0436\u0435\u043d\u0438\u0435',ph:'ph-b',emoji:'\u231a',title:'\u041f\u0435\u0440\u0432\u044b\u0439 \u043a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440 \u0434\u043b\u044f \u0434\u0430\u0439\u0432\u0438\u043d\u0433\u0430: \u043d\u0430 \u0447\u0442\u043e \u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c',date:'9 \u0430\u043f\u0440 2026',read:'5 \u043c\u0438\u043d',
+     excerpt:'\u041d\u0430 \u0447\u0442\u043e \u0440\u0435\u0430\u043b\u044c\u043d\u043e \u043e\u0431\u0440\u0430\u0449\u0430\u0442\u044c \u0432\u043d\u0438\u043c\u0430\u043d\u0438\u0435 \u043f\u0440\u0438 \u0432\u044b\u0431\u043e\u0440\u0435, \u0430 \u043d\u0430 \u0447\u0451\u043c \u043c\u0430\u0440\u043a\u0435\u0442\u043e\u043b\u043e\u0433\u0438 \u043f\u0440\u043e\u0441\u0442\u043e \u0437\u0430\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u044e\u0442.',
+     body:'<p>\u0414\u0430\u0439\u0432-\u043a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440 \u2014 \u0435\u0434\u0438\u043d\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0439 \u0433\u0430\u0434\u0436\u0435\u0442, \u043d\u0430 \u043a\u043e\u0442\u043e\u0440\u043e\u043c \u043d\u0435 \u0441\u0442\u043e\u0438\u0442 \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u0442\u044c \u0437\u0434\u043e\u0440\u043e\u0432\u044c\u0435\u043c, \u043d\u043e \u0438 \u043f\u0435\u0440\u0435\u043f\u043b\u0430\u0447\u0438\u0432\u0430\u0442\u044c \u043d\u0435\u0437\u0430\u0447\u0435\u043c. \u0420\u0430\u0437\u0431\u0435\u0440\u0451\u043c \u043f\u043e \u043f\u043e\u043b\u043e\u0447\u043a\u0430\u043c.</p><h2>\u0427\u0442\u043e \u0432\u0430\u0436\u043d\u043e</h2><ul><li>\u041f\u043e\u043d\u044f\u0442\u043d\u044b\u0439 \u043a\u0440\u0443\u043f\u043d\u044b\u0439 \u044d\u043a\u0440\u0430\u043d, \u0447\u0438\u0442\u0430\u0435\u043c\u044b\u0439 \u043f\u043e\u0434 \u0432\u043e\u0434\u043e\u0439</li><li>\u0410\u043b\u0433\u043e\u0440\u0438\u0442\u043c \u0434\u0435\u043a\u043e\u043c\u043f\u0440\u0435\u0441\u0441\u0438\u0438 (B\u00fchlmann ZHL-16 \u2014 \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442)</li><li>\u041f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0430 Nitrox \u2014 \u043f\u0440\u0438\u0433\u043e\u0434\u0438\u0442\u0441\u044f \u043f\u043e\u0447\u0442\u0438 \u0441\u0440\u0430\u0437\u0443</li><li>\u0421\u043c\u0435\u043d\u043d\u0430\u044f \u0431\u0430\u0442\u0430\u0440\u0435\u044f \u0438\u043b\u0438 \u0443\u0434\u043e\u0431\u043d\u0430\u044f \u0437\u0430\u0440\u044f\u0434\u043a\u0430</li></ul><h2>\u041d\u0430 \u0447\u0451\u043c \u043d\u0435 \u0441\u0442\u043e\u0438\u0442 \u0437\u0430\u0446\u0438\u043a\u043b\u0438\u0432\u0430\u0442\u044c\u0441\u044f</h2><p>\u0412\u043e\u0437\u0434\u0443\u0448\u043d\u0430\u044f \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f, \u0446\u0432\u0435\u0442\u043d\u043e\u0439 AMOLED \u0438 \u043f\u0440\u0438\u0432\u044f\u0437\u043a\u0430 \u043a \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0443 \u2014 \u043f\u0440\u0438\u044f\u0442\u043d\u043e, \u043d\u043e \u043d\u0435 \u043a\u0440\u0438\u0442\u0438\u0447\u043d\u043e \u0434\u043b\u044f \u043f\u0435\u0440\u0432\u044b\u0445 \u0441\u043e\u0442\u0435\u043d \u043f\u043e\u0433\u0440\u0443\u0436\u0435\u043d\u0438\u0439. \u041b\u0443\u0447\u0448\u0435 \u0432\u043b\u043e\u0436\u0438\u0442\u044c \u0440\u0430\u0437\u043d\u0438\u0446\u0443 \u0432 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0435.</p><blockquote>\u041b\u0443\u0447\u0448\u0438\u0439 \u043a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440 \u2014 \u0442\u043e\u0442, \u0447\u044c\u0438 \u043f\u043e\u043a\u0430\u0437\u0430\u043d\u0438\u044f \u0432\u044b \u043f\u043e\u043d\u0438\u043c\u0430\u0435\u0442\u0435 \u043d\u0435 \u0437\u0430\u0434\u0443\u043c\u044b\u0432\u0430\u044f\u0441\u044c.</blockquote>'},
+  ];
+
+  /* ---------- RENDER ---------- */
+  function courseCard(c){
+    return `<div class="course ${c.feat?'feat':''}">${c.feat?'<span class="tag">ХИТ</span>':''}
+      <span class="lvl">${c.lvl}</span><h3>${c.name}</h3>
+      <div class="price">${c.price} <small>${c.unit}</small></div>
+      <ul>${c.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+      <button class="btn ${c.feat?'btn-primary':'btn-ghost'}" onclick="go('book')">Записаться</button></div>`;
+  }
+  // courses section removed — no DOM targets needed
+
+  document.getElementById('spot-list').innerHTML=spots.map((s,i)=>
+    `<div class="spot ${i===0?'active':''}" data-i="${i}" onclick="openSpot(${i})">
+      <h4>${s.t}</h4><div class="meta"><span>Глубина <b>${s.depth}</b></span><span>Уровень <b>${s.level}</b></span><span>Видимость <b>${s.vis}</b></span></div></div>`).join('');
+
+  document.getElementById('blog-list').innerHTML=posts.map((p,i)=>
+    `<article class="post" onclick="openArticle(${i})"><div class="cover ${p.ph}">${p.emoji}</div>
+      <div class="body"><span class="cat">${p.cat}</span><h3>${p.title}</h3><p>${p.excerpt}</p>
+      <span class="date">${p.date} · ${p.read}</span></div></article>`).join('');
+
+  /* ---------- REVIEWS ---------- */
+  const reviews=[
+    {name:'Антон Р.',role:'Читатель блога · Advanced OWD',text:'Нашёл блог когда искал инфу по Blue Hole перед поездкой. Статья про наркоз реально помогла — пошёл на 32 метра уже зная что ожидать. Подписан, читаю каждый пост.'},
+    {name:'Маша К.',role:'Новичок в дайвинге',text:'Страх глубины у меня был серьёзный. Прочитала статью про панику — первый раз увидела объяснение что происходит с телом, не просто «не бойся». После этого легче пошло.'},
+    {name:'Дима П.',role:'Rescue Diver · бади по Египту',text:'Ныряли вместе в Шарме несколько дней. Паша спокойный, внимательный напарник — следит за группой, не торопит. Разбор погружений после — отдельное удовольствие.'},
+    {name:'Лена В.',role:'OWD · ищет бади',text:'Нашла через страницу бади. Списались, оказались в Дахабе в одно время. Отличный способ не нырять с незнакомцами с дайв-центра — хоть немного понимаешь с кем идёшь.'},
+  ];
+
+  /* ────────── LOGBOOK DATA ────────── */
+  const dives=[
+    {n:41,place:'Рас-Мухаммад, риф Акула',loc:'Шарм-эль-Шейх, Египет',date:'28 мая 2026',
+     depth:'24 м',time:'48 мин',vis:'25 м',note:'Первый раз видел леопардовую мурену в расщелине у Акульего рифа. Течение сильное — держались за стену.'},
+    {n:40,place:'Тистлегорм — кормовой трюм',loc:'Красное море, Египет',date:'26 мая 2026',
+     depth:'30 м',time:'42 мин',vis:'18 м',note:'Третье погружение на Тистлегорм. Наконец зашли в кормовой трюм — мотоциклы BSA в идеальной сохранности.'},
+    {n:39,place:'Тистлегорм — носовая часть',loc:'Красное море, Египет',date:'26 мая 2026',
+     depth:'28 м',time:'38 мин',vis:'20 м',note:'Дневное погружение. Много групп — шумно. Зато свет в трюмах днём совсем другой.'},
+    {n:38,place:'Blue Hole — садло (7 м)',loc:'Дахаб, Египет',date:'19 мая 2026',
+     depth:'18 м',time:'55 мин',vis:'30 м',note:'Остановка на садле — смотрели как фридайверы уходят вниз в арку. Снаряжение не позволяет, но это зрелище.'},
+    {n:37,place:'Blue Hole — вход с берега',loc:'Дахаб, Египет',date:'18 мая 2026',
+     depth:'22 м',time:'52 мин',vis:'28 м',note:'Первое погружение в Blue Hole. Входишь с берега по камням — неудобно, зато без лодок и суеты.'},
+    {n:36,place:'Рас-Умм-Сид, стена',loc:'Шарм-эль-Шейх, Египет',date:'12 мая 2026',
+     depth:'26 м',time:'44 мин',vis:'22 м',note:'Тренировочное погружение на плавучесть перед Дахабом. Инструктор снял видео — смотреть стыдно, но полезно.'},
+    {n:35,place:'Гили Траванган — черепаший риф',loc:'Индонезия',date:'3 апр 2026',
+     depth:'14 м',time:'60 мин',vis:'20 м',note:'Три черепахи за одно погружение. Одна подплыла вплотную — мы оба зависли и смотрели друг на друга.'},
+  ];
+
+  /* ────────── INCIDENTS DATA ────────── */
+  const incidents=[
+    {tag:'Разбор',title:'Почему дайвер не всплыл: история с утяжелением',
+     meta:'Ред Си, 2023 · Источник: DAN Accident Report',
+     summary:'Дайвер с избыточным весом на поясе не смог контролировать плавучесть после потери BCD. Разбираем как правильно проверять снаряжение и зачем нужен быстросъём.',
+     ph:'ph-d', cat:'Разбор'},
+    {tag:'Разбор',title:'Паника на глубине: что происходит с мозгом и как не дать ей захватить',
+     meta:'Сборная статистика PADI · DAN Annual Report',
+     summary:'Большинство инцидентов начинаются не с отказа оборудования, а с паники. Разбираем физиологию, триггеры и конкретные приёмы остановки реакции.',
+     ph:'ph-g', cat:'Разбор'},
+    {tag:'Разбор',title:'Азотный наркоз: когда глубина «бьёт» в голову',
+     meta:'Personal accounts · Diver Magazine',
+     summary:'На 30+ метрах азот начинает вести себя как лёгкий анестетик. Разбираю реальные истории когда это заканчивалось хорошо — и когда нет.',
+     ph:'ph-c', cat:'Разбор'},
+  ];
+
+  /* ────────── ХЕЛПЕР: экранирование пользовательских данных ────────── */
+  function esc(s){
+    return String(s==null?'':s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+  // Telegram-хэндл: только латиница/цифры/подчёркивание, 5–32 символа
+  function cleanTgHandle(tg){
+    if(!tg) return '';
+    const h=String(tg).replace(/^@+/,'').trim();
+    return /^[A-Za-z0-9_]{5,32}$/.test(h)?h:'';
+  }
+
+  document.getElementById('reviews').innerHTML=reviews.map(r=>
+    `<div class="review"><div class="stars">★★★★★</div><p>«${r.text}»</p>
+      <div class="who"><div class="av">${r.name[0]}</div><div><b>${r.name}</b><span>${r.role}</span></div></div></div>`).join('');
+
+  /* ---------- HISTORY ROUTING ---------- */
+  // База пути: на GitHub Pages это /<repo>/, иначе корень (workers.dev / локально).
+  const BASE = location.hostname.endsWith('github.io')
+    ? '/' + (location.pathname.split('/').filter(Boolean)[0] || '') + '/'
+    : '/';
+  const DEFAULT_TITLE = document.title;
+  const PAGE_TITLES = {home:'Главная',logbook:'Логбук',blog:'Блог',spots:'Споты',gallery:'Галерея',about:'Обо мне',buddy:'Найти бади',book:'Контакт'};
+  const absUrl = (path)=>location.origin + path;
+
+  function setMeta(title, url){
+    document.title = title;
+    const c=document.querySelector('link[rel="canonical"]'); if(c) c.href=url;
+    const o=document.querySelector('meta[property="og:url"]'); if(o) o.setAttribute('content',url);
+  }
+
+  // Транслитерация заголовка в URL-slug: «Почему дайвер не всплыл» → pochemu-dayver-ne-vsplyl
+  const TRANSLIT={а:'a',б:'b',в:'v',г:'g',д:'d',е:'e',ё:'e',ж:'zh',з:'z',и:'i',й:'y',к:'k',л:'l',м:'m',н:'n',о:'o',п:'p',р:'r',с:'s',т:'t',у:'u',ф:'f',х:'h',ц:'c',ч:'ch',ш:'sh',щ:'sch',ъ:'',ы:'y',ь:'',э:'e',ю:'yu',я:'ya'};
+  function slugify(s){
+    return (s||'').toLowerCase().split('').map(ch=>TRANSLIT[ch]!==undefined?TRANSLIT[ch]:ch).join('')
+      .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,60);
+  }
+  const findPostBySlug = (slug)=>posts.findIndex(p=>slugify(p.title)===slug);
+  const findSpotBySlug = (slug)=>spots.findIndex(s=>slugify(s.t)===slug);
+
+  // Открыть экран, соответствующий текущему адресу (без записи в историю).
+  function routeFromLocation(){
+    let rel = location.pathname.indexOf(BASE)===0 ? location.pathname.slice(BASE.length) : location.pathname.replace(/^\//,'');
+    rel = decodeURIComponent(rel.replace(/\/+$/,''));
+    const seg = rel.split('/').filter(Boolean);
+    if(seg.length===0) return go('home',{noHistory:true});
+    if(seg[0]==='blog' && seg[1]){ const i=findPostBySlug(seg[1]); return i>=0 ? openArticle(i,{noHistory:true}) : go('blog',{noHistory:true}); }
+    if(seg[0]==='spots' && seg[1]){ const i=findSpotBySlug(seg[1]); return i>=0 ? openSpot(i,{noHistory:true}) : go('spots',{noHistory:true}); }
+    if(PAGE_TITLES[seg[0]]) return go(seg[0],{noHistory:true});
+    return go('home',{noHistory:true});
+  }
+  window.addEventListener('popstate', routeFromLocation);
+
+  /* ---------- БУРГЕР-МЕНЮ (a11y) ---------- */
+  let navReady = false; // не уводить фокус при первой загрузке, только при навигации
+  function toggleNav(btn){
+    const open=document.getElementById('navlinks').classList.toggle('open');
+    btn.setAttribute('aria-expanded', open?'true':'false');
+  }
+  function closeNav(){
+    document.getElementById('navlinks').classList.remove('open');
+    const b=document.querySelector('.burger');
+    if(b) b.setAttribute('aria-expanded','false');
+  }
+
+  /* ---------- ROUTER ---------- */
+  function go(id, opts){
+    opts = opts || {};
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    const pg=document.getElementById('page-'+id);
+    const active=(pg||document.getElementById('page-home'));
+    active.classList.add('active');
+    document.querySelectorAll('.nav-links button[data-nav]').forEach(b=>
+      b.classList.toggle('active',b.dataset.nav===id));
+    closeNav();
+    window.scrollTo({top:0,behavior:'instant'});
+    runReveal();
+    // Перевод фокуса на заголовок экрана — чтобы скринридер объявил новую страницу.
+    if(navReady){
+      const ft=active.querySelector('h1, h2') || active;
+      ft.setAttribute('tabindex','-1');
+      ft.focus({preventScroll:true});
+    }
+    if(id==='home'){renderProgress('progress-block');renderLogbookPreview();renderIncidentsPreview();loadStats();}
+    if(id==='logbook'){renderProgress('progress-logbook');renderLogbookFull();}
+    if(id==='buddy'){renderBuddyList();}
+    if(!opts.noHistory){
+      const url = (id==='home') ? BASE : BASE + id;
+      history.pushState({page:id}, '', url);
+      setMeta(id==='home' ? DEFAULT_TITLE : (PAGE_TITLES[id] ? PAGE_TITLES[id]+' — Глубже' : DEFAULT_TITLE), absUrl(url));
+    }
+  }
+  function openSpot(i, opts){
+    opts = opts || {};
+    const s=spots[i];
+    document.getElementById('sd-title').textContent=s.t;
+    document.getElementById('sd-sub').textContent=s.sub;
+    const hero=document.getElementById('sd-hero');
+    if(s.img){
+      hero.className='';hero.innerHTML='<img class="spot-hero-img" src="'+s.img+'" alt="'+s.t+'" loading="lazy"><p class="spot-attr">'+s.attr+'</p>';
+    }else{
+      hero.className='article-hero '+s.ph;hero.textContent=s.emoji;
+    }
+    document.getElementById('sd-cards').innerHTML=
+      [['Глубина',s.depth],['Уровень',s.level],['Темп. воды',s.temp],['Видимость',s.vis]]
+      .map(([k,v])=>`<div class="info-card"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
+    document.getElementById('sd-body').innerHTML=s.body;
+    go('spot-detail',{noHistory:true});
+    const url=BASE+'spots/'+slugify(s.t);
+    if(!opts.noHistory) history.pushState({page:'spot-detail',i}, '', url);
+    setMeta(s.t+' — Глубже', absUrl(url));
+  }
+  function openArticle(i, opts){
+    opts = opts || {};
+    const p=posts[i];
+    document.getElementById('art-title').textContent=p.title;
+    document.getElementById('art-meta').innerHTML=`<span>${p.cat}</span><span><b>${p.date}</b></span><span>⏱ ${p.read}</span>`;
+    const hero=document.getElementById('art-hero');
+    hero.className='article-hero '+p.ph;hero.textContent=p.emoji;
+    document.getElementById('art-body').innerHTML=p.body;
+    go('article',{noHistory:true});
+    const url=BASE+'blog/'+slugify(p.title);
+    if(!opts.noHistory) history.pushState({page:'article',i}, '', url);
+    setMeta(p.title+' — Глубже', absUrl(url));
+  }
+
+  /* ---------- BUBBLES ---------- */
+  const bc=document.getElementById('bubbles');
+  for(let i=0;i<22;i++){const b=document.createElement('i');const s=4+Math.random()*22;
+    b.style.width=b.style.height=s+'px';b.style.left=Math.random()*100+'%';
+    b.style.animationDuration=(7+Math.random()*12)+'s';b.style.animationDelay=(Math.random()*10)+'s';bc.appendChild(b);}
+
+  /* ---------- REVEAL ---------- */
+  let io;
+  function runReveal(){
+    if(io)io.disconnect();
+    io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
+    document.querySelectorAll('.page.active .reveal').forEach(el=>{el.classList.remove('in');io.observe(el);});
+  }
+  runReveal();
+
+  /* ---------- SPOT PIN SYNC (map page) ---------- */
+  document.querySelectorAll('.pin').forEach(p=>p.addEventListener('click',()=>openSpot(+p.dataset.i)));
+  // Рендеры главной выполняет go('home') через routeFromLocation при старте.
+
+
+  /* ---------- FORM ---------- */
+
+  function sharesite(){
+    if(navigator.share){
+      navigator.share({title:'Глубже — Павел Смотров',text:'Дайвмастер PADI, обучение с нуля. Красное море и Индонезия.',url:window.location.href});
+    } else {
+      navigator.clipboard.writeText(window.location.href).then(()=>alert('Ссылка скопирована!'));
+    }
+  }
+
+  /* ────────── RENDER: PROGRESS ────────── */
+  function renderProgress(containerId){
+    const total=100, current=41, rescue=true, adv=true, owd=true;
+    const pct=Math.round(current/total*100);
+    document.getElementById(containerId).innerHTML=`
+      <div class="progress-wrap reveal">
+        <div class="progress-title">
+          <h3>Путь к Divemaster PADI</h3>
+          <span>${current} из ${total}+ погружений</span>
+        </div>
+        <div class="prog-bar"><div class="prog-fill" style="width:${pct}%"></div></div>
+        <div class="prog-milestones">
+          <span><b>0</b></span>
+          <span>OWD <b>✓</b></span>
+          <span>Advanced <b>✓</b></span>
+          <span>Rescue <b>✓</b></span>
+          <span><b>DM ← цель</b></span>
+        </div>
+        <div class="cert-row">
+          <div class="cert"><div class="c-check">✅</div><div class="c-name">Open Water Diver</div><div class="c-date">PADI</div></div>
+          <div class="cert"><div class="c-check">✅</div><div class="c-name">Advanced OWD</div><div class="c-date">PADI</div></div>
+          <div class="cert"><div class="c-check">✅</div><div class="c-name">Rescue Diver</div><div class="c-date">PADI</div></div>
+          <div class="cert"><div class="c-check">✅</div><div class="c-name">EFR</div><div class="c-date">Emergency First Response</div></div>
+          <div class="cert"><div class="c-check">🎯</div><div class="c-name">Divemaster</div><div class="c-date">в процессе</div></div>
+        </div>
+      </div>`;
+    runReveal();
+  }
+
+  /* ────────── RENDER: LOGBOOK PREVIEW (home) ────────── */
+  function makeLogCard(f){
+    const num=f.DiveNumber||'';
+    const date=f.Date?f.Date.split('-').reverse().join('.'):'?';
+    return '<div class="log-card reveal">'
+      +'<div class="log-num">#'+num+'</div>'
+      +'<div class="log-place">'+(f.Place||'')+'</div>'
+      +'<div class="log-date">'+date+' \u00b7 '+(f.Location||'')+'</div>'
+      +'<div class="log-stats">'
+      +(f.Depth?'<div class="log-stat">\u2b07\ufe0f <b>'+f.Depth+'</b></div>':'')
+      +(f.Duration?'<div class="log-stat">\u23f1 <b>'+f.Duration+'</b></div>':'')
+      +(f.Visibility?'<div class="log-stat">\ud83d\udc41 <b>'+f.Visibility+'</b></div>':'')
+      +'</div>'
+      +(f.Notes?'<div class="log-note">'+f.Notes+'</div>':'')
+      +'</div>';
+  }
+  async function renderLogbookPreview(){
+    const el=document.getElementById('logbook-preview');
+    if(!el) return;
+    try{
+      const r=await fetch('https://glubzhe-buddy.bercutishka.workers.dev?action=logbook&limit=3');
+      const data=await r.json();
+      if(!data.records||!data.records.length){el.innerHTML='';return;}
+      el.innerHTML='<div class="logbook-grid">'+data.records.map(function(rec){return makeLogCard(rec.fields);}).join('')+'</div>';
+      runReveal();
+    }catch(e){}
+  }
+
+  /* ────────── RENDER: LOGBOOK FULL ────────── */
+  async function renderLogbookFull(){
+    const el=document.getElementById('logbook-full');
+    if(!el) return;
+    el.innerHTML='<div class="buddy-loading">\u0417\u0430\u0433\u0440\u0443\u0436\u0430\u044e \u043b\u043e\u0433\u0431\u0443\u043a...</div>';
+    try{
+      const r=await fetch('https://glubzhe-buddy.bercutishka.workers.dev?action=logbook');
+      const data=await r.json();
+      if(!data.records||!data.records.length){
+        el.innerHTML='<div class="buddy-empty">\u041f\u043e\u043a\u0430 \u043d\u0435\u0442 \u0437\u0430\u043f\u0438\u0441\u0435\u0439.</div>';return;
+      }
+      el.innerHTML='<div class="logbook-grid">'+data.records.map(function(rec){return makeLogCard(rec.fields);}).join('')+'</div>';
+      runReveal();
+    }catch(e){
+      el.innerHTML='<div class="buddy-empty">\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c.</div>';
+    }
+  }
+
+  /* ────────── RENDER: INCIDENTS PREVIEW ────────── */
+  function renderIncidentsPreview(){
+    const el=document.getElementById('incidents-preview');
+    if(!el) return;
+    el.innerHTML=incidents.map(inc=>`
+      <div class="incident-card reveal" onclick="openArticleByTitle('${inc.title.replace(/'/g,"\\'")}')">
+        <div class="inc-tag">${inc.tag}</div>
+        <div class="inc-title">${inc.title}</div>
+        <div class="inc-meta">${inc.meta}</div>
+        <div class="inc-summary">${inc.summary}</div>
+      </div>`).join('');
+    runReveal();
+  }
+
+  /* ────────── RENDER: BUDDY LIST ────────── */
+  async function renderBuddyList(){
+    const el=document.getElementById('buddy-list');
+    if(!el) return;
+    el.innerHTML='<div class="buddy-loading">Загружаю список...</div>';
+    try{
+      const r=await fetch('https://glubzhe-buddy.bercutishka.workers.dev?action=active');
+      const data=await r.json();
+      if(!data.records||data.records.length===0){
+        el.innerHTML='<div class="buddy-empty">Пока никого нет — будь первым 👇</div>';
+      } else {
+        el.innerHTML='<div class="buddy-grid">'+data.records.map(function(rec){
+          const f=rec.fields;
+          const init=esc((f.Name||'?')[0].toUpperCase());
+          const handle=cleanTgHandle(f.Telegram);
+          const tgUrl=handle?'https://t.me/'+handle:'';
+          return '<div class="buddy-card reveal">'
+            +'<div class="b-avatar">'+init+'</div>'
+            +'<div class="b-name">'+esc(f.Name)+'</div>'
+            +'<div class="b-level">'+esc(f.Level)+'</div>'
+            +'<div class="b-tags"><span class="b-tag">'+esc(f.Location||'—')+'</span></div>'
+            +'<div class="b-bio">'+esc(f.About)+'</div>'
+            +(tgUrl?'<a class="btn-buddy-contact" href="'+tgUrl+'" target="_blank" rel="noopener">Написать в Telegram</a>':'')
+            +'</div>';
+        }).join('')+'</div>';
+      }
+      runReveal();
+    }catch(e){
+      el.innerHTML='<div class="buddy-empty">Не удалось загрузить список.</div>';
+    }
+    // Загружаем архив пар
+    renderPairs();
+  }
+
+  async function renderPairs(){
+    const el=document.getElementById('pairs-list');
+    if(!el) return;
+    try{
+      const r=await fetch('https://glubzhe-buddy.bercutishka.workers.dev?action=archive');
+      const data=await r.json();
+      if(!data.records||data.records.length===0) return;
+      el.innerHTML=data.records.map(function(rec){
+        const f=rec.fields;
+        const buddy=f.BuddyName?esc(f.Name)+' + '+esc(f.BuddyName):esc(f.Name);
+        return '<div class="pair-card">'
+          +'<div class="pair-names">'+buddy+'</div>'
+          +'<div class="pair-meta">'+esc(f.Location)+(f.TripDate?' · '+esc(f.TripDate):'')+'</div>'
+          +'<div class="pair-story">«'+esc(f.TripStory)+'»</div>'
+          +'</div>';
+      }).join('');
+    }catch(e){}
+  }
+
+  /* ────────── BUDDY FORM ────────── */
+  async function submitBuddy(){
+    const n=document.getElementById('b-name').value.trim();
+    const tg=document.getElementById('b-tg').value.trim();
+    const lvl=document.getElementById('b-level').value;
+    const loc=document.getElementById('b-loc').value.trim();
+    const bio=document.getElementById('b-bio').value.trim();
+    if(document.getElementById('b-hp').value){return;} // honeypot: бот заполнил скрытое поле
+    if(!n||!tg){alert('Укажи имя и Telegram');return;}
+    const handle=cleanTgHandle(tg);
+    if(!handle){alert('Telegram укажи в формате @ник (латиница, цифры, _, от 5 символов)');return;}
+    const btn=document.querySelector('#page-buddy .btn-primary');
+    btn.disabled=true;btn.textContent='Отправляю...';
+    try{
+      const r=await fetch('https://glubzhe-buddy.bercutishka.workers.dev',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          Name:n,
+          Telegram:'@'+handle,
+          Level:lvl,
+          Location:loc,
+          About:bio
+        })
+      });
+      const data=await r.json();
+      if(r.ok&&data.id){
+        document.getElementById('buddy-msg').style.display='block';
+        btn.textContent='Заявка отправлена ✓';
+        document.getElementById('b-name').value='';
+        document.getElementById('b-tg').value='';
+        document.getElementById('b-bio').value='';
+      }else{
+        throw new Error(data.error?data.error.message:'Ошибка');
+      }
+    }catch(e){
+      alert('Не удалось отправить: '+e.message);
+      btn.disabled=false;btn.textContent='Добавить меня в список';
+    }
+  }
+
+  /* ────────── openArticleByTitle helper ────────── */
+  function openArticleByTitle(title){
+    const idx=posts.findIndex(p=>p.title===title);
+    if(idx>=0) openArticle(idx);
+  }
+
+
+  /* ────────── LIVE STATS FROM AIRTABLE ────────── */
+  async function loadStats(){
+    try{
+      const r=await fetch('https://glubzhe-buddy.bercutishka.workers.dev?action=stats');
+      const data=await r.json();
+      const diveCount=data.dive_count||'41';
+      const goal=parseInt(data.dive_goal||'100');
+      const current=parseInt(diveCount);
+      const el=document.getElementById('dive-count');
+      if(el) el.textContent=diveCount;
+      const fill=document.querySelector('.prog-fill');
+      if(fill) fill.style.width=Math.round(current/goal*100)+'%';
+      const pt=document.querySelector('.progress-title span');
+      if(pt) pt.textContent=diveCount+' из '+goal+'+ погружений';
+    }catch(e){}
+  }
+
+  /* ────────── BLOG FILTERS ────────── */
+  let activeBlogFilter='Все';
+  function renderBlogFilters(){
+    const cats=['Все',...new Set(posts.map(function(p){return p.cat;}))];
+    const el=document.getElementById('blog-filters');
+    if(!el) return;
+    el.innerHTML=cats.map(function(c){
+      const cls='blog-filter'+(c===activeBlogFilter?' active':'');
+      return '<button class="'+cls+'" onclick="renderBlog(this.dataset.cat)" data-cat="'+c+'">'+c+'</button>';
+    }).join('');
+  }
+  function renderBlog(filter){
+    activeBlogFilter=filter||'Все';
+    renderBlogFilters();
+    const filtered=filter==='Все'?posts:posts.filter(function(p){return p.cat===filter;});
+    const el=document.getElementById('blog-list');
+    if(el) el.innerHTML=filtered.map(postCard).join('');
+    runReveal();
+  }
+
+  async function submitForm(){
+    const n=document.getElementById('f-name').value.trim();
+    const c=document.getElementById('f-contact').value.trim();
+    const type=document.getElementById('f-type').value;
+    const lvl=document.getElementById('f-lvl').value;
+    const msg_text=document.getElementById('f-msg').value.trim();
+    const msgEl=document.getElementById('formMsg');
+    if(document.getElementById('f-hp').value){return;} // honeypot: бот заполнил скрытое поле
+    if(!n||!c){alert('Заполни имя и контакт');return;}
+    // контакт — либо email, либо telegram-хэндл (@ник)
+    const isEmail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c);
+    const isTg=!!cleanTgHandle(c);
+    if(!isEmail&&!isTg){alert('Укажи корректный email или Telegram (@ник)');return;}
+    const btn=document.querySelector('#page-book .btn-primary');
+    btn.disabled=true;btn.textContent='Отправляю...';
+    try{
+      const r=await fetch('https://formspree.io/f/xykagdvo',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({name:n,contact:c,topic:type,level:lvl,message:msg_text,_subject:'Глубже: '+type+' от '+n})
+      });
+      const data=await r.json();
+      if(r.ok){
+        msgEl.style.display='block';
+        msgEl.textContent='Отправлено! Отвечу в течение дня.';
+        btn.textContent='Отправлено';
+        document.getElementById('f-name').value='';
+        document.getElementById('f-contact').value='';
+        document.getElementById('f-msg').value='';
+      }else{
+        throw new Error(data.errors?data.errors.map(function(x){return x.message;}).join(', '):'Ошибка');
+      }
+    }catch(e){
+      alert('Не удалось отправить. Напиши: bercutishka@gmail.com');
+      btn.disabled=false;btn.textContent='Отправить';
+    }
+  }
+
+  /* ---------- CHATBOT (офлайн, по базе знаний сайта) ---------- */
+  // Бот работает без сервера: распознаёт тему вопроса по ключевым словам
+  // и отвечает, опираясь на данные courses/spots/posts. Так он работает
+  // всегда — и в превью, и на любом хостинге.
+  let chatHistory=[];
+  let chatStarted=false;
+  const suggestions=['Сколько у тебя погружений?','Расскажи про Blue Hole','Как найти бади?','Что такое азотный наркоз?','Как написать Павлу?'];
+
+  function toggleChat(){
+    const p=document.getElementById('chat-panel');
+    const open=p.classList.toggle('open');
+    p.setAttribute('aria-hidden', open?'false':'true');
+    const fab=document.getElementById('chat-fab');
+    fab.setAttribute('aria-expanded', open?'true':'false');
+    fab.setAttribute('aria-label', open?'Закрыть чат':'Открыть чат');
+    if(open && !chatStarted){
+      chatStarted=true;
+      addMsg('bot','Привет! Я помощник блога «Глубже» — отвечу про логбук, споты, поиск бади и разборы. Спрашивай!');
+      renderSugg();
+    }
+    if(open) document.getElementById('chat-input').focus();
+  }
+  function renderSugg(){
+    document.getElementById('chat-sugg').innerHTML=suggestions.map(s=>`<button onclick="quickAsk(this.textContent)">${s}</button>`).join('');
+  }
+  function clearSugg(){document.getElementById('chat-sugg').innerHTML='';}
+  function quickAsk(t){document.getElementById('chat-input').value=t;sendChat();}
+
+  function addMsg(role,text){
+    const body=document.getElementById('chat-body');
+    const d=document.createElement('div');
+    d.className='msg '+(role==='user'?'user':'bot');
+    // поддержка простого переноса строк
+    d.innerHTML=text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\n/g,'<br>');
+    body.appendChild(d);
+    body.scrollTop=body.scrollHeight;
+    return d;
+  }
+
+  function norm(s){return s.toLowerCase().replace(/[ё]/g,'е');}
+  function has(t, ...kw){return kw.some(k=>t.includes(k));}
+
+  // Формирует ответ по ключевым словам, опираясь на данные сайта
+  function botReply(q){
+    const t=norm(q);
+
+    // приветствие
+    if(has(t,'привет','здравств','добрый','хай','hello') && t.length<20)
+      return 'Привет! Я помогу найти инфо о блоге, спотах, логбуке или поиске бади. Спрашивай 🤿';
+
+    // про Павла / кто ты
+    if(has(t,'кто ты','кто такой','о себе','о тебе','о павле','павел','кто автор'))
+      return 'Меня зовут Павел Смотров. У меня 41 погружение, сертификат Rescue Diver PADI, иду к Divemaster. Этот блог — открытый дневник пути: логбук, разборы аварий, заметки с погружений.';
+
+    // сколько погружений / прогресс
+    if(has(t,'сколько','погружен','счётчик','логбук','прогресс','сколько нырял','divemaster','диввмастер','дм'))
+      return 'Сейчас у меня 41 погружение. Сертификаты: OWD → Advanced → Rescue Diver. Активно учусь на Divemaster PADI. Весь логбук с заметками по каждому погружению — на странице «Логбук».';
+
+    // бади
+    if(has(t,'бади','buddy','напарник','партнёр','вместе нырять','найти','искать'))
+      return 'На странице «Найти бади» есть список людей которые ищут напарника для погружений. Можешь посмотреть кто есть сейчас — или подать заявку и я добавлю тебя в список. Связываю вручную, никаких алгоритмов.';
+
+    // разборы аварий
+    if(has(t,'авари','инцидент','разбор','случай','погиб','смерть','опасн','dcs','декомпресс','паника','наркоз'))
+      return 'В блоге есть раздел «Разборы» — реальные аварийные случаи из открытых источников (DAN, PADI, Diver Magazine). Разбираю что пошло не так и почему. Посмотри в блоге категорию «Разбор».';
+
+    // споты
+    for(const s of spots){
+      const key=norm(s.t).split(/[ ·]/)[0];
+      if(t.includes(key)
+        ||(/(blue hole|голубая дыра|бл хол)/.test(t)&&/blue/i.test(s.t))
+        ||(/(thistlegorm|тисл|корабль|рэк|wreck)/.test(t)&&/thistle/i.test(s.t))
+        ||(/(гили|индонез|черепах)/.test(t)&&/гили/i.test(s.t))
+        ||(/(ras|рас мох|заповедник|шарм)/.test(t)&&/ras/i.test(s.t))){
+        return s.t+'. '+s.sub+'\n\nГлубина: '+s.depth+'\nУровень: '+s.level+'\nВидимость: '+s.vis+'\n\nПодробнее — на странице «Споты».';
+      }
+    }
+    if(has(t,'спот','место','куда','дайв-сайт','куда поехать','египет','индонезия','красное море','дахаб')){
+      let r='Споты которые я нырял или планирую:\n';
+      spots.forEach(s=>{r+='• '+s.t+' — '+s.sub+'\n';});
+      r+='\nПодробнее про каждый — на странице «Споты».';
+      return r;
+    }
+
+    // снаряжение
+    if(has(t,'снаряж','компьютер','маска','ласты','костюм','bcd','регулятор','найтрокс','nitrox','что взять','что купить')){
+      if(has(t,'найтрокс','nitrox'))
+        return 'Nitrox — воздух с повышенным содержанием кислорода. Дольше донное время, меньше усталость. Советую освоить сразу после OWD — на спотах типа Thistlegorm разница заметна.';
+      if(has(t,'компьютер'))
+        return 'Дайв-компьютер: смотри на алгоритм Bühlmann ZHL-16, поддержку Nitrox и читаемый экран под водой. Для старта Suunto Zoop / Mares Puck Pro — проверенный выбор. Есть статья в блоге про выбор снаряжения.';
+      return 'На первые погружения снаряжение обычно предоставляет дайв-центр. Своё стоит начинать с маски — она должна сидеть плотно. Про гидрокостюм есть отдельная статья в блоге.';
+    }
+
+    // безопасность / здоровье
+    if(has(t,'безопас','опасно','страшно','азот','декомпресс','кессон','здоровье','боюсь','страх','dcs','нарк'))
+      return 'Безопасность — главная тема блога. Есть разборы про панику на глубине, азотный наркоз и декомпрессию. Коротко: не задерживай дыхание, всплывай медленно, делай остановку безопасности. Подробнее — в блоге, раздел «Разборы».';
+
+    // плавание / новичок
+    if(has(t,'плавать','не умею','новичок','первый раз','с нуля','начать нырять'))
+      return 'Для первого погружения в бассейне уметь плавать необязательно — всё под контролем инструктора. Для OWD нужно проплыть 200 м без учёта времени. Если только начинаешь — почитай статью про контроль плавучести в блоге.';
+
+    // написать / связаться
+    if(has(t,'написать','связаться','контакт','написать павлу','как попасть','telegram','телеграм','почта'))
+      return 'Написать мне можно через форму на странице «Контакт» — или в Telegram. Отвечаю обычно в течение дня.';
+
+    // блог / статьи
+    if(has(t,'блог','статья','почитать','написал','что есть')){
+      let r='В блоге:\n';
+      posts.slice(0,5).forEach(p=>{r+='• ('+p.cat+') '+p.title+'\n';});
+      r+='...и ещё '+(posts.length-5)+' статей. Открой раздел «Блог» чтобы увидеть всё.';
+      return r;
+    }
+
+    // курсы (объясняем что не продаём)
+    if(has(t,'курс','обучен','сертификат','padi','учить','записаться','try dive','open water','advanced','rescue'))
+      return 'Я пока не провожу курсы — сам учусь, иду к Divemaster. Если ищешь обучение, могу посоветовать на что обратить внимание при выборе инструктора. Или почитай мой опыт прохождения Rescue в блоге.';
+
+    // цены
+    if(has(t,'цена','стоит','сколько стоит','прайс','деньги','рубли'))
+      return 'Я не продаю курсы и не беру деньги за погружения. Блог бесплатный, бади-матчинг бесплатный. Если ищешь ценник на обучение — нужно смотреть дайв-центры в твоём регионе.';
+
+    // спасибо / пока
+    if(has(t,'спасибо','благодар','пока','до свидан','ок','окей'))
+      return 'Всегда! Если будут вопросы — пиши. Хороших погружений 🌊';
+
+    return 'Хм, не совсем понял вопрос. Я лучше всего помогаю с: логбук и прогресс, споты (Blue Hole, Thistlegorm, Гили...), поиск бади, разборы аварий, снаряжение. Или напиши Павлу напрямую через «Контакт».';
+  }
+
+
+  function sendChat(){
+    const input=document.getElementById('chat-input');
+    const text=input.value.trim();
+    if(!text)return;
+    clearSugg();
+    addMsg('user',text);
+    input.value='';
+    chatHistory.push({role:'user',content:text});
+    const typing=addMsg('bot','печатает…');
+    typing.classList.add('typing');
+    // небольшая задержка для естественности
+    setTimeout(()=>{
+      typing.remove();
+      const reply=botReply(text);
+      addMsg('bot',reply);
+      chatHistory.push({role:'assistant',content:reply});
+      // снова показать пару подсказок
+      if(chatHistory.length<8) renderSugg();
+    }, 450);
+  }
+
+  /* ---------- ROUTING INIT ---------- */
+  (function(){
+    // Восстановление адреса после редиректа из 404.html (deep-link на GitHub Pages).
+    try{
+      const saved = sessionStorage.getItem('spa-path');
+      if(saved){ sessionStorage.removeItem('spa-path'); history.replaceState(null,'',saved); }
+    }catch(e){}
+    // Открыть экран по текущему URL и зафиксировать состояние стартовой записи истории.
+    routeFromLocation();
+    try{ history.replaceState(history.state||{page:'home'}, '', location.href); }catch(e){}
+    navReady = true; // дальше — пользовательская навигация: переводим фокус
+  })();
+</script>
+
+<!-- ============ LOGBOOK ============ -->
+<div class="page" id="page-logbook">
+  <div class="band"><div class="rays"></div><div class="band-inner">
+    <div class="crumb" onclick="go('home')">← На главную</div>
+    <h1>Мой логбук</h1>
+    <p>Открытый дневник погружений. Каждая запись — место, глубина, время, заметки.</p>
+  </div></div>
+  <section><div class="narrow">
+    <div id="progress-logbook"></div>
+
+<div class="dive-map-wrap reveal">
+      <h3>География погружений</h3>
+      <p class="map-sub">Где я нырял и сколько раз.</p>
+      <div class="geo-grid">
+        <div class="geo-card geo-redsea">
+          <div class="geo-flag">🇪🇬</div>
+          <div class="geo-name">Красное море</div>
+          <div class="geo-places">Шарм-эль-Шейх · Дахаб · Тистлегорм · Рас-Мухаммад</div>
+          <div class="geo-count">34 <span>погружения</span></div>
+        </div>
+        <div class="geo-card geo-indo">
+          <div class="geo-flag">🇮🇩</div>
+          <div class="geo-name">Индонезия</div>
+          <div class="geo-places">Гили Траванган · черепаший риф</div>
+          <div class="geo-count">7 <span>погружений</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:40px" id="logbook-full"></div>
+  </div></section>
+</div>
+
+<!-- ============ BUDDY ============ -->
+<div class="page" id="page-buddy">
+  <div class="band"><div class="rays"></div><div class="band-inner">
+    <div class="crumb" onclick="go('home')">← На главную</div>
+    <h1>Найти бади</h1>
+    <p>Ищу партнёров для совместных погружений. Подбираемся по уровню, локации и датам.</p>
+  </div></div>
+  <section><div class="narrow">
+    <div class="buddy-intro">
+      <p>Нырять в одиночку — против правил. Нырять с рандомом — лотерея. Здесь — люди, которые уже написали что ищут бади. Я связываю вас вручную — никакого алгоритма, только живой контакт.</p>
+    </div>
+    <h2 style="font-size:1.8rem;margin-bottom:24px">Кто ищет бади сейчас</h2>
+    <div class="buddy-grid" id="buddy-list"></div>
+    <div class="buddy-form-wrap">
+      <h3>Хочешь попасть в список?</h3>
+      <p>Заполни короткую анкету — добавлю тебя в течение дня. Никаких регистраций.</p>
+      <div class="form-grid">
+        <div class="field"><label>Имя</label><input id="b-name" type="text" placeholder="Как тебя зовут"></div>
+        <div class="field"><label>Telegram</label><input id="b-tg" type="text" placeholder="@ник"></div>
+        <div class="field"><label>Уровень</label>
+          <select id="b-level">
+            <option>OWD</option><option>Advanced OWD</option><option>Rescue Diver</option>
+            <option>Divemaster</option><option>Инструктор</option>
+          </select></div>
+        <div class="field"><label>Локация / куда хочу</label><input id="b-loc" type="text" placeholder="Египет, Индонезия…"></div>
+        <div class="field full"><label>Пару слов о себе</label>
+          <textarea id="b-bio" placeholder="Сколько погружений, когда планируешь, что ищешь в партнёре…"></textarea></div>
+      </div>
+      <input id="b-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button class="btn btn-primary" style="margin-top:20px;width:100%" onclick="submitBuddy()">Добавить меня в список</button>
+      <div class="form-msg" id="buddy-msg">Заявка отправлена! Проверю и добавлю в список в течение дня 🤙</div>
+    </div>
+  </div></section>
+</div>
+
+</body>
+</html>
