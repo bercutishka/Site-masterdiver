@@ -559,7 +559,6 @@
   ]
 }
 </script>
-<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </head>
 <body>
 
@@ -831,6 +830,7 @@
           <select id="f-lvl"><option>Начинающий (OWD и ниже)</option><option>Advanced / Rescue</option><option>Divemaster+</option><option>Пока не ныряю</option></select></div>
         <div class="field full"><label>Сообщение</label><textarea id="f-msg" placeholder="Расскажи о себе, своём опыте, что ищешь…"></textarea></div>
       </div>
+      <input id="f-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="btn btn-primary" style="margin-top:24px;width:100%" onclick="submitForm()">Отправить</button>
       <div class="form-msg" id="formMsg"></div>
     </div>
@@ -1002,25 +1002,18 @@
      ph:'ph-c', cat:'Разбор'},
   ];
 
-  /* ────────── BUDDY DATA ────────── */
-  const buddies=[
-    {name:'Антон К.',level:'Advanced OWD · 85 погружений',
-     tags:['Египет','Мальдивы','май–июнь 2026'],
-     bio:'Ищу бади на сезон в Шарм. Ныряю спокойно, люблю долгие погружения на рифах. Фото под водой — занимаюсь серьёзно.',
-     init:'А'},
-    {name:'Маша Л.',level:'OWD · 22 погружения',
-     tags:['Красное море','лето 2026','первые самостоятельные'],
-     bio:'Получила сертификат полгода назад, хочу первые самостоятельные погружения с опытным партнёром. Пишу только если ты спокойный.',
-     init:'М'},
-    {name:'Денис + Оля',level:'Advanced / Rescue · 120+ погружений',
-     tags:['Индонезия','осень 2026','Комодо'],
-     bio:'Планируем Комодо в октябре, ищем ещё одного-двух в группу. Ныряем серьёзно, без спешки.',
-     init:'Д'},
-    {name:'Игорь В.',level:'Rescue Diver · 60 погружений',
-     tags:['Дахаб','постоянно','технический дайвинг'],
-     bio:'Живу в Дахабе, ныряю регулярно. Интересует технический дайвинг, сейчас изучаю. Ищу партнёра для тренировочных погружений.',
-     init:'И'},
-  ];
+  /* ────────── ХЕЛПЕР: экранирование пользовательских данных ────────── */
+  function esc(s){
+    return String(s==null?'':s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+  // Telegram-хэндл: только латиница/цифры/подчёркивание, 5–32 символа
+  function cleanTgHandle(tg){
+    if(!tg) return '';
+    const h=String(tg).replace(/^@+/,'').trim();
+    return /^[A-Za-z0-9_]{5,32}$/.test(h)?h:'';
+  }
 
   document.getElementById('reviews').innerHTML=reviews.map(r=>
     `<div class="review"><div class="stars">★★★★★</div><p>«${r.text}»</p>
@@ -1202,15 +1195,15 @@
       } else {
         el.innerHTML='<div class="buddy-grid">'+data.records.map(function(rec){
           const f=rec.fields;
-          const init=(f.Name||'?')[0].toUpperCase();
-          const tgHandle=f.Telegram?(f.Telegram.startsWith('@')?f.Telegram:'@'+f.Telegram):'';
-          const tgUrl=tgHandle?'https://t.me/'+tgHandle.replace('@',''):'';
+          const init=esc((f.Name||'?')[0].toUpperCase());
+          const handle=cleanTgHandle(f.Telegram);
+          const tgUrl=handle?'https://t.me/'+handle:'';
           return '<div class="buddy-card reveal">'
             +'<div class="b-avatar">'+init+'</div>'
-            +'<div class="b-name">'+(f.Name||'')+'</div>'
-            +'<div class="b-level">'+(f.Level||'')+'</div>'
-            +'<div class="b-tags"><span class="b-tag">'+(f.Location||'—')+'</span></div>'
-            +'<div class="b-bio">'+(f.About||'')+'</div>'
+            +'<div class="b-name">'+esc(f.Name)+'</div>'
+            +'<div class="b-level">'+esc(f.Level)+'</div>'
+            +'<div class="b-tags"><span class="b-tag">'+esc(f.Location||'—')+'</span></div>'
+            +'<div class="b-bio">'+esc(f.About)+'</div>'
             +(tgUrl?'<a class="btn-buddy-contact" href="'+tgUrl+'" target="_blank" rel="noopener">Написать в Telegram</a>':'')
             +'</div>';
         }).join('')+'</div>';
@@ -1232,11 +1225,11 @@
       if(!data.records||data.records.length===0) return;
       el.innerHTML=data.records.map(function(rec){
         const f=rec.fields;
-        const buddy=f.BuddyName?f.Name+' + '+f.BuddyName:f.Name;
+        const buddy=f.BuddyName?esc(f.Name)+' + '+esc(f.BuddyName):esc(f.Name);
         return '<div class="pair-card">'
           +'<div class="pair-names">'+buddy+'</div>'
-          +'<div class="pair-meta">'+(f.Location||'')+(f.TripDate?' · '+f.TripDate:'')+'</div>'
-          +'<div class="pair-story">«'+(f.TripStory||'')+'»</div>'
+          +'<div class="pair-meta">'+esc(f.Location)+(f.TripDate?' · '+esc(f.TripDate):'')+'</div>'
+          +'<div class="pair-story">«'+esc(f.TripStory)+'»</div>'
           +'</div>';
       }).join('');
     }catch(e){}
@@ -1249,7 +1242,10 @@
     const lvl=document.getElementById('b-level').value;
     const loc=document.getElementById('b-loc').value.trim();
     const bio=document.getElementById('b-bio').value.trim();
+    if(document.getElementById('b-hp').value){return;} // honeypot: бот заполнил скрытое поле
     if(!n||!tg){alert('Укажи имя и Telegram');return;}
+    const handle=cleanTgHandle(tg);
+    if(!handle){alert('Telegram укажи в формате @ник (латиница, цифры, _, от 5 символов)');return;}
     const btn=document.querySelector('#page-buddy .btn-primary');
     btn.disabled=true;btn.textContent='Отправляю...';
     try{
@@ -1258,7 +1254,7 @@
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
           Name:n,
-          Telegram:tg.startsWith('@')?tg:'@'+tg,
+          Telegram:'@'+handle,
           Level:lvl,
           Location:loc,
           About:bio
@@ -1331,7 +1327,12 @@
     const lvl=document.getElementById('f-lvl').value;
     const msg_text=document.getElementById('f-msg').value.trim();
     const msgEl=document.getElementById('formMsg');
+    if(document.getElementById('f-hp').value){return;} // honeypot: бот заполнил скрытое поле
     if(!n||!c){alert('Заполни имя и контакт');return;}
+    // контакт — либо email, либо telegram-хэндл (@ник)
+    const isEmail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c);
+    const isTg=!!cleanTgHandle(c);
+    if(!isEmail&&!isTg){alert('Укажи корректный email или Telegram (@ник)');return;}
     const btn=document.querySelector('#page-book .btn-primary');
     btn.disabled=true;btn.textContent='Отправляю...';
     try{
@@ -1563,6 +1564,7 @@
         <div class="field full"><label>Пару слов о себе</label>
           <textarea id="b-bio" placeholder="Сколько погружений, когда планируешь, что ищешь в партнёре…"></textarea></div>
       </div>
+      <input id="b-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="btn btn-primary" style="margin-top:20px;width:100%" onclick="submitBuddy()">Добавить меня в список</button>
       <div class="form-msg" id="buddy-msg">Заявка отправлена! Проверю и добавлю в список в течение дня 🤙</div>
     </div>
