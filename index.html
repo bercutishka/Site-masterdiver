@@ -544,6 +544,8 @@
     .book,.cta-strip{padding:30px 22px}
     .stats{gap:30px}
   }
+  /* a11y: программный фокус на заголовке экрана не рисует рамку */
+  [tabindex="-1"]:focus{outline:none}
 </style>
 
 <script type="application/ld+json">
@@ -562,7 +564,7 @@
 </head>
 <body>
 
-<nav>
+<nav aria-label="Основная навигация">
   <button class="logo" onclick="go('home')">Глубже<span>.</span></button>
   <div class="nav-links" id="navlinks">
     <button data-nav="home" onclick="go('home')">Главная</button>
@@ -574,7 +576,7 @@
     <button class="nav-cta" onclick="go('buddy')">Найти бади</button>
     <button onclick="sharesite()" style="opacity:.7;font-size:1.1rem;padding:6px 8px" title="Поделиться">⬆️</button>
   </div>
-  <button class="burger" onclick="document.getElementById('navlinks').classList.toggle('open')"><span></span><span></span><span></span></button>
+  <button class="burger" aria-label="Меню" aria-expanded="false" aria-controls="navlinks" onclick="toggleNav(this)"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- ============ HOME ============ -->
@@ -845,21 +847,21 @@
 </div>
 
 <!-- ============ CHATBOT ============ -->
-<button id="chat-fab" onclick="toggleChat()" aria-label="Открыть чат">💬</button>
-<div id="chat-panel">
+<button id="chat-fab" onclick="toggleChat()" aria-label="Открыть чат" aria-expanded="false" aria-controls="chat-panel">💬</button>
+<div id="chat-panel" role="dialog" aria-label="Чат-помощник «Глубже»" aria-hidden="true">
   <div class="chat-head">
-    <div class="av">🤿</div>
+    <div class="av" aria-hidden="true">🤿</div>
     <div>
       <b>Помощник Глубже</b>
       <span>Про дайвинг, споты, логбук и бади</span>
     </div>
-    <button class="x" onclick="toggleChat()">✕</button>
+    <button class="x" onclick="toggleChat()" aria-label="Закрыть чат">✕</button>
   </div>
-  <div class="chat-body" id="chat-body"></div>
+  <div class="chat-body" id="chat-body" role="log" aria-live="polite" aria-label="История чата"></div>
   <div class="chat-sugg" id="chat-sugg"></div>
   <div class="chat-input">
-    <input id="chat-input" type="text" placeholder="Напишите вопрос…" onkeydown="if(event.key==='Enter')sendChat()">
-    <button id="chat-send" onclick="sendChat()">➤</button>
+    <input id="chat-input" type="text" placeholder="Напишите вопрос…" aria-label="Сообщение" onkeydown="if(event.key==='Enter')sendChat()">
+    <button id="chat-send" onclick="sendChat()" aria-label="Отправить">➤</button>
   </div>
 </div>
 
@@ -1056,17 +1058,36 @@
   }
   window.addEventListener('popstate', routeFromLocation);
 
+  /* ---------- БУРГЕР-МЕНЮ (a11y) ---------- */
+  let navReady = false; // не уводить фокус при первой загрузке, только при навигации
+  function toggleNav(btn){
+    const open=document.getElementById('navlinks').classList.toggle('open');
+    btn.setAttribute('aria-expanded', open?'true':'false');
+  }
+  function closeNav(){
+    document.getElementById('navlinks').classList.remove('open');
+    const b=document.querySelector('.burger');
+    if(b) b.setAttribute('aria-expanded','false');
+  }
+
   /* ---------- ROUTER ---------- */
   function go(id, opts){
     opts = opts || {};
     document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
     const pg=document.getElementById('page-'+id);
-    (pg||document.getElementById('page-home')).classList.add('active');
+    const active=(pg||document.getElementById('page-home'));
+    active.classList.add('active');
     document.querySelectorAll('.nav-links button[data-nav]').forEach(b=>
       b.classList.toggle('active',b.dataset.nav===id));
-    document.getElementById('navlinks').classList.remove('open');
+    closeNav();
     window.scrollTo({top:0,behavior:'instant'});
     runReveal();
+    // Перевод фокуса на заголовок экрана — чтобы скринридер объявил новую страницу.
+    if(navReady){
+      const ft=active.querySelector('h1, h2') || active;
+      ft.setAttribute('tabindex','-1');
+      ft.focus({preventScroll:true});
+    }
     if(id==='home'){renderProgress('progress-block');renderLogbookPreview();renderIncidentsPreview();loadStats();}
     if(id==='logbook'){renderProgress('progress-logbook');renderLogbookFull();}
     if(id==='buddy'){renderBuddyList();}
@@ -1415,12 +1436,17 @@
 
   function toggleChat(){
     const p=document.getElementById('chat-panel');
-    p.classList.toggle('open');
-    if(p.classList.contains('open') && !chatStarted){
+    const open=p.classList.toggle('open');
+    p.setAttribute('aria-hidden', open?'false':'true');
+    const fab=document.getElementById('chat-fab');
+    fab.setAttribute('aria-expanded', open?'true':'false');
+    fab.setAttribute('aria-label', open?'Закрыть чат':'Открыть чат');
+    if(open && !chatStarted){
       chatStarted=true;
       addMsg('bot','Привет! Я помощник блога «Глубже» — отвечу про логбук, споты, поиск бади и разборы. Спрашивай!');
       renderSugg();
     }
+    if(open) document.getElementById('chat-input').focus();
   }
   function renderSugg(){
     document.getElementById('chat-sugg').innerHTML=suggestions.map(s=>`<button onclick="quickAsk(this.textContent)">${s}</button>`).join('');
@@ -1560,6 +1586,7 @@
     // Открыть экран по текущему URL и зафиксировать состояние стартовой записи истории.
     routeFromLocation();
     try{ history.replaceState(history.state||{page:'home'}, '', location.href); }catch(e){}
+    navReady = true; // дальше — пользовательская навигация: переводим фокус
   })();
 </script>
 
