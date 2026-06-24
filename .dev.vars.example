@@ -1,0 +1,4 @@
+# Локальные секреты для `wrangler dev`. Скопируй в `.dev.vars` (он в .gitignore).
+# В проде этот секрет задаётся в Cloudflare:
+#   Workers → glubzhe-buddy → Settings → Variables and Secrets → тип Secret.
+AIRTABLE_TOKEN=your_airtable_personal_access_token_here

@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)",
+      "Bash(git restore:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(node:*)",
+      "Bash(node scripts/check.mjs)",
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(npm ci:*)",
+      "Bash(npx wrangler:*)",
+      "Bash(python3 -m http.server:*)",
+      "Bash(curl:*)",
+      "Bash(ls:*)",
+      "mcp__github__get_file_contents",
+      "mcp__github__list_branches",
+      "mcp__github__list_commits",
+      "mcp__github__pull_request_read",
+      "mcp__github__search_repositories"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "bash .claude/session-start.sh" }
+        ]
+      }
+    ]
+  }
+}
