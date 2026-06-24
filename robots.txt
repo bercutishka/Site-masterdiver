@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bercutishka.github.io/Site-masterdiver/sitemap.xml
