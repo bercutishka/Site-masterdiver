@@ -52,6 +52,20 @@ try {
   bad('index.html — ошибка: ' + (e.stderr?.toString() || e.message));
 }
 
+// 5. пререндер актуален (сгенерированные blog/<slug>/index.html совпадают с posts)
+try {
+  const { generate } = await import('./prerender.mjs');
+  const pages = generate();
+  const stale = pages.filter(([rel, content]) => {
+    let cur = null; try { cur = readFileSync(rel, 'utf8'); } catch {}
+    return cur !== content;
+  }).map(([rel]) => rel);
+  if (stale.length) bad('пререндер устарел (' + stale.length + ') — запусти `npm run build`');
+  else ok('пререндер актуален (' + pages.length + ' файлов: статьи + sitemap)');
+} catch (e) {
+  bad('пререндер — ошибка: ' + e.message);
+}
+
 console.log('');
 if (failed) { console.log(`\x1b[31mПроверка не пройдена: ${failed} ошибок\x1b[0m`); process.exit(1); }
 console.log('\x1b[32mВсе проверки пройдены\x1b[0m');

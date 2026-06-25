@@ -2,8 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bercutishka.github.io/Site-masterdiver/</loc>
-    <lastmod>2026-06-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://bercutishka.github.io/Site-masterdiver/blog/den-kogda-moya-naparnica-poteryala-soznanie-pod-vodoy/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bercutishka.github.io/Site-masterdiver/blog/kontrol-plavuchesti-5-oshibok-novichkov/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bercutishka.github.io/Site-masterdiver/blog/azot-dekompressiya-i-pochemu-my-vsplyvaem-medlenno/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bercutishka.github.io/Site-masterdiver/blog/thistlegorm-korabl-kotoryy-stal-muzeem/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bercutishka.github.io/Site-masterdiver/blog/dahab-glazami-dayvmastera-marshrut-na-nedelyu/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bercutishka.github.io/Site-masterdiver/blog/pervyy-kompyuter-dlya-dayvinga-na-chto-smotret/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

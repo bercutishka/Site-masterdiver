@@ -9,6 +9,10 @@ scripts
 .git
 *.log
 
+# Пререндер-страницы статей — для GitHub Pages (раздаёт сам, .assetsignore игнорит).
+# На workers.dev их не раздаём: deep-link там обслуживает SPA-fallback (not_found_handling).
+blog
+
 # конфиги и служебные файлы — не часть сайта
 package.json
 package-lock.json
