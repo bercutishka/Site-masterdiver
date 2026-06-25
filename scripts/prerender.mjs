@@ -74,6 +74,15 @@ export function generate() {
 
     out.push(['blog/' + slug + '/index.html', page]);
   }
+
+  // sitemap.xml: главная + страницы статей (то, что реально отдаёт 200 на Pages)
+  const urls = [SITE, ...posts.map(p => SITE + 'blog/' + slugify(p.title) + '/')];
+  const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    urls.map((u, i) => '  <url>\n    <loc>' + u + '</loc>\n    <changefreq>weekly</changefreq>\n    <priority>' + (i === 0 ? '1.0' : '0.8') + '</priority>\n  </url>').join('\n') +
+    '\n</urlset>\n';
+  out.push(['sitemap.xml', sitemap]);
+
   return out;
 }
 

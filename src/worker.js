@@ -227,7 +227,7 @@ export default {
         return err('Неизвестный action', 400);
       } catch (e) {
         console.error(e);
-        return err('Внутренняя ошибка: ' + e.message, 500);
+        return err('Временная ошибка сервера, попробуйте позже', 500);
       }
     }
 

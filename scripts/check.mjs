@@ -61,7 +61,7 @@ try {
     return cur !== content;
   }).map(([rel]) => rel);
   if (stale.length) bad('пререндер устарел (' + stale.length + ') — запусти `npm run build`');
-  else ok('пререндер актуален (' + pages.length + ' статей)');
+  else ok('пререндер актуален (' + pages.length + ' файлов: статьи + sitemap)');
 } catch (e) {
   bad('пререндер — ошибка: ' + e.message);
 }

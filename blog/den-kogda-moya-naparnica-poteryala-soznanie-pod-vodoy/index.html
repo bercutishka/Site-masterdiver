@@ -247,6 +247,7 @@
   textarea{resize:vertical;min-height:90px}
   .form-msg{margin-top:18px;padding:14px;border-radius:12px;background:#eafafa;
     color:#076670;font-weight:600;display:none}
+  .form-msg.error{background:#fdecea;color:#c0392b}
 
   /* CTA strip */
   .cta-strip{background:linear-gradient(120deg,#fff,#eafafa);
@@ -1305,16 +1306,30 @@
   }
 
   /* ────────── BUDDY FORM ────────── */
+  // Инлайн-сообщение под формой вместо alert()
+  function showMsg(el, text, isError){
+    el.textContent=text;
+    el.classList.toggle('error', !!isError);
+    el.style.display='block';
+  }
+  // Достать текст ошибки из ответа: воркер шлёт {error:"строка"}, Airtable — {error:{message}}
+  function errText(data){
+    if(!data||!data.error) return 'Ошибка';
+    return typeof data.error==='string' ? data.error : (data.error.message||'Ошибка');
+  }
+
   async function submitBuddy(){
     const n=document.getElementById('b-name').value.trim();
     const tg=document.getElementById('b-tg').value.trim();
     const lvl=document.getElementById('b-level').value;
     const loc=document.getElementById('b-loc').value.trim();
     const bio=document.getElementById('b-bio').value.trim();
-    if(document.getElementById('b-hp').value){return;} // honeypot: бот заполнил скрытое поле
-    if(!n||!tg){alert('Укажи имя и Telegram');return;}
+    const hp=document.getElementById('b-hp').value;
+    const msg=document.getElementById('buddy-msg');
+    if(hp){return;} // honeypot: бот заполнил скрытое поле
+    if(!n||!tg){showMsg(msg,'Укажи имя и Telegram',true);return;}
     const handle=cleanTgHandle(tg);
-    if(!handle){alert('Telegram укажи в формате @ник (латиница, цифры, _, от 5 символов)');return;}
+    if(!handle){showMsg(msg,'Telegram укажи в формате @ник (латиница, цифры, _, от 5 символов)',true);return;}
     const btn=document.querySelector('#page-buddy .btn-primary');
     btn.disabled=true;btn.textContent='Отправляю...';
     try{
@@ -1326,21 +1341,22 @@
           Telegram:'@'+handle,
           Level:lvl,
           Location:loc,
-          About:bio
+          About:bio,
+          _hp:hp
         })
       });
       const data=await r.json();
       if(r.ok&&data.id){
-        document.getElementById('buddy-msg').style.display='block';
+        showMsg(msg,'Заявка отправлена! Проверю и добавлю в список в течение дня 🤙',false);
         btn.textContent='Заявка отправлена ✓';
         document.getElementById('b-name').value='';
         document.getElementById('b-tg').value='';
         document.getElementById('b-bio').value='';
       }else{
-        throw new Error(data.error?data.error.message:'Ошибка');
+        throw new Error(errText(data));
       }
     }catch(e){
-      alert('Не удалось отправить: '+e.message);
+      showMsg(msg,'Не удалось отправить: '+e.message,true);
       btn.disabled=false;btn.textContent='Добавить меня в список';
     }
   }
@@ -1395,25 +1411,25 @@
     const type=document.getElementById('f-type').value;
     const lvl=document.getElementById('f-lvl').value;
     const msg_text=document.getElementById('f-msg').value.trim();
+    const hp=document.getElementById('f-hp').value;
     const msgEl=document.getElementById('formMsg');
-    if(document.getElementById('f-hp').value){return;} // honeypot: бот заполнил скрытое поле
-    if(!n||!c){alert('Заполни имя и контакт');return;}
+    if(hp){return;} // honeypot: бот заполнил скрытое поле
+    if(!n||!c){showMsg(msgEl,'Заполни имя и контакт',true);return;}
     // контакт — либо email, либо telegram-хэндл (@ник)
     const isEmail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c);
     const isTg=!!cleanTgHandle(c);
-    if(!isEmail&&!isTg){alert('Укажи корректный email или Telegram (@ник)');return;}
+    if(!isEmail&&!isTg){showMsg(msgEl,'Укажи корректный email или Telegram (@ник)',true);return;}
     const btn=document.querySelector('#page-book .btn-primary');
     btn.disabled=true;btn.textContent='Отправляю...';
     try{
       const r=await fetch('https://formspree.io/f/xykagdvo',{
         method:'POST',
         headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body:JSON.stringify({name:n,contact:c,topic:type,level:lvl,message:msg_text,_subject:'Глубже: '+type+' от '+n})
+        body:JSON.stringify({name:n,contact:c,topic:type,level:lvl,message:msg_text,_gotcha:hp,_subject:'Глубже: '+type+' от '+n})
       });
       const data=await r.json();
       if(r.ok){
-        msgEl.style.display='block';
-        msgEl.textContent='Отправлено! Отвечу в течение дня.';
+        showMsg(msgEl,'Отправлено! Отвечу в течение дня.',false);
         btn.textContent='Отправлено';
         document.getElementById('f-name').value='';
         document.getElementById('f-contact').value='';
@@ -1422,7 +1438,7 @@
         throw new Error(data.errors?data.errors.map(function(x){return x.message;}).join(', '):'Ошибка');
       }
     }catch(e){
-      alert('Не удалось отправить. Напиши: bercutishka@gmail.com');
+      showMsg(msgEl,'Не удалось отправить. Напиши: bercutishka@gmail.com',true);
       btn.disabled=false;btn.textContent='Отправить';
     }
   }
