@@ -82,7 +82,9 @@ POST → 405). API живёт на корневом пути с query-парам
 
 ### Защита (уже в коде)
 Фильтр модерации `Approved=1`, серверная валидация полей, лимиты длины, honeypot (`_hp`),
-rate-limit 5 запросов/10 мин по IP, CORS только `https://bercutishka.github.io`.
+rate-limit (нативный Cloudflare Rate Limiting binding `BUDDY_RATE_LIMIT` в `wrangler.jsonc`,
+5 заявок/60 c по IP, консистентен между изолятами; откат на in-memory локально),
+read-эндпоинты только GET (иначе 405), CORS только `https://bercutishka.github.io`.
 
 ### Секрет
 `env.AIRTABLE_TOKEN` — Airtable Personal Access Token. Задаётся в Cloudflare:

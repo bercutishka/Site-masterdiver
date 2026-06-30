@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { validateBuddyPayload, atQuery } from '../src/worker.js';
+import { validateBuddyPayload, atQuery, clampLimit } from '../src/worker.js';
 
 test('validateBuddyPayload: корректная заявка проходит', () => {
   assert.equal(validateBuddyPayload({ Name: 'Аня', Telegram: '@anya_diver', Level: 'OWD', Location: 'Египет', About: 'Ищу бади' }), null);
@@ -48,4 +48,13 @@ test('atQuery: fields[] и sort[i] в формате Airtable, пробелы к
 
 test('atQuery: пустой вызов не падает', () => {
   assert.equal(typeof atQuery(), 'string');
+});
+
+test('clampLimit: число в [1,100], иначе дефолт 100', () => {
+  assert.equal(clampLimit('2'), 2);
+  assert.equal(clampLimit('99999'), 100);   // верхний потолок
+  assert.equal(clampLimit('0'), 1);          // нижний потолок
+  assert.equal(clampLimit('-5'), 1);
+  assert.equal(clampLimit('abc'), 100);      // не число → дефолт
+  assert.equal(clampLimit(null), 100);       // отсутствует → дефолт
 });

@@ -12,5 +12,17 @@
     "binding": "ASSETS",
     "run_worker_first": true,
     "not_found_handling": "single-page-application"
+  },
+  // Нативный rate-limit Cloudflare: не более 5 заявок бади за 60 c с одного ключа (IP).
+  // Консистентен между изолятами; не требует KV/дашборда.
+  "unsafe": {
+    "bindings": [
+      {
+        "name": "BUDDY_RATE_LIMIT",
+        "type": "ratelimit",
+        "namespace_id": "1001",
+        "simple": { "limit": 5, "period": 60 }
+      }
+    ]
   }
 }

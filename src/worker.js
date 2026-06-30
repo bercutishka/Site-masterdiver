@@ -22,23 +22,30 @@ const TABLE_DIVES   = 'tblZNWL0FrvHMyQ4Z'; // таблица Dives
 const BASE_SETTINGS = 'appkFcxA5bqDJYl67';
 const TABLE_SETTINGS = 'tblOVx4OxYJNjdXRG'; // таблица Settings
 
-// ── Rate-limit: не более 5 заявок в 10 минут с одного IP ────────────────────
-const rateLimitMap = new Map(); // живёт в памяти воркера (сбрасывается при рестарте)
+// ── Rate-limit ───────────────────────────────────────────────────────────────
+// Основной механизм — нативный Rate Limiting binding Cloudflare (env.BUDDY_RATE_LIMIT,
+// настроен в wrangler.jsonc): консистентен между изолятами. Если биндинг недоступен
+// (локальный запуск), откатываемся на in-memory счётчик.
+const rateLimitMap = new Map();
 
-function isRateLimited(ip) {
+function memRateLimited(ip) {
   const now = Date.now();
-  const window = 10 * 60 * 1000; // 10 минут
+  const window = 60 * 1000; // 60 c
   const max = 5;
-  const key = ip || 'unknown';
-  const entry = rateLimitMap.get(key) || { count: 0, start: now };
-  if (now - entry.start > window) {
-    rateLimitMap.set(key, { count: 1, start: now });
-    return false;
-  }
+  const entry = rateLimitMap.get(ip) || { count: 0, start: now };
+  if (now - entry.start > window) { rateLimitMap.set(ip, { count: 1, start: now }); return false; }
   if (entry.count >= max) return true;
   entry.count++;
-  rateLimitMap.set(key, entry);
+  rateLimitMap.set(ip, entry);
   return false;
+}
+
+async function isRateLimited(env, ip) {
+  if (env && env.BUDDY_RATE_LIMIT) {
+    const { success } = await env.BUDDY_RATE_LIMIT.limit({ key: ip });
+    return !success;
+  }
+  return memRateLimited(ip);
 }
 
 // ── Хелперы ──────────────────────────────────────────────────────────────────
@@ -143,8 +150,14 @@ async function handleGetArchive(token) {
   return json({ records: data.records });
 }
 
+// Безопасный лимит: целое в [1,100], иначе дефолт 100
+export function clampLimit(v) {
+  const n = parseInt(v, 10);
+  return Number.isFinite(n) ? Math.min(Math.max(n, 1), 100) : 100;
+}
+
 async function handleGetLogbook(token, url) {
-  const limit = Math.min(parseInt(url.searchParams.get('limit') || '100', 10), 100);
+  const limit = clampLimit(url.searchParams.get('limit'));
   const q = atQuery({
     filterByFormula: `{Published}=1`,
     sort: [{ field: 'DiveNumber', direction: 'desc' }],
@@ -167,8 +180,8 @@ async function handleGetStats(token) {
   return json(stats);
 }
 
-async function handlePost(token, request) {
-  const ip = request.headers.get('CF-Connecting-IP');
+async function handlePost(token, request, env) {
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
 
   // Honeypot: если фронт добавил поле-ловушку и бот его заполнил
   const body = await request.json().catch(() => null);
@@ -176,8 +189,8 @@ async function handlePost(token, request) {
 
   if (body._hp) return json({ ok: true }); // молча отбиваем ботов
 
-  // Rate-limit
-  if (isRateLimited(ip)) return err('Слишком много заявок. Попробуй через 10 минут.', 429);
+  // Rate-limit (нативный лимитер Cloudflare с откатом на in-memory)
+  if (await isRateLimited(env, ip)) return err('Слишком много заявок. Попробуйте позже.', 429);
 
   // Валидация
   const validationError = validateBuddyPayload(body);
@@ -228,11 +241,13 @@ export default {
     if (isApi) {
       if (!token) return err('Не настроен AIRTABLE_TOKEN', 500);
       try {
-        if (request.method === 'POST')      return await handlePost(token, request);
-        if (action === 'active')            return await handleGetActive(token);
-        if (action === 'archive')           return await handleGetArchive(token);
-        if (action === 'logbook')           return await handleGetLogbook(token, url);
-        if (action === 'stats')             return await handleGetStats(token);
+        if (request.method === 'POST') return await handlePost(token, request, env);
+        // Чтение — только GET; остальные методы не поддерживаем
+        if (request.method !== 'GET') return err('Метод не поддерживается', 405);
+        if (action === 'active')  return await handleGetActive(token);
+        if (action === 'archive') return await handleGetArchive(token);
+        if (action === 'logbook') return await handleGetLogbook(token, url);
+        if (action === 'stats')   return await handleGetStats(token);
         return err('Неизвестный action', 400);
       } catch (e) {
         console.error(e);
