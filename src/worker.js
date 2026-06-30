@@ -58,8 +58,17 @@ async function atFetch(token, path, opts = {}) {
   return data;
 }
 
+// Заголовки безопасности (защита «в глубину»). CSP не ставим: сайт построен на
+// инлайновых скриптах/обработчиках, строгий CSP их сломает; основной хостинг —
+// GitHub Pages, где заголовки всё равно не настроить.
+const SECURITY_HEADERS = {
+  'X-Content-Type-Options': 'nosniff',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'X-Frame-Options': 'SAMEORIGIN',
+};
+
 function json(body, status = 200, cors = true) {
-  const headers = { 'Content-Type': 'application/json' };
+  const headers = { 'Content-Type': 'application/json', ...SECURITY_HEADERS };
   if (cors) headers['Access-Control-Allow-Origin'] = 'https://bercutishka.github.io';
   return new Response(JSON.stringify(body), { status, headers });
 }
@@ -69,7 +78,7 @@ function err(msg, status = 400) {
 }
 
 // ── Валидация входящих полей бади ────────────────────────────────────────────
-function validateBuddyPayload(body) {
+export function validateBuddyPayload(body) {
   const { Name, Telegram, Level, Location, About } = body || {};
 
   if (!Name || typeof Name !== 'string' || Name.trim().length < 2)
@@ -98,7 +107,7 @@ function validateBuddyPayload(body) {
 
 // Сборка query-строки в формате, который ждёт Airtable:
 //   fields[]=A&fields[]=B   sort[0][field]=X&sort[0][direction]=desc
-function atQuery({ filterByFormula, sort, fields, maxRecords } = {}) {
+export function atQuery({ filterByFormula, sort, fields, maxRecords } = {}) {
   const sp = new URLSearchParams();
   if (filterByFormula) sp.set('filterByFormula', filterByFormula);
   if (maxRecords != null) sp.set('maxRecords', String(maxRecords));
@@ -231,7 +240,10 @@ export default {
       }
     }
 
-    // Всё остальное — статические файлы (обрабатывает Cloudflare Assets)
-    return env.ASSETS.fetch(request);
+    // Всё остальное — статические файлы (обрабатывает Cloudflare Assets) + заголовки безопасности
+    const assetRes = await env.ASSETS.fetch(request);
+    const res = new Response(assetRes.body, assetRes);
+    for (const [k, v] of Object.entries(SECURITY_HEADERS)) res.headers.set(k, v);
+    return res;
   },
 };

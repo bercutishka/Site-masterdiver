@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "check": "node scripts/check.mjs",
+    "test": "node --test",
     "build": "node scripts/prerender.mjs",
     "dev": "wrangler dev",
     "deploy:dry": "wrangler deploy --dry-run",

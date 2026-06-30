@@ -6,6 +6,11 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://bercutishka.github.io/Site-masterdiver/blog/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://bercutishka.github.io/Site-masterdiver/blog/den-kogda-moya-naparnica-poteryala-soznanie-pod-vodoy/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -34,5 +39,25 @@
     <loc>https://bercutishka.github.io/Site-masterdiver/blog/pervyy-kompyuter-dlya-dayvinga-na-chto-smotret/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bercutishka.github.io/Site-masterdiver/spots/blue-hole-dahab/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bercutishka.github.io/Site-masterdiver/spots/ss-thistlegorm/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bercutishka.github.io/Site-masterdiver/spots/ras-mohammed/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bercutishka.github.io/Site-masterdiver/spots/ostrova-gili/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
