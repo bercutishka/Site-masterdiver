@@ -23,7 +23,7 @@
 <link rel="canonical"           href="https://bercutishka.github.io/Site-masterdiver/blog/pervyy-kompyuter-dlya-dayvinga-na-chto-smotret/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{ color-scheme: light;
     --abyss:#063040;     /* тёмная бирюза только для баннеров/футера */
@@ -47,6 +47,9 @@
   h1,h2,h3,h4{font-family:'Fraunces',serif;line-height:1.08;font-weight:900;color:#0a1f27}
   ::selection{background:#e8543f;color:#fff}
   a{color:inherit}
+  /* видимый фокус для клавиатуры (на программный фокус заголовков не влияет) */
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+    outline:2px solid #1fb6bd;outline-offset:2px;border-radius:6px}
 
   /* NAV */
   nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;
@@ -111,7 +114,7 @@
   .hero-sub{font-size:clamp(1.05rem,2vw,1.3rem);max-width:580px;margin:26px 0 38px;color:#cfe6e4}
   .cta-row{display:flex;gap:16px;flex-wrap:wrap}
   .stats{display:flex;gap:48px;margin-top:60px;flex-wrap:wrap}
-  .stat b{font-family:'Fraunces',serif;font-size:2.6rem;color:#d99412;display:block;line-height:1}
+  .stat b{font-family:'Space Mono',monospace;font-weight:700;font-size:2.4rem;color:#d99412;display:block;line-height:1;letter-spacing:-1px}
   .stat span{font-size:.84rem;color:#aed4d2;letter-spacing:1px}
 
   /* SECTIONS */
@@ -232,7 +235,7 @@
   .spot-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:30px 0}
   .info-card{background:#ffffff;border:1px solid rgba(13,39,49,.12);border-radius:16px;padding:22px;box-shadow:0 4px 14px rgba(13,39,49,.05)}
   .info-card .k{font-size:.78rem;letter-spacing:1px;color:#4a6168;text-transform:uppercase}
-  .info-card .v{font-family:'Fraunces';font-size:1.5rem;color:#0a8a96;margin-top:4px}
+  .info-card .v{font-family:'Space Mono',monospace;font-weight:700;font-size:1.35rem;color:#0a8a96;margin-top:6px;letter-spacing:-.5px}
 
   /* FORM */
   .book{background:#ffffff;
@@ -534,6 +537,8 @@
   @media(max-width:880px){
     .hero-split{grid-template-columns:1fr;gap:32px}
     .hero-photo{order:-1}
+    /* фото — компактный баннер, чтобы заголовок и CTA были видны на первом экране */
+    .hero-photo img{aspect-ratio:auto;height:36vh;height:36svh;min-height:240px}
     .nav-links{position:fixed;top:62px;right:0;flex-direction:column;background:rgba(6,48,64,.98);
       padding:24px 30px;border-radius:0 0 0 18px;gap:18px;align-items:flex-start;display:none;
       border:1px solid rgba(141,243,221,.16)}
@@ -595,7 +600,7 @@
         <h1>Я живу там, где <em>заканчивается</em> воздух.</h1>
         <p class="hero-sub">Меня зовут Павел Смотров. Я Rescue Diver PADI, иду к Divemaster и подводный фотограф. Веду группы, учу нырять с нуля и снимаю синюю тишину на глубине.</p>
         <div class="cta-row">
-          <button class="btn btn-primary" onclick="go('book')">Найти бади</button>
+          <button class="btn btn-primary" onclick="go('buddy')">Найти бади</button>
           <button class="btn btn-ghost" onclick="go('gallery')">Смотреть кадры</button>
         </div>
         <div class="stats">
@@ -650,7 +655,7 @@
       <div class="cta-strip reveal">
         <h2>Готов спуститься глубже?</h2>
         <p>Оставь заявку — отвечу в течение дня и подберём дату под твой уровень.</p>
-        <button class="btn btn-primary" onclick="go('book')">Найти бади</button>
+        <button class="btn btn-primary" onclick="go('book')">Оставить заявку</button>
       </div>
     </div>
   </section>
