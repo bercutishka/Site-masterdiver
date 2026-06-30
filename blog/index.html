@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<base href="/Site-masterdiver/">
 <meta charset="UTF-8">
 <meta name="color-scheme" content="light only">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Глубже — Павел Смотров. Дайвинг изнутри: логбук, разборы аварий, путь к Divemaster</title>
+<title>Журнал — Глубже</title>
 
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="Глубже">
-<meta property="og:title"       content="Глубже — дайвинг изнутри. Логбук, разборы аварий, путь к Divemaster">
-<meta property="og:description" content="Блог человека, который учится нырять и не молчит об этом. 41 погружение, путь к Divemaster PADI, разборы реальных аварий под водой, поиск бади для совместных погружений.">
+<meta property="og:title"       content="Журнал — Глубже">
+<meta property="og:description" content="Заметки о технике, снаряжении и местах дайвинга — из личного опыта.">
 <meta property="og:image"       content="https://bercutishka.github.io/Site-masterdiver/og-cover.jpg">
-<meta property="og:url"         content="https://bercutishka.github.io/Site-masterdiver/">
+<meta property="og:url"         content="https://bercutishka.github.io/Site-masterdiver/blog/">
 <meta property="og:locale"      content="ru_RU">
 <meta name="twitter:card"       content="summary_large_image">
-<meta name="twitter:title"      content="Глубже — дайвинг изнутри. Логбук, разборы, путь к Divemaster">
-<meta name="twitter:description" content="41 погружение, путь к Divemaster PADI. Разборы аварий, личный логбук, поиск бади.">
+<meta name="twitter:title"      content="Журнал — Глубже">
+<meta name="twitter:description" content="Заметки о технике, снаряжении и местах дайвинга — из личного опыта.">
 <meta name="twitter:image"      content="https://bercutishka.github.io/Site-masterdiver/og-cover.jpg">
-<meta name="description"        content="Блог Павла Смотрова — 41 погружение, путь к Divemaster PADI. Разборы реальных аварий, личный логбук, поиск бади для совместных погружений на Красном море и в Индонезии.">
-<link rel="canonical"           href="https://bercutishka.github.io/Site-masterdiver/">
+<meta name="description"        content="Заметки о технике, снаряжении и местах дайвинга — из личного опыта.">
+<link rel="canonical"           href="https://bercutishka.github.io/Site-masterdiver/blog/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -582,7 +583,7 @@
 </nav>
 
 <!-- ============ HOME ============ -->
-<div class="page active" id="page-home">
+<div class="page" id="page-home">
   <header>
     <div class="rays"></div>
     <div class="bubbles" id="bubbles"></div>
@@ -784,14 +785,14 @@
 </div>
 
 <!-- ============ BLOG ============ -->
-<div class="page" id="page-blog">
+<div class="page active" id="page-blog">
   <div class="band"><div class="rays"></div><div class="band-inner">
     <div class="crumb" onclick="go('home')">← На главную</div>
     <h1>Журнал</h1>
     <p>Заметки о технике, снаряжении и местах. Пишу из опыта, без воды (кроме той, что вокруг).</p>
   </div></div>
   <section><div class="narrow">
-    <div class="grid-3" id="blog-list"></div>
+    <div class="grid-3" id="blog-list"><article class="post" onclick="openArticle(0)"><div class="cover ph-d">🏊</div><div class="body"><span class="cat">Путь</span><h3>День, когда моя напарница потеряла сознание под водой</h3><p>Седьмое января изменило моё отношение к дайвингу навсегда. История о том, почему я пошёл учиться на Rescue Diver — рассказываю как было.</p><span class="date">7 янв 2026 · 7 мин</span></div></article><article class="post" onclick="openArticle(1)"><div class="cover ph-c">⚖️</div><div class="body"><span class="cat">Техника</span><h3>Контроль плавучести: 5 ошибок новичков</h3><p>Почему вы тратите воздух вдвое быстрее опытного дайвера и как это исправить буквально за одно погружение.</p><span class="date">12 мая 2026 · 6 мин</span></div></article><article class="post" onclick="openArticle(2)"><div class="cover ph-g">U0001fa7a</div><div class="body"><span class="cat">Безопасность</span><h3>Азот, декомпрессия и почему мы всплываем медленно</h3><p>Понятным языком — что происходит с азотом в организме на глубине и почему остановка безопасности — не формальность.</p><span class="date">19 мая 2026 · 7 мин</span></div></article><article class="post" onclick="openArticle(3)"><div class="cover ph-d">⚓</div><div class="body"><span class="cat">История</span><h3>Thistlegorm: корабль, который стал музеем</h3><p>История самого знаменитого рэк-дайва Красного моря: от бомбёжки 1941 года до Кусто и современных дайверов.</p><span class="date">5 мая 2026 · 6 мин</span></div></article><article class="post" onclick="openArticle(4)"><div class="cover ph-e">U0001f3dd️</div><div class="body"><span class="cat">Путешествие</span><h3>Дахаб глазами дайвмастера: маршрут на неделю</h3><p>Маршрут на семь дней: от спокойной Лагуны до Каньона и Blue Hole, без туристических ловушек.</p><span class="date">28 апр 2026 · 8 мин</span></div></article><article class="post" onclick="openArticle(5)"><div class="cover ph-b">⌚</div><div class="body"><span class="cat">Снаряжение</span><h3>Первый компьютер для дайвинга: на что смотреть</h3><p>На что реально обращать внимание при выборе, а на чём маркетологи просто зарабатывают.</p><span class="date">9 апр 2026 · 5 мин</span></div></article></div>
   </div></section>
 </div>
 
