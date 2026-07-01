@@ -40,6 +40,12 @@
     --text:#0d2731;      /* основной тёмный текст */
     --text-dim:#4a6168;  /* второстепенный текст, тоже тёмный */
     --line:rgba(13,39,49,.12);
+    /* ── дизайн-токены: радиусы и тени ── */
+    --r-sm:12px; --r-md:16px; --r-lg:22px; --r-xl:28px; --pill:999px;
+    --sh-1:0 4px 14px rgba(13,39,49,.05);
+    --sh-2:0 8px 24px rgba(13,39,49,.07);
+    --sh-3:0 16px 40px rgba(13,39,49,.13);
+    --ease:cubic-bezier(.22,.61,.36,1);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -161,9 +167,9 @@
   .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 
   /* COURSES */
-  .course{background:#ffffff;border:1px solid rgba(13,39,49,.12);border-radius:22px;
-    padding:34px 30px;transition:.3s;position:relative;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 20px rgba(13,39,49,.06)}
-  .course:hover{transform:translateY(-6px);border-color:#0a8a96;box-shadow:0 14px 34px rgba(13,39,49,.12)}
+  .course{background:#ffffff;border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:34px 30px;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);position:relative;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--sh-2)}
+  .course:hover{transform:translateY(-6px);border-color:#0a8a96;box-shadow:var(--sh-3)}
   .course.feat{background:linear-gradient(160deg,#ffffff,#eafafa);border-color:#e8543f;box-shadow:0 14px 34px rgba(232,84,63,.14)}
   .tag{position:absolute;top:18px;right:18px;background:#e8543f;color:#fff;font-size:.7rem;
     font-weight:700;letter-spacing:1px;padding:5px 12px;border-radius:30px}
@@ -187,18 +193,20 @@
   .pin .pulse{fill:#27d0d5;opacity:.4;animation:pulse 2.4s ease-out infinite}
   @keyframes pulse{0%{r:6;opacity:.55}100%{r:22;opacity:0}}
   .spot-list{display:flex;flex-direction:column;gap:14px}
-  .spot{background:#ffffff;border:1px solid rgba(13,39,49,.12);border-radius:16px;
-    padding:18px 22px;transition:.25s;cursor:pointer;box-shadow:0 4px 14px rgba(13,39,49,.05)}
+  .spot{background:#ffffff;border:1px solid var(--line);border-radius:var(--r-md);
+    padding:18px 22px;transition:transform .25s var(--ease),background .25s,border-color .25s;cursor:pointer;box-shadow:var(--sh-1)}
   .spot:hover,.spot.active{background:#eafafa;border-color:#0a8a96;transform:translateX(6px)}
   .spot h4{font-family:'Fraunces';font-size:1.2rem;font-weight:600}
   .spot .meta{display:flex;gap:16px;font-size:.82rem;color:#4a6168;margin-top:4px;flex-wrap:wrap}
   .spot .meta b{color:#0a8a96;font-weight:700}
 
   /* BLOG */
-  .post{background:#ffffff;border-radius:20px;overflow:hidden;
-    border:1px solid rgba(13,39,49,.12);transition:.3s;cursor:pointer;display:flex;flex-direction:column;box-shadow:0 6px 20px rgba(13,39,49,.06)}
-  .post:hover{transform:translateY(-6px);border-color:#0a8a96;box-shadow:0 14px 34px rgba(13,39,49,.12)}
+  .post{background:#ffffff;border-radius:var(--r-lg);overflow:hidden;
+    border:1px solid var(--line);transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);cursor:pointer;display:flex;flex-direction:column;box-shadow:var(--sh-2)}
+  .post:hover{transform:translateY(-6px);border-color:#0a8a96;box-shadow:var(--sh-3)}
   .post .cover{height:175px;display:flex;align-items:center;justify-content:center;font-size:2.6rem}
+  .post .cover svg{width:52px;height:52px;color:#fff;opacity:.95}
+  .article-hero svg{width:90px;height:90px;color:#fff;opacity:.95}
   .post .body{padding:24px;flex:1;display:flex;flex-direction:column}
   .post .cat{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:#e8543f;font-weight:700}
   .post h3{font-size:1.3rem;margin:10px 0;font-weight:600}
@@ -233,7 +241,7 @@
   .spot-attr{font-size:.68rem;color:#4a6168;margin-bottom:24px}
   .spot-attr a{color:#0a8a96;text-decoration:none}
   .spot-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:30px 0}
-  .info-card{background:#ffffff;border:1px solid rgba(13,39,49,.12);border-radius:16px;padding:22px;box-shadow:0 4px 14px rgba(13,39,49,.05)}
+  .info-card{background:#ffffff;border:1px solid var(--line);border-radius:var(--r-md);padding:22px;box-shadow:var(--sh-1)}
   .info-card .k{font-size:.78rem;letter-spacing:1px;color:#4a6168;text-transform:uppercase}
   .info-card .v{font-family:'Space Mono',monospace;font-weight:700;font-size:1.35rem;color:#0a8a96;margin-top:6px;letter-spacing:-.5px}
 
@@ -273,6 +281,17 @@
 
   .reveal{opacity:0;transform:translateY(28px);transition:.8s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1;transform:none}
+  /* скелетоны загрузки */
+  .skel{background:linear-gradient(100deg,#e9efee 25%,#f5f8f7 50%,#e9efee 75%);background-size:200% 100%;animation:shimmer 1.3s ease-in-out infinite}
+  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  .skel-card{height:190px;border-radius:var(--r-lg)}
+  .skel-row{height:88px;border-radius:var(--r-md);margin-bottom:14px}
+  /* шкала глубины (индикатор прокрутки в стиле дайв-компьютера) */
+  .depth-gauge{position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:150;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
+  .depth-track{width:3px;height:160px;background:rgba(13,39,49,.14);border-radius:3px;overflow:hidden;position:relative}
+  .depth-fill{position:absolute;top:0;left:0;width:100%;height:0;background:linear-gradient(180deg,#27d0d5,#0a4358);transition:height .12s linear}
+  .depth-read{font-family:'Space Mono',monospace;font-size:.7rem;color:#0a7d8c;letter-spacing:-.5px;white-space:nowrap;background:rgba(243,246,245,.72);padding:2px 7px;border-radius:var(--pill);backdrop-filter:blur(4px)}
+  @media(max-width:1180px){.depth-gauge{display:none}}
 
   /* REVIEWS */
   .review{background:#ffffff;border:1px solid rgba(13,39,49,.12);border-radius:20px;padding:28px;
@@ -797,7 +816,8 @@
     <p>Заметки о технике, снаряжении и местах. Пишу из опыта, без воды (кроме той, что вокруг).</p>
   </div></div>
   <section><div class="narrow">
-    <div class="grid-3" id="blog-list"><article class="post" onclick="openArticle(0)"><div class="cover ph-e">⚠️</div><div class="body"><span class="cat">Разбор</span><h3>Перегруз и отказ компенсатора: почему дайвер не всплыл</h3><p>Разбираю типовой сценарий из отчётов о происшествиях: перегруженный дайвер, отказ поддува жилета и паника. Что пошло не так и как нужно было действовать.</p><span class="date">28 июн 2026 · 8 мин</span></div></article><article class="post" onclick="openArticle(1)"><div class="cover ph-d">🧠</div><div class="body"><span class="cat">Разбор</span><h3>Паника на глубине: физиология и как её прервать</h3><p>Большинство несчастных случаев начинаются не с отказа техники, а с паники. Разбираю, что происходит с телом и как остановить панику до того, как она победит.</p><span class="date">26 июн 2026 · 9 мин</span></div></article><article class="post" onclick="openArticle(2)"><div class="cover ph-f">⛽</div><div class="body"><span class="cat">Безопасность</span><h3>Правило третей: сколько воздуха брать под воду</h3><p>Воздух под водой кончается быстрее, чем кажется на поверхности. Разбираю правило третей, как считать свой расход и почему запас — это не трусость, а норма.</p><span class="date">24 июн 2026 · 7 мин</span></div></article><article class="post" onclick="openArticle(3)"><div class="cover ph-a">👂</div><div class="body"><span class="cat">Техника</span><h3>Уши и давление: как продуваться правильно</h3><p>Боль в ушах — причина номер один, по которой новички прекращают погружение. Разбираю, почему это происходит и какими способами продуваться, чтобы спуск был комфортным.</p><span class="date">18 июн 2026 · 6 мин</span></div></article><article class="post" onclick="openArticle(4)"><div class="cover ph-h">🥽</div><div class="body"><span class="cat">Снаряжение</span><h3>Маска, которая не течёт и не потеет</h3><p>Маска — первое снаряжение, которое стоит купить своё. Рассказываю, как подобрать её по лицу, почему она течёт и потеет и что с этим делать.</p><span class="date">11 июн 2026 · 6 мин</span></div></article><article class="post" onclick="openArticle(5)"><div class="cover ph-b">🌊</div><div class="body"><span class="cat">Путешествие</span><h3>Красное море для новичка: 5 мест, с которых стоит начать</h3><p>Тёплая вода, видимость до 30 метров и рифы прямо от берега — Красное море создано для первых погружений. Разбираю пять направлений и кому какое подойдёт.</p><span class="date">4 июн 2026 · 8 мин</span></div></article><article class="post" onclick="openArticle(6)"><div class="cover ph-d">🏊</div><div class="body"><span class="cat">Путь</span><h3>День, когда моя напарница потеряла сознание под водой</h3><p>Седьмое января изменило моё отношение к дайвингу навсегда. История о том, почему я пошёл учиться на Rescue Diver — рассказываю как было.</p><span class="date">7 янв 2026 · 7 мин</span></div></article><article class="post" onclick="openArticle(7)"><div class="cover ph-c">⚖️</div><div class="body"><span class="cat">Техника</span><h3>Контроль плавучести: 5 ошибок новичков</h3><p>Почему вы тратите воздух вдвое быстрее опытного дайвера и как это исправить буквально за одно погружение.</p><span class="date">12 мая 2026 · 7 мин</span></div></article><article class="post" onclick="openArticle(8)"><div class="cover ph-g">U0001fa7a</div><div class="body"><span class="cat">Безопасность</span><h3>Азот, декомпрессия и почему мы всплываем медленно</h3><p>Понятным языком — что происходит с азотом в организме на глубине и почему остановка безопасности — не формальность.</p><span class="date">19 мая 2026 · 8 мин</span></div></article><article class="post" onclick="openArticle(9)"><div class="cover ph-d">⚓</div><div class="body"><span class="cat">История</span><h3>Thistlegorm: корабль, который стал музеем</h3><p>История самого знаменитого рэк-дайва Красного моря: от бомбёжки 1941 года до Кусто и современных дайверов.</p><span class="date">5 мая 2026 · 7 мин</span></div></article><article class="post" onclick="openArticle(10)"><div class="cover ph-e">U0001f3dd️</div><div class="body"><span class="cat">Путешествие</span><h3>Дахаб глазами дайвмастера: маршрут на неделю</h3><p>Дахаб — это медленный дайвинг с берега, рифы в пяти минутах ходьбы и вечера на подушках у моря. Делюсь маршрутом на неделю: куда нырять по дням и что не пропустить.</p><span class="date">28 апр 2026 · 9 мин</span></div></article><article class="post" onclick="openArticle(11)"><div class="cover ph-b">⌚</div><div class="body"><span class="cat">Снаряжение</span><h3>Первый компьютер для дайвинга: на что смотреть</h3><p>Дайв-компьютер — это не гаджет ради цифр, а прибор, который считает за тебя азот и держит в безопасных рамках. Разбираю, на что реально смотреть при покупке первого.</p><span class="date">9 апр 2026 · 7 мин</span></div></article></div>
+    <div class="blog-filters" id="blog-filters"></div>
+    <div class="grid-3" id="blog-list"><article class="post" onclick="openArticle(0)"><div class="cover ph-e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5l8.5 14.5H3.5z"/><path d="M12 10v4"/><path d="M12 16.6h.01"/></svg></div><div class="body"><span class="cat">Разбор</span><h3>Перегруз и отказ компенсатора: почему дайвер не всплыл</h3><p>Разбираю типовой сценарий из отчётов о происшествиях: перегруженный дайвер, отказ поддува жилета и паника. Что пошло не так и как нужно было действовать.</p><span class="date">28 июн 2026 · 8 мин</span></div></article><article class="post" onclick="openArticle(1)"><div class="cover ph-d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5l8.5 14.5H3.5z"/><path d="M12 10v4"/><path d="M12 16.6h.01"/></svg></div><div class="body"><span class="cat">Разбор</span><h3>Паника на глубине: физиология и как её прервать</h3><p>Большинство несчастных случаев начинаются не с отказа техники, а с паники. Разбираю, что происходит с телом и как остановить панику до того, как она победит.</p><span class="date">26 июн 2026 · 9 мин</span></div></article><article class="post" onclick="openArticle(2)"><div class="cover ph-f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 2.5v5.5c0 4.2-2.9 7.4-7 8.5-4.1-1.1-7-4.3-7-8.5V5.5z"/><path d="M9 12l2 2 4-4"/></svg></div><div class="body"><span class="cat">Безопасность</span><h3>Правило третей: сколько воздуха брать под воду</h3><p>Воздух под водой кончается быстрее, чем кажется на поверхности. Разбираю правило третей, как считать свой расход и почему запас — это не трусость, а норма.</p><span class="date">24 июн 2026 · 7 мин</span></div></article><article class="post" onclick="openArticle(3)"><div class="cover ph-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="1"/><path d="M12 12l3.6-2"/><path d="M12 3.5v2M20.5 12h-2M12 20.5v-2M3.5 12h2"/></svg></div><div class="body"><span class="cat">Техника</span><h3>Уши и давление: как продуваться правильно</h3><p>Боль в ушах — причина номер один, по которой новички прекращают погружение. Разбираю, почему это происходит и какими способами продуваться, чтобы спуск был комфортным.</p><span class="date">18 июн 2026 · 6 мин</span></div></article><article class="post" onclick="openArticle(4)"><div class="cover ph-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="12" r="3.4"/><circle cx="15.5" cy="12" r="3.4"/><path d="M11.9 12h.2"/><path d="M5.1 12H4M20 12h-1.1"/></svg></div><div class="body"><span class="cat">Снаряжение</span><h3>Маска, которая не течёт и не потеет</h3><p>Маска — первое снаряжение, которое стоит купить своё. Рассказываю, как подобрать её по лицу, почему она течёт и потеет и что с этим делать.</p><span class="date">11 июн 2026 · 6 мин</span></div></article><article class="post" onclick="openArticle(5)"><div class="cover ph-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-4-6.5-7-6.5-10.2A6.5 6.5 0 0 1 18.5 10.8C18.5 14 16 17 12 21z"/><circle cx="12" cy="10.8" r="2.2"/></svg></div><div class="body"><span class="cat">Путешествие</span><h3>Красное море для новичка: 5 мест, с которых стоит начать</h3><p>Тёплая вода, видимость до 30 метров и рифы прямо от берега — Красное море создано для первых погружений. Разбираю пять направлений и кому какое подойдёт.</p><span class="date">4 июн 2026 · 8 мин</span></div></article><article class="post" onclick="openArticle(6)"><div class="cover ph-d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 21V4"/><path d="M6.5 5h10l-2 3 2 3h-10"/></svg></div><div class="body"><span class="cat">Путь</span><h3>День, когда моя напарница потеряла сознание под водой</h3><p>Седьмое января изменило моё отношение к дайвингу навсегда. История о том, почему я пошёл учиться на Rescue Diver — рассказываю как было.</p><span class="date">7 янв 2026 · 7 мин</span></div></article><article class="post" onclick="openArticle(7)"><div class="cover ph-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="1"/><path d="M12 12l3.6-2"/><path d="M12 3.5v2M20.5 12h-2M12 20.5v-2M3.5 12h2"/></svg></div><div class="body"><span class="cat">Техника</span><h3>Контроль плавучести: 5 ошибок новичков</h3><p>Почему вы тратите воздух вдвое быстрее опытного дайвера и как это исправить буквально за одно погружение.</p><span class="date">12 мая 2026 · 7 мин</span></div></article><article class="post" onclick="openArticle(8)"><div class="cover ph-g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 2.5v5.5c0 4.2-2.9 7.4-7 8.5-4.1-1.1-7-4.3-7-8.5V5.5z"/><path d="M9 12l2 2 4-4"/></svg></div><div class="body"><span class="cat">Безопасность</span><h3>Азот, декомпрессия и почему мы всплываем медленно</h3><p>Понятным языком — что происходит с азотом в организме на глубине и почему остановка безопасности — не формальность.</p><span class="date">19 мая 2026 · 8 мин</span></div></article><article class="post" onclick="openArticle(9)"><div class="cover ph-d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v13"/><path d="M8.5 10h7"/><path d="M5 14a7 7 0 0 0 14 0"/><path d="M5 14H3.5M19 14h1.5"/></svg></div><div class="body"><span class="cat">История</span><h3>Thistlegorm: корабль, который стал музеем</h3><p>История самого знаменитого рэк-дайва Красного моря: от бомбёжки 1941 года до Кусто и современных дайверов.</p><span class="date">5 мая 2026 · 7 мин</span></div></article><article class="post" onclick="openArticle(10)"><div class="cover ph-e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-4-6.5-7-6.5-10.2A6.5 6.5 0 0 1 18.5 10.8C18.5 14 16 17 12 21z"/><circle cx="12" cy="10.8" r="2.2"/></svg></div><div class="body"><span class="cat">Путешествие</span><h3>Дахаб глазами дайвмастера: маршрут на неделю</h3><p>Дахаб — это медленный дайвинг с берега, рифы в пяти минутах ходьбы и вечера на подушках у моря. Делюсь маршрутом на неделю: куда нырять по дням и что не пропустить.</p><span class="date">28 апр 2026 · 9 мин</span></div></article><article class="post" onclick="openArticle(11)"><div class="cover ph-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="12" r="3.4"/><circle cx="15.5" cy="12" r="3.4"/><path d="M11.9 12h.2"/><path d="M5.1 12H4M20 12h-1.1"/></svg></div><div class="body"><span class="cat">Снаряжение</span><h3>Первый компьютер для дайвинга: на что смотреть</h3><p>Дайв-компьютер — это не гаджет ради цифр, а прибор, который считает за тебя азот и держит в безопасных рамках. Разбираю, на что реально смотреть при покупке первого.</p><span class="date">9 апр 2026 · 7 мин</span></div></article></div>
   </div></section>
 </div>
 
@@ -855,6 +875,10 @@
 </div>
 
 <!-- ============ CHATBOT ============ -->
+<div id="depth-gauge" class="depth-gauge" aria-hidden="true">
+  <div class="depth-track"><div class="depth-fill" id="depth-fill"></div></div>
+  <div class="depth-read" id="depth-read">0&nbsp;м</div>
+</div>
 <button id="chat-fab" onclick="toggleChat()" aria-label="Открыть чат" aria-expanded="false" aria-controls="chat-panel">💬</button>
 <div id="chat-panel" role="dialog" aria-label="Чат-помощник «Глубже»" aria-hidden="true">
   <div class="chat-head">
@@ -955,14 +979,31 @@
   }
   // courses section removed — no DOM targets needed
 
+  /* ---------- SVG-ИКОНКИ КАТЕГОРИЙ ---------- */
+  const ICON_ATTR='viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"';
+  const ICONS={
+    'Безопасность':`<svg ${ICON_ATTR}><path d="M12 3l7 2.5v5.5c0 4.2-2.9 7.4-7 8.5-4.1-1.1-7-4.3-7-8.5V5.5z"/><path d="M9 12l2 2 4-4"/></svg>`,
+    'Разбор':`<svg ${ICON_ATTR}><path d="M12 4.5l8.5 14.5H3.5z"/><path d="M12 10v4"/><path d="M12 16.6h.01"/></svg>`,
+    'Техника':`<svg ${ICON_ATTR}><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="1"/><path d="M12 12l3.6-2"/><path d="M12 3.5v2M20.5 12h-2M12 20.5v-2M3.5 12h2"/></svg>`,
+    'Снаряжение':`<svg ${ICON_ATTR}><circle cx="8.5" cy="12" r="3.4"/><circle cx="15.5" cy="12" r="3.4"/><path d="M11.9 12h.2"/><path d="M5.1 12H4M20 12h-1.1"/></svg>`,
+    'Путешествие':`<svg ${ICON_ATTR}><path d="M12 21c-4-4-6.5-7-6.5-10.2A6.5 6.5 0 0 1 18.5 10.8C18.5 14 16 17 12 21z"/><circle cx="12" cy="10.8" r="2.2"/></svg>`,
+    'Путь':`<svg ${ICON_ATTR}><path d="M6.5 21V4"/><path d="M6.5 5h10l-2 3 2 3h-10"/></svg>`,
+    'История':`<svg ${ICON_ATTR}><circle cx="12" cy="5" r="2"/><path d="M12 7v13"/><path d="M8.5 10h7"/><path d="M5 14a7 7 0 0 0 14 0"/><path d="M5 14H3.5M19 14h1.5"/></svg>`
+  };
+  const ICON_DEFAULT=`<svg ${ICON_ATTR}><path d="M12 3.5c3.8 4.6 5.8 7.6 5.8 10.3A5.8 5.8 0 0 1 6.2 13.8C6.2 11.1 8.2 8.1 12 3.5z"/></svg>`;
+  function catIcon(cat){return ICONS[cat]||ICON_DEFAULT;}
+  function postCard(p){
+    const i=posts.indexOf(p);
+    return '<article class="post reveal" onclick="openArticle('+i+')"><div class="cover '+p.ph+'">'+catIcon(p.cat)+'</div>'
+      +'<div class="body"><span class="cat">'+p.cat+'</span><h3>'+p.title+'</h3><p>'+p.excerpt+'</p>'
+      +'<span class="date">'+p.date+' · '+p.read+'</span></div></article>';
+  }
+
   document.getElementById('spot-list').innerHTML=spots.map((s,i)=>
     `<div class="spot ${i===0?'active':''}" data-i="${i}" onclick="openSpot(${i})">
       <h4>${s.t}</h4><div class="meta"><span>Глубина <b>${s.depth}</b></span><span>Уровень <b>${s.level}</b></span><span>Видимость <b>${s.vis}</b></span></div></div>`).join('');
 
-  document.getElementById('blog-list').innerHTML=posts.map((p,i)=>
-    `<article class="post" onclick="openArticle(${i})"><div class="cover ${p.ph}">${p.emoji}</div>
-      <div class="body"><span class="cat">${p.cat}</span><h3>${p.title}</h3><p>${p.excerpt}</p>
-      <span class="date">${p.date} · ${p.read}</span></div></article>`).join('');
+  renderBlog('Все'); // рендерит фильтры категорий + карточки (postCard с SVG-иконками)
 
   /* ---------- REVIEWS ---------- */
   const reviews=[
@@ -1125,7 +1166,7 @@
     document.getElementById('art-title').textContent=p.title;
     document.getElementById('art-meta').innerHTML=`<span>${p.cat}</span><span><b>${p.date}</b></span><span>⏱ ${p.read}</span>`;
     const hero=document.getElementById('art-hero');
-    hero.className='article-hero '+p.ph;hero.textContent=p.emoji;
+    hero.className='article-hero '+p.ph;hero.innerHTML=catIcon(p.cat);
     document.getElementById('art-body').innerHTML=p.body;
     go('article',{noHistory:true});
     const url=BASE+'blog/'+slugify(p.title);
@@ -1143,10 +1184,35 @@
   let io;
   function runReveal(){
     if(io)io.disconnect();
-    io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
-    document.querySelectorAll('.page.active .reveal').forEach(el=>{el.classList.remove('in');io.observe(el);});
+    io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
+    document.querySelectorAll('.page.active .reveal').forEach(el=>{
+      el.classList.remove('in');
+      // stagger: задержка по позиции среди соседних .reveal
+      const sibs=el.parentNode?[...el.parentNode.children].filter(c=>c.classList&&c.classList.contains('reveal')):[el];
+      el.style.transitionDelay=Math.min(Math.max(sibs.indexOf(el),0),6)*70+'ms';
+      io.observe(el);
+    });
   }
   runReveal();
+
+  /* ---------- ШКАЛА ГЛУБИНЫ ---------- */
+  (function(){
+    const fill=document.getElementById('depth-fill'), read=document.getElementById('depth-read');
+    if(!fill) return;
+    const MAX=42; // м — как макс. глубина в статистике
+    let ticking=false;
+    function upd(){
+      ticking=false;
+      const h=document.documentElement;
+      const sc=h.scrollHeight-h.clientHeight;
+      const pct=sc>10?Math.min(Math.max(h.scrollTop/sc,0),1):0;
+      fill.style.height=(pct*100)+'%';
+      read.innerHTML=Math.round(pct*MAX)+'&nbsp;м';
+    }
+    addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});
+    addEventListener('resize',upd);
+    upd();
+  })();
 
   /* ---------- SPOT PIN SYNC (map page) ---------- */
   document.querySelectorAll('.pin').forEach(p=>p.addEventListener('click',()=>openSpot(+p.dataset.i)));
@@ -1224,7 +1290,7 @@
   async function renderLogbookFull(){
     const el=document.getElementById('logbook-full');
     if(!el) return;
-    el.innerHTML='<div class="buddy-loading">\u0417\u0430\u0433\u0440\u0443\u0436\u0430\u044e \u043b\u043e\u0433\u0431\u0443\u043a...</div>';
+    el.innerHTML='<div class="skel skel-row"></div>'.repeat(4);
     try{
       const r=await fetch('https://glubzhe-buddy.bercutishka.workers.dev?action=logbook');
       const data=await r.json();
@@ -1256,7 +1322,7 @@
   async function renderBuddyList(){
     const el=document.getElementById('buddy-list');
     if(!el) return;
-    el.innerHTML='<div class="buddy-loading">Загружаю список...</div>';
+    el.innerHTML='<div class="buddy-grid">'+'<div class="skel skel-card"></div>'.repeat(3)+'</div>';
     try{
       const r=await fetch('https://glubzhe-buddy.bercutishka.workers.dev?action=active');
       const data=await r.json();

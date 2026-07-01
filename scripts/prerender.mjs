@@ -24,12 +24,37 @@ const slugify = (s) => (s || '').toLowerCase().split('').map(c => T[c] !== undef
 const escHtml = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const escAttr = (s) => escHtml(s).replace(/"/g, '&quot;');
 
-function extractArray(html, name, after) {
-  const start = html.indexOf('const ' + name + '=[');
-  const end = html.indexOf(after, start);
-  if (start < 0 || end < 0) throw new Error('не найден массив ' + name + ' в index.html');
-  let lit = html.slice(start + ('const ' + name + '=').length, end);
-  lit = lit.slice(0, lit.lastIndexOf(']') + 1);
+// SVG-иконки категорий — ДОЛЖНЫ совпадать с ICONS в index.html
+const IA = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"';
+const ICONS = {
+  'Безопасность': `<svg ${IA}><path d="M12 3l7 2.5v5.5c0 4.2-2.9 7.4-7 8.5-4.1-1.1-7-4.3-7-8.5V5.5z"/><path d="M9 12l2 2 4-4"/></svg>`,
+  'Разбор': `<svg ${IA}><path d="M12 4.5l8.5 14.5H3.5z"/><path d="M12 10v4"/><path d="M12 16.6h.01"/></svg>`,
+  'Техника': `<svg ${IA}><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="1"/><path d="M12 12l3.6-2"/><path d="M12 3.5v2M20.5 12h-2M12 20.5v-2M3.5 12h2"/></svg>`,
+  'Снаряжение': `<svg ${IA}><circle cx="8.5" cy="12" r="3.4"/><circle cx="15.5" cy="12" r="3.4"/><path d="M11.9 12h.2"/><path d="M5.1 12H4M20 12h-1.1"/></svg>`,
+  'Путешествие': `<svg ${IA}><path d="M12 21c-4-4-6.5-7-6.5-10.2A6.5 6.5 0 0 1 18.5 10.8C18.5 14 16 17 12 21z"/><circle cx="12" cy="10.8" r="2.2"/></svg>`,
+  'Путь': `<svg ${IA}><path d="M6.5 21V4"/><path d="M6.5 5h10l-2 3 2 3h-10"/></svg>`,
+  'История': `<svg ${IA}><circle cx="12" cy="5" r="2"/><path d="M12 7v13"/><path d="M8.5 10h7"/><path d="M5 14a7 7 0 0 0 14 0"/><path d="M5 14H3.5M19 14h1.5"/></svg>`,
+};
+const ICON_DEFAULT = `<svg ${IA}><path d="M12 3.5c3.8 4.6 5.8 7.6 5.8 10.3A5.8 5.8 0 0 1 6.2 13.8C6.2 11.1 8.2 8.1 12 3.5z"/></svg>`;
+const catIcon = (cat) => ICONS[cat] || ICON_DEFAULT;
+
+// Достаёт `const <name>=[...]` балансировкой скобок с учётом строк —
+// устойчиво к `]` внутри строк/кода после массива.
+function extractArray(html, name) {
+  const marker = 'const ' + name + '=';
+  const start = html.indexOf(marker + '[');
+  if (start < 0) throw new Error('не найден массив ' + name + ' в index.html');
+  let i = start + marker.length; // позиция '['
+  let depth = 0, q = null, esc = false;
+  for (; i < html.length; i++) {
+    const c = html[i];
+    if (esc) { esc = false; continue; }
+    if (q) { if (c === '\\') esc = true; else if (c === q) q = null; continue; }
+    if (c === '"' || c === "'" || c === '`') { q = c; continue; }
+    if (c === '[') depth++;
+    else if (c === ']') { depth--; if (depth === 0) { i++; break; } }
+  }
+  const lit = html.slice(start + marker.length, i);
   return new Function('return (' + lit + ')')();
 }
 
@@ -77,8 +102,8 @@ function injectHead(page, snippet) {
 /** Возвращает массив [relPath, html] для статей, спотов, листинга блога и sitemap. */
 export function generate() {
   const html = readFileSync('index.html', 'utf8');
-  const posts = extractArray(html, 'posts', 'const reviews=');
-  const spots = extractArray(html, 'spots', 'const posts=');
+  const posts = extractArray(html, 'posts');
+  const spots = extractArray(html, 'spots');
   const out = [];
 
   // ── Статьи ──
@@ -95,7 +120,7 @@ export function generate() {
     page = page.replace('<div class="meta-row" id="art-meta"></div>',
       '<div class="meta-row" id="art-meta"><span>' + escHtml(p.cat) + '</span><span><b>' + escHtml(p.date) + '</b></span><span>⏱ ' + escHtml(p.read) + '</span></div>');
     page = page.replace('<div class="article-hero" id="art-hero"></div>',
-      '<div class="article-hero ' + p.ph + '" id="art-hero">' + (p.emoji || '') + '</div>');
+      '<div class="article-hero ' + p.ph + '" id="art-hero">' + catIcon(p.cat) + '</div>');
     page = page.replace('<div id="art-body"></div>', '<div id="art-body">' + p.body + '</div>');
 
     // JSON-LD BlogPosting + дата публикации
@@ -142,7 +167,7 @@ export function generate() {
     let page = head(html, { title: 'Журнал — Глубже', desc: 'Заметки о технике, снаряжении и местах дайвинга — из личного опыта.', url: SITE + 'blog/' });
     page = activate(page, 'blog');
     const cards = posts.map((p, i) =>
-      '<article class="post" onclick="openArticle(' + i + ')"><div class="cover ' + p.ph + '">' + (p.emoji || '') + '</div>' +
+      '<article class="post" onclick="openArticle(' + i + ')"><div class="cover ' + p.ph + '">' + catIcon(p.cat) + '</div>' +
       '<div class="body"><span class="cat">' + escHtml(p.cat) + '</span><h3>' + escHtml(p.title) + '</h3><p>' + escHtml(p.excerpt || '') + '</p>' +
       '<span class="date">' + escHtml(p.date) + ' · ' + escHtml(p.read) + '</span></div></article>').join('');
     page = page.replace('<div class="grid-3" id="blog-list"></div>', '<div class="grid-3" id="blog-list">' + cards + '</div>');
