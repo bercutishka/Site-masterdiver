@@ -38,6 +38,18 @@ const ICONS = {
 const ICON_DEFAULT = `<svg ${IA}><path d="M12 3.5c3.8 4.6 5.8 7.6 5.8 10.3A5.8 5.8 0 0 1 6.2 13.8C6.2 11.1 8.2 8.1 12 3.5z"/></svg>`;
 const catIcon = (cat) => ICONS[cat] || ICON_DEFAULT;
 
+// «Читать дальше»: до 3 статей той же категории (добор — остальными)
+function relatedHtml(p, posts) {
+  let rel = posts.filter(x => x !== p && x.cat === p.cat);
+  for (const x of posts) { if (rel.length >= 3) break; if (x !== p && !rel.includes(x)) rel.push(x); }
+  rel = rel.slice(0, 3);
+  if (!rel.length) return '';
+  const cards = rel.map(r =>
+    `<a class="rel-card" href="${SITE}blog/${slugify(r.title)}/"><span class="rel-ic ${r.ph}">${catIcon(r.cat)}</span><span class="rel-txt"><span class="rel-cat">${escHtml(r.cat)}</span><span class="rel-t">${escHtml(r.title)}</span></span></a>`
+  ).join('');
+  return '<h2 class="rel-head">Читать дальше</h2><div class="rel-grid">' + cards + '</div>';
+}
+
 // Достаёт `const <name>=[...]` балансировкой скобок с учётом строк —
 // устойчиво к `]` внутри строк/кода после массива.
 function extractArray(html, name) {
@@ -122,6 +134,7 @@ export function generate() {
     page = page.replace('<div class="article-hero" id="art-hero"></div>',
       '<div class="article-hero ' + p.ph + '" id="art-hero">' + catIcon(p.cat) + '</div>');
     page = page.replace('<div id="art-body"></div>', '<div id="art-body">' + p.body + '</div>');
+    page = page.replace('<div id="art-related" class="art-related"></div>', '<div id="art-related" class="art-related">' + relatedHtml(p, posts) + '</div>');
 
     // JSON-LD BlogPosting + дата публикации
     const ld = {
