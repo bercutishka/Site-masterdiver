@@ -22,7 +22,7 @@
 <link rel="canonical"           href="https://bercutishka.github.io/Site-masterdiver/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Outfit:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{ color-scheme: light;
     --abyss:#063040;     /* тёмная бирюза только для баннеров/футера */
@@ -88,7 +88,7 @@
   header .btn-ghost:hover,.band .btn-ghost:hover{background:rgba(191,243,238,.14)}
 
   /* HERO */
-  header{min-height:100vh;position:relative;display:flex;align-items:center;padding:130px 6vw 80px;
+  header{min-height:100vh;position:relative;display:flex;align-items:center;padding:110px 6vw 56px;
     background:radial-gradient(120% 90% at 70% 8%,rgba(39,208,213,.32),transparent 55%),
       radial-gradient(100% 80% at 8% 92%,rgba(10,125,140,.45),transparent 60%),
       linear-gradient(180deg,#021b2e,#053a52 70%,#021b2e);overflow:hidden}
@@ -114,11 +114,11 @@
   .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.8rem;letter-spacing:3px;
     text-transform:uppercase;color:#8df3dd;margin-bottom:22px;font-weight:600}
   .eyebrow::before{content:"";width:34px;height:1px;background:#8df3dd}
-  h1{font-size:clamp(3rem,9vw,6.8rem);letter-spacing:-2px}
+  h1{font-size:clamp(2.6rem,7vw,5.4rem);letter-spacing:-2px}
   h1 em{font-style:italic;font-weight:500;color:#8df3dd}
-  .hero-sub{font-size:clamp(1.05rem,2vw,1.3rem);max-width:580px;margin:26px 0 38px;color:#cfe6e4}
+  .hero-sub{font-size:clamp(1.05rem,2vw,1.3rem);max-width:580px;margin:20px 0 30px;color:#cfe6e4}
   .cta-row{display:flex;gap:16px;flex-wrap:wrap}
-  .stats{display:flex;gap:48px;margin-top:60px;flex-wrap:wrap}
+  .stats{display:flex;gap:48px;margin-top:44px;flex-wrap:wrap}
   .stat b{font-family:'Space Mono',monospace;font-weight:700;font-size:2.4rem;color:#d99412;display:block;line-height:1;letter-spacing:-1px}
   .stat span{font-size:.84rem;color:#aed4d2;letter-spacing:1px}
 
@@ -126,7 +126,7 @@
   section{padding:100px 6vw;position:relative}
   .narrow{max-width:1180px;margin:0 auto}
   .sec-head{margin-bottom:50px;max-width:680px}
-  .sec-head .eyebrow{color:#0a8a96}
+  .sec-head .eyebrow{color:#076670}
   .sec-head .eyebrow::before{background:#0a8a96}
   .sec-head h2{font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:-1px}
   .sec-head h2 em{color:#0a8a96;font-style:italic;font-weight:500}
@@ -150,6 +150,10 @@
     font-size:.86rem;font-weight:600;color:#fff;background:linear-gradient(transparent,rgba(2,27,46,.92));
     opacity:0;transition:.3s;transform:translateY(8px)}
   .gallery figure:hover figcaption{opacity:1;transform:translateY(0)}
+  /* на тач-устройствах hover нет — подписи видны всегда */
+  @media(hover:none),(max-width:880px){
+    .gallery figure figcaption{opacity:1;transform:none;padding:32px 14px 12px}
+  }
   .ph{width:100%;height:100%;transition:transform .6s;display:flex;align-items:center;justify-content:center;font-size:2.4rem}
   .gallery figure:hover .ph{transform:scale(1.08)}
   .g1{grid-column:span 2;grid-row:span 2}.g-wide{grid-column:span 2}
@@ -183,9 +187,11 @@
 
   /* SPOTS */
   .spots-wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start}
+  .spots-side{display:flex;flex-direction:column;gap:18px;min-width:0}
   .map{position:relative;background:linear-gradient(160deg,#0a4358,#063040);border-radius:24px;
     aspect-ratio:4/3;overflow:hidden;border:1px solid rgba(13,39,49,.12)}
   .map svg{width:100%;height:100%}
+  .pin-label{fill:#cfe6e4;font-size:12px;font-family:'Outfit',sans-serif;font-weight:600;text-anchor:middle;letter-spacing:.4px;paint-order:stroke;stroke:rgba(2,27,46,.75);stroke-width:3px}
   .pin{cursor:pointer}
   .pin circle.dot{transition:.25s}
   .pin:hover circle.dot{r:11;fill:#e8543f}
@@ -207,7 +213,7 @@
   .post .cover svg{width:52px;height:52px;color:#fff;opacity:.95}
   .article-hero svg{width:90px;height:90px;color:#fff;opacity:.95}
   .post .body{padding:24px;flex:1;display:flex;flex-direction:column}
-  .post .cat{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:#e8543f;font-weight:700}
+  .post .cat{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:#c9432f;font-weight:700}
   .post h3{font-size:1.3rem;margin:10px 0;font-weight:600}
   .post p{font-size:.92rem;color:#4a6168;flex:1}
   .post .date{font-size:.8rem;color:#4a6168;opacity:.85;margin-top:14px}
@@ -221,9 +227,9 @@
   .article li{margin:10px 0;color:#0d2731}
   .article blockquote{border-left:3px solid #e8543f;padding:6px 22px;margin:28px 0;
     font-family:'Fraunces';font-style:italic;font-size:1.3rem;color:#0a8a96}
-  .article-hero{height:280px;border-radius:22px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;font-size:3.4rem}
-  .meta-row{display:flex;gap:18px;color:#4a6168;font-size:.9rem;margin:18px 0 30px;flex-wrap:wrap}
-  .meta-row b{color:#0a8a96}
+  .article-hero{height:180px;border-radius:22px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;font-size:2.4rem}
+  .meta-row{display:flex;gap:18px;color:#aed4d2;font-size:.9rem;margin:18px 0 30px;flex-wrap:wrap}
+  .meta-row b{color:#8df3dd}
 
   /* ABOUT */
   .about-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:50px;align-items:center}
@@ -299,7 +305,7 @@
   .rel-card:hover{transform:translateY(-4px);box-shadow:var(--sh-2);border-color:#0a8a96}
   .rel-ic{flex:0 0 auto;width:46px;height:46px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center}
   .rel-ic svg{width:24px;height:24px;color:#fff}
-  .rel-cat{display:block;font-size:.66rem;letter-spacing:1.5px;text-transform:uppercase;color:#e8543f;font-weight:700}
+  .rel-cat{display:block;font-size:.66rem;letter-spacing:1.5px;text-transform:uppercase;color:#c9432f;font-weight:700}
   .rel-t{display:block;font-family:'Fraunces';font-weight:600;font-size:.98rem;color:#0a1f27;margin-top:3px;line-height:1.25}
   @media(max-width:760px){.rel-grid{grid-template-columns:1fr}}
   /* блоки доверия */
@@ -307,9 +313,15 @@
   .trust-badge{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:var(--pill);padding:9px 16px;color:#eaf6f5}
   .trust-badge svg{width:20px;height:20px;color:#8df3dd;flex:0 0 auto}
   .trust-badge b{font-weight:600;font-size:.9rem}
-  @media(max-width:600px){.trust-badge{padding:8px 13px}.trust-badge b{font-size:.82rem}}
+  @media(max-width:600px){.trust-badge{padding:8px 13px}.trust-badge b{font-size:.82rem}
+    /* запас снизу, чтобы кнопка чата не перекрывала CTA hero на первом экране */
+    header{padding-bottom:120px}}
+  .form-hint{font-size:.78rem;color:#4a6168;margin-top:10px;text-align:center;line-height:1.5}
 
   /* REVIEWS */
+  /* 4 отзыва → сетка 2×2, чтобы не было «сироты» в трёхколоночнике */
+  .rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  @media(max-width:760px){.rev-grid{grid-template-columns:1fr}}
   .review{background:#ffffff;border:1px solid rgba(13,39,49,.12);border-radius:20px;padding:28px;
     box-shadow:0 6px 20px rgba(13,39,49,.06);display:flex;flex-direction:column}
   .review .stars{color:#f0a500;font-size:.95rem;letter-spacing:2px;margin-bottom:12px}
@@ -381,7 +393,7 @@
     .about-text p, .article p, .article li,
     .post p, .post h3, .post .date,
     .course li, .price small,
-    .meta-row, .review p {
+    .review p {
       background-color: inherit;
       color: #0d2731 !important;
     }
@@ -446,7 +458,7 @@
   .dive-map-wrap .map-sub{color:#4a6168;font-size:.9rem;margin-bottom:20px}
   .geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .geo-card{border-radius:18px;padding:24px;position:relative;overflow:hidden;color:#fff}
-  .geo-redsea{background:linear-gradient(135deg,#c0392b,#e8543f)}
+  .geo-redsea{background:linear-gradient(135deg,#053a52,#0a7d8c)}
   .geo-indo{background:linear-gradient(135deg,#0a7d8c,#27d0d5)}
   .geo-flag{font-size:1.8rem;margin-bottom:8px}
   .geo-name{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;margin-bottom:4px}
@@ -457,7 +469,7 @@
   @media(prefers-color-scheme:dark){
     .dive-map-wrap{background:#fff!important}
     .dive-map-wrap h3{color:#0a1f27!important}
-    .geo-redsea{background:linear-gradient(135deg,#c0392b,#e8543f)!important;color:#fff!important}
+    .geo-redsea{background:linear-gradient(135deg,#053a52,#0a7d8c)!important;color:#fff!important}
     .geo-indo{background:linear-gradient(135deg,#0a7d8c,#27d0d5)!important;color:#fff!important}
   }
 
@@ -617,7 +629,7 @@
     <button data-nav="gallery" onclick="go('gallery')">Галерея</button>
     <button data-nav="about" onclick="go('about')">Обо мне</button>
     <button class="nav-cta" onclick="go('buddy')">Найти бади</button>
-    <button onclick="sharesite()" style="opacity:.7;font-size:1.1rem;padding:6px 8px" title="Поделиться">⬆️</button>
+    <button onclick="sharesite()" style="opacity:.7;padding:6px 8px;line-height:0" title="Поделиться" aria-label="Поделиться сайтом"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 20 19v-7"/><path d="M12 15V3.5"/><path d="M7.5 8 12 3.5 16.5 8"/></svg></button>
   </div>
   <button class="burger" aria-label="Меню" aria-expanded="false" aria-controls="navlinks" onclick="toggleNav(this)"><span></span><span></span><span></span></button>
 </nav>
@@ -657,6 +669,29 @@
     </div>
   </header>
 
+  <section class="alt-bg"><div class="narrow">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Журнал</span>
+      <h2>Свежее в <em>журнале</em></h2>
+      <p>Разборы аварий, техника и снаряжение — из опыта, без воды.</p>
+    </div>
+    <div class="grid-3" id="blog-preview"></div>
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn btn-ghost" onclick="go('blog')">Весь журнал →</button>
+    </div>
+  </div></section>
+
+  <section><div class="narrow">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Последние записи</span>
+      <h2>Из <em>логбука</em></h2>
+    </div>
+    <div id="logbook-preview"></div>
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn btn-ghost" onclick="go('logbook')">Весь логбук →</button>
+    </div>
+  </div></section>
+
   <section class="alt-bg">
     <div class="narrow">
       <div class="sec-head reveal">
@@ -686,7 +721,7 @@
         <h2>Что <em>говорят</em></h2>
         <p>Читатели блога, люди с которыми нырял, те кто нашёл бади через сайт.</p>
       </div>
-      <div class="grid-3 reveal" id="reviews"></div>
+      <div class="rev-grid reveal" id="reviews"></div>
     </div>
   </section>
 
@@ -727,24 +762,13 @@
       </div>
     </div>
   </div></section>
-  <section><div class="narrow">
+  <section class="alt-bg"><div class="narrow">
     <div class="sec-head reveal">
       <span class="eyebrow">Прогресс</span>
       <h2>Путь к <em>Divemaster</em></h2>
       <p>Открытый счётчик — где я сейчас и куда иду.</p>
     </div>
     <div id="progress-block"></div>
-  </div></section>
-
-  <section class="alt-bg"><div class="narrow">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Последние записи</span>
-      <h2>Из <em>логбука</em></h2>
-    </div>
-    <div id="logbook-preview"></div>
-    <div style="text-align:center;margin-top:32px">
-      <button class="btn btn-ghost" onclick="go('logbook')">Весь логбук →</button>
-    </div>
   </div></section>
 
   <section><div class="narrow">
@@ -805,14 +829,16 @@
         <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
           <path d="M0,210 Q60,180 120,200 T260,195 T400,205 L400,300 L0,300 Z" fill="rgba(2,27,46,.6)"/>
           <path d="M0,235 Q80,215 160,232 T400,238 L400,300 L0,300 Z" fill="rgba(10,125,140,.3)"/>
-          <g class="pin" data-i="0" transform="translate(95,120)"><circle class="pulse"/><circle class="dot" r="7" fill="#0a8a96"/></g>
-          <g class="pin" data-i="1" transform="translate(210,95)"><circle class="pulse"/><circle class="dot" r="7" fill="#0a8a96"/></g>
-          <g class="pin" data-i="2" transform="translate(300,150)"><circle class="pulse"/><circle class="dot" r="7" fill="#0a8a96"/></g>
-          <g class="pin" data-i="3" transform="translate(160,170)"><circle class="pulse"/><circle class="dot" r="7" fill="#0a8a96"/></g>
+          <g class="pin" data-i="0" transform="translate(95,120)"><circle class="pulse"/><circle class="dot" r="7" fill="#0a8a96"/><text class="pin-label" x="0" y="-14">Blue Hole</text></g>
+          <g class="pin" data-i="1" transform="translate(210,95)"><circle class="pulse"/><circle class="dot" r="7" fill="#0a8a96"/><text class="pin-label" x="0" y="-14">Thistlegorm</text></g>
+          <g class="pin" data-i="2" transform="translate(300,150)"><circle class="pulse"/><circle class="dot" r="7" fill="#0a8a96"/><text class="pin-label" x="0" y="-14">Ras Mohammed</text></g>
+          <g class="pin" data-i="3" transform="translate(160,170)"><circle class="pulse"/><circle class="dot" r="7" fill="#0a8a96"/><text class="pin-label" x="0" y="-14">Гили</text></g>
         </svg>
       </div>
-      <div class="blog-filters" id="spot-filters"></div>
-      <div class="spot-list" id="spot-list"></div>
+      <div class="spots-side">
+        <div class="blog-filters" id="spot-filters"></div>
+        <div class="spot-list" id="spot-list"></div>
+      </div>
     </div>
   </div></section>
 </div>
@@ -889,13 +915,6 @@
       <button class="btn btn-primary" style="margin-top:24px;width:100%" onclick="submitForm()">Отправить</button>
       <div class="form-msg" id="formMsg"></div>
     </div>
-  <div class="narrow" style="margin-top:0;padding-top:0">
-    <div class="pairs-section">
-      <h2>Нашли друг друга 🤿</h2>
-      <p class="sub">Пары которые уже ныряли вместе — и написали об этом.</p>
-      <div id="pairs-list"><div class="pairs-empty">Пока историй нет — станьте первыми!</div></div>
-    </div>
-  </div>
   </div></section>
 </div>
 
@@ -1162,7 +1181,8 @@
       ft.setAttribute('tabindex','-1');
       ft.focus({preventScroll:true});
     }
-    if(id==='home'){renderProgress('progress-block');renderLogbookPreview();renderIncidentsPreview();loadStats();}
+    if(id==='home'){renderBlogPreview();renderLogbookPreview();loadStats();}
+    if(id==='about'){renderProgress('progress-block');renderIncidentsPreview();}
     if(id==='logbook'){renderProgress('progress-logbook');renderLogbookFull();}
     if(id==='buddy'){renderBuddyList();}
     if(!opts.noHistory){
@@ -1301,11 +1321,11 @@
           <span><b>DM ← цель</b></span>
         </div>
         <div class="cert-row">
-          <div class="cert"><div class="c-check">✅</div><div class="c-name">Open Water Diver</div><div class="c-date">PADI</div></div>
-          <div class="cert"><div class="c-check">✅</div><div class="c-name">Advanced OWD</div><div class="c-date">PADI</div></div>
-          <div class="cert"><div class="c-check">✅</div><div class="c-name">Rescue Diver</div><div class="c-date">PADI</div></div>
-          <div class="cert"><div class="c-check">✅</div><div class="c-name">EFR</div><div class="c-date">Emergency First Response</div></div>
-          <div class="cert"><div class="c-check">🎯</div><div class="c-name">Divemaster</div><div class="c-date">в процессе</div></div>
+          <div class="cert"><div class="c-check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg></div><div class="c-name">Open Water Diver</div><div class="c-date">PADI</div></div>
+          <div class="cert"><div class="c-check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg></div><div class="c-name">Advanced OWD</div><div class="c-date">PADI</div></div>
+          <div class="cert"><div class="c-check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg></div><div class="c-name">Rescue Diver</div><div class="c-date">PADI</div></div>
+          <div class="cert"><div class="c-check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg></div><div class="c-name">EFR</div><div class="c-date">Emergency First Response</div></div>
+          <div class="cert"><div class="c-check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg></div><div class="c-name">Divemaster</div><div class="c-date">в процессе</div></div>
         </div>
       </div>`;
     runReveal();
@@ -1421,7 +1441,10 @@
           +'<div class="pair-story">«'+esc(f.TripStory)+'»</div>'
           +'</div>';
       }).join('');
-    }catch(e){}
+    }catch(e){
+      // Не выдаём ошибку сети за «историй пока нет»
+      el.innerHTML='<div class="pairs-empty">Не удалось загрузить истории. Обнови страницу или загляни позже.</div>';
+    }
   }
 
   /* ────────── BUDDY FORM ────────── */
@@ -1521,6 +1544,13 @@
     const filtered=filter==='Все'?posts:posts.filter(function(p){return p.cat===filter;});
     const el=document.getElementById('blog-list');
     if(el) el.innerHTML=filtered.map(postCard).join('');
+    runReveal();
+  }
+
+  // Три свежие статьи на главной (posts отсортированы от новых к старым)
+  function renderBlogPreview(){
+    const el=document.getElementById('blog-preview');
+    if(el) el.innerHTML=posts.slice(0,3).map(postCard).join('');
     runReveal();
   }
 
@@ -1747,13 +1777,13 @@
       <p class="map-sub">Где я нырял и сколько раз.</p>
       <div class="geo-grid">
         <div class="geo-card geo-redsea">
-          <div class="geo-flag">🇪🇬</div>
+          <div class="geo-flag"><svg width="34" height="24" viewBox="0 0 34 24" aria-hidden="true"><defs><clipPath id="fEG"><rect width="34" height="24" rx="4"/></clipPath></defs><g clip-path="url(#fEG)"><rect width="34" height="8" fill="#d03a2b"/><rect y="8" width="34" height="8" fill="#f4f4f4"/><rect y="16" width="34" height="8" fill="#1e1e1e"/><circle cx="17" cy="12" r="2.2" fill="#c9a227"/></g></svg></div>
           <div class="geo-name">Красное море</div>
           <div class="geo-places">Шарм-эль-Шейх · Дахаб · Тистлегорм · Рас-Мухаммад</div>
           <div class="geo-count">34 <span>погружения</span></div>
         </div>
         <div class="geo-card geo-indo">
-          <div class="geo-flag">🇮🇩</div>
+          <div class="geo-flag"><svg width="34" height="24" viewBox="0 0 34 24" aria-hidden="true"><defs><clipPath id="fID"><rect width="34" height="24" rx="4"/></clipPath></defs><g clip-path="url(#fID)"><rect width="34" height="12" fill="#d03a2b"/><rect y="12" width="34" height="12" fill="#f4f4f4"/></g></svg></div>
           <div class="geo-name">Индонезия</div>
           <div class="geo-places">Гили Траванган · черепаший риф</div>
           <div class="geo-count">7 <span>погружений</span></div>
@@ -1794,7 +1824,14 @@
       </div>
       <input id="b-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="btn btn-primary" style="margin-top:20px;width:100%" onclick="submitBuddy()">Добавить меня в список</button>
+      <p class="form-hint">Ник в Telegram будет виден в публичном списке. Заявка появляется после ручной модерации — обычно в течение дня.</p>
       <div class="form-msg" id="buddy-msg">Заявка отправлена! Проверю и добавлю в список в течение дня 🤙</div>
+    </div>
+
+    <div class="pairs-section" style="margin-top:64px">
+      <h2>Нашли друг друга</h2>
+      <p class="sub">Пары которые уже ныряли вместе — и написали об этом.</p>
+      <div id="pairs-list"><div class="pairs-empty">Пока историй нет — станьте первыми!</div></div>
     </div>
   </div></section>
 </div>
