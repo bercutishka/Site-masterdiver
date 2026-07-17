@@ -110,6 +110,44 @@ export function validateBuddyPayload(body) {
   return null; // всё ок
 }
 
+// ── Уведомление владельцу о новой заявке ─────────────────────────────────────
+// Письмо шлёт САМ ВОРКЕР через Formspree (тот же ящик, что у контактной формы).
+// Раньше уведомление держалось на автоматизации Airtable — она живёт вне
+// репозитория и молча отваливается; теперь канал в коде и покрыт smoke-тестом.
+// Ошибка отправки письма НЕ роняет создание заявки (fire-and-forget).
+const FORMSPREE_URL = 'https://formspree.io/f/xykagdvo';
+
+export function buildBuddyNotification(fields, recordId) {
+  return {
+    _subject: `Новая заявка бади: ${fields.Name} (${fields.Telegram})`,
+    message: [
+      'Новая заявка на поиск бади — ждёт модерации (галочка Approved).',
+      '',
+      `Имя: ${fields.Name}`,
+      `Telegram: ${fields.Telegram}`,
+      `Уровень: ${fields.Level}`,
+      `Локация: ${fields.Location || '—'}`,
+      `О себе: ${fields.About || '—'}`,
+      '',
+      `Запись: ${recordId}`,
+      `Модерация: https://airtable.com/${BASE_BUDDIES}/${TABLE_BUDDIES}`,
+    ].join('\n'),
+  };
+}
+
+async function notifyNewBuddy(fields, recordId) {
+  try {
+    const res = await fetch(FORMSPREE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(buildBuddyNotification(fields, recordId)),
+    });
+    if (!res.ok) console.error('Не ушло уведомление о заявке (Formspree):', res.status, await res.text());
+  } catch (e) {
+    console.error('Не ушло уведомление о заявке (Formspree):', e);
+  }
+}
+
 // ── Обработчики ──────────────────────────────────────────────────────────────
 
 // Сборка query-строки в формате, который ждёт Airtable:
@@ -180,7 +218,7 @@ async function handleGetStats(token) {
   return json(stats);
 }
 
-async function handlePost(token, request, env) {
+async function handlePost(token, request, env, ctx) {
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
 
   // Honeypot: если фронт добавил поле-ловушку и бот его заполнил
@@ -198,20 +236,24 @@ async function handlePost(token, request, env) {
 
   const handle = body.Telegram.replace(/^@/, '').trim();
 
+  const fields = {
+    Name:     body.Name.trim().slice(0, 100),
+    Telegram: '@' + handle,
+    Level:    body.Level || 'OWD',
+    Location: (body.Location || '').trim().slice(0, 200),
+    About:    (body.About || '').trim().slice(0, 1000),
+    // Approved: false по умолчанию — запись ждёт модерации
+    Status:   'Ищет бади',
+  };
+
   const record = await atFetch(token, `/${BASE_BUDDIES}/${TABLE_BUDDIES}`, {
     method: 'POST',
-    body: JSON.stringify({
-      fields: {
-        Name:     body.Name.trim().slice(0, 100),
-        Telegram: '@' + handle,
-        Level:    body.Level || 'OWD',
-        Location: (body.Location || '').trim().slice(0, 200),
-        About:    (body.About || '').trim().slice(0, 1000),
-        // Approved: false по умолчанию — запись ждёт модерации
-        Status:   'Ищет бади',
-      },
-    }),
+    body: JSON.stringify({ fields }),
   });
+
+  // Письмо владельцу — после ответа клиенту, не блокируя заявку
+  if (ctx) ctx.waitUntil(notifyNewBuddy(fields, record.id));
+  else notifyNewBuddy(fields, record.id); // локальный запуск без ctx
 
   return json({ id: record.id }, 201);
 }
@@ -241,7 +283,7 @@ export default {
     if (isApi) {
       if (!token) return err('Не настроен AIRTABLE_TOKEN', 500);
       try {
-        if (request.method === 'POST') return await handlePost(token, request, env);
+        if (request.method === 'POST') return await handlePost(token, request, env, ctx);
         // Чтение — только GET; остальные методы не поддерживаем
         if (request.method !== 'GET') return err('Метод не поддерживается', 405);
         if (action === 'active')  return await handleGetActive(token);
