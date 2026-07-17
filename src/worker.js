@@ -117,6 +117,15 @@ export function validateBuddyPayload(body) {
 // Ошибка отправки письма НЕ роняет создание заявки (fire-and-forget).
 const FORMSPREE_URL = 'https://formspree.io/f/xykagdvo';
 
+// Версия для ?action=health — обновлять при изменении воркера,
+// чтобы снаружи было видно, что за код реально задеплоен.
+const VERSION = '2026-07-18-notify-1';
+
+// Статус последней попытки отправить письмо (память изолята, без хранилища).
+// Отдаётся в ?action=health — сразу после smoke --full там виден результат
+// Formspree-запроса ИЗ воркера (изолят обычно ещё тот же).
+let lastNotify = null;
+
 export function buildBuddyNotification(fields, recordId) {
   return {
     _subject: `Новая заявка бади: ${fields.Name} (${fields.Telegram})`,
@@ -139,11 +148,19 @@ async function notifyNewBuddy(fields, recordId) {
   try {
     const res = await fetch(FORMSPREE_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        // Workers по умолчанию шлют fetch без User-Agent — некоторые WAF такое режут
+        'User-Agent': 'glubzhe-worker/1 (+https://bercutishka.github.io/Site-masterdiver/)',
+      },
       body: JSON.stringify(buildBuddyNotification(fields, recordId)),
     });
-    if (!res.ok) console.error('Не ушло уведомление о заявке (Formspree):', res.status, await res.text());
+    const body = await res.text();
+    lastNotify = { at: new Date().toISOString(), ok: res.ok, status: res.status, body: body.slice(0, 200) };
+    if (!res.ok) console.error('Не ушло уведомление о заявке (Formspree):', res.status, body);
   } catch (e) {
+    lastNotify = { at: new Date().toISOString(), ok: false, error: String(e) };
     console.error('Не ушло уведомление о заявке (Formspree):', e);
   }
 }
@@ -281,6 +298,9 @@ export default {
     const isApi = action || request.method === 'POST';
 
     if (isApi) {
+      // health — до проверки токена: он нужен именно для диагностики конфига
+      if (request.method === 'GET' && action === 'health')
+        return json({ ok: true, version: VERSION, has_token: Boolean(token), notify: lastNotify });
       if (!token) return err('Не настроен AIRTABLE_TOKEN', 500);
       try {
         if (request.method === 'POST') return await handlePost(token, request, env, ctx);

@@ -85,6 +85,7 @@ POST → 405). API живёт на корневом пути с query-парам
 | `GET ?action=archive` | `{records:[{fields:{Name,BuddyName,Location,TripDate,TripStory}}]}` | Buddies, `Status="Нашёл бади"` |
 | `GET ?action=logbook&limit=N` | `{records:[{fields:{...}}]}` | Dives, `Published=1`, sort DiveNumber desc |
 | `GET ?action=stats` | `{ключ:значение,...}` (напр. `{dive_count,dive_goal}`) | Settings (Key/Value) |
+| `GET ?action=health` | `{ok,version,has_token,notify}` — версия воркера + статус последнего письма. Менять `VERSION` при правках воркера! | — |
 | `POST /` (JSON: Name,Telegram,Level,Location,About) | `{id}` 201 / `{error}` | создаёт заявку бади |
 
 ### ⚠️ Уведомления о заявках бади — шлёт ВОРКЕР, не Airtable

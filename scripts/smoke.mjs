@@ -41,6 +41,16 @@ await check('Pages: index.html отдаётся и похож на сайт', as
   return `${Math.round(html.length / 1024)} КБ`;
 });
 
+// ── Версия воркера (что реально задеплоено) ─────────────────────────────────
+await check('GET ?action=health → 200 + версия воркера', async () => {
+  const r = await fetch(`${WORKER}?action=health`);
+  if (r.status === 400) throw new Error('воркер старый (нет health) — задеплой main');
+  expect(r.ok, `HTTP ${r.status}`);
+  const j = await r.json();
+  expect(j.has_token, 'has_token=false — не задан AIRTABLE_TOKEN');
+  return `версия ${j.version}`;
+});
+
 // ── API воркера: чтение (жив ли токен Airtable, read-scope) ─────────────────
 await check('GET ?action=stats → 200 + dive_count', async () => {
   const r = await fetch(`${WORKER}?action=stats`);
@@ -106,11 +116,29 @@ if (FULL) {
         _hp: '',
       }),
     });
-    expect(r.status === 201, `HTTP ${r.status}: ${await r.text()}`);
-    const j = await r.json();
+    const text = await r.text(); // тело читаем один раз
+    expect(r.status === 201, `HTTP ${r.status}: ${text.slice(0, 120)}`);
+    const j = JSON.parse(text);
     expect(j.id, 'нет id записи');
     return `запись ${j.id}`;
   });
+  // Статус отправки письма из воркера (lastNotify живёт в памяти изолята —
+  // сразу после заявки обычно попадаем в тот же изолят)
+  await check('health.notify: воркер отправил письмо (Formspree ok)', async () => {
+    await new Promise((res) => setTimeout(res, 2500));
+    for (let i = 0; i < 3; i++) {
+      const r = await fetch(`${WORKER}?action=health`);
+      if (!r.ok) throw new Error(`health HTTP ${r.status}`);
+      const j = await r.json();
+      if (j.notify) {
+        expect(j.notify.ok, `Formspree ответил ${j.notify.status || j.notify.error}: ${j.notify.body || ''}`);
+        return `отправлено в ${j.notify.at}, HTTP ${j.notify.status}`;
+      }
+      await new Promise((res) => setTimeout(res, 1500));
+    }
+    return 'статус не виден (другой изолят) — проверь письмо в ящике';
+  });
+
   console.log('\n  ⚠ Полный прогон: проверь, что ПИСЬМО пришло на почту,');
   console.log('    и удали запись «ТЕСТ smoke» в Airtable при модерации.');
 }
