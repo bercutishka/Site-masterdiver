@@ -157,6 +157,7 @@ Read-эндпоинты принимают только `GET` (прочие ме
 | `GET ?action=archive` | `{records:[{fields:{Name,BuddyName,Location,TripDate,TripStory}}]}` | Buddies | `Status="Нашёл бади"` |
 | `GET ?action=logbook&limit=N` | `{records:[{fields:{...}}]}` | Dives | `Published=1`, sort `DiveNumber` desc |
 | `GET ?action=stats` | `{ключ:значение,...}` (напр. `dive_count`, `dive_goal`, `cert_level`) | Settings | — |
+| `GET ?action=health` | `{ok,version,has_token,notify}` — версия задеплоенного воркера и статус последней отправки письма (диагностика, работает даже без токена) | — | — |
 | `POST /` (JSON `Name,Telegram,Level,Location,About`) | `{id}` 201 / `{error}` | Buddies (создание) | приходит неодобренной |
 
 Запросы к Airtable собираются хелпером `atQuery` в нужном формате
