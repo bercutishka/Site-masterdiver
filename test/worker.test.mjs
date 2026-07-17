@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { validateBuddyPayload, atQuery, clampLimit } from '../src/worker.js';
+import { validateBuddyPayload, atQuery, clampLimit, buildBuddyNotification } from '../src/worker.js';
 
 test('validateBuddyPayload: корректная заявка проходит', () => {
   assert.equal(validateBuddyPayload({ Name: 'Аня', Telegram: '@anya_diver', Level: 'OWD', Location: 'Египет', About: 'Ищу бади' }), null);
@@ -57,4 +57,27 @@ test('clampLimit: число в [1,100], иначе дефолт 100', () => {
   assert.equal(clampLimit('-5'), 1);
   assert.equal(clampLimit('abc'), 100);      // не число → дефолт
   assert.equal(clampLimit(null), 100);       // отсутствует → дефолт
+});
+
+test('buildBuddyNotification: тема и тело содержат все поля заявки', () => {
+  const n = buildBuddyNotification(
+    { Name: 'Аня', Telegram: '@anya_diver', Level: 'OWD', Location: 'Египет', About: 'Ищу бади' },
+    'recTEST123',
+  );
+  assert.ok(n._subject.includes('Аня'));
+  assert.ok(n._subject.includes('@anya_diver'));
+  assert.ok(n.message.includes('OWD'));
+  assert.ok(n.message.includes('Египет'));
+  assert.ok(n.message.includes('Ищу бади'));
+  assert.ok(n.message.includes('recTEST123'));
+  assert.ok(n.message.includes('airtable.com'), 'нет ссылки на модерацию');
+});
+
+test('buildBuddyNotification: пустые Location/About → прочерк', () => {
+  const n = buildBuddyNotification(
+    { Name: 'Боб', Telegram: '@bob_diver', Level: 'OWD', Location: '', About: '' },
+    'rec1',
+  );
+  assert.ok(n.message.includes('Локация: —'));
+  assert.ok(n.message.includes('О себе: —'));
 });
