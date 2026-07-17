@@ -106,8 +106,9 @@ if (FULL) {
         _hp: '',
       }),
     });
-    expect(r.status === 201, `HTTP ${r.status}: ${await r.text()}`);
-    const j = await r.json();
+    const text = await r.text(); // тело читаем один раз
+    expect(r.status === 201, `HTTP ${r.status}: ${text.slice(0, 120)}`);
+    const j = JSON.parse(text);
     expect(j.id, 'нет id записи');
     return `запись ${j.id}`;
   });
