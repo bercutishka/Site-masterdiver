@@ -65,12 +65,20 @@ test('buildBuddyNotification: тема и тело содержат все по�
     'recTEST123',
   );
   assert.ok(n._subject.includes('Аня'));
-  assert.ok(n._subject.includes('@anya_diver'));
+  assert.ok(n.message.includes('@anya_diver'));
   assert.ok(n.message.includes('OWD'));
   assert.ok(n.message.includes('Египет'));
   assert.ok(n.message.includes('Ищу бади'));
   assert.ok(n.message.includes('recTEST123'));
-  assert.ok(n.message.includes('airtable.com'), 'нет ссылки на модерацию');
+});
+
+test('buildBuddyNotification: в письме нет ссылок (спам-фильтр Formspree молча режет URL с серверных IP)', () => {
+  const n = buildBuddyNotification(
+    { Name: 'Аня', Telegram: '@anya_diver', Level: 'OWD', Location: 'Египет', About: 'Ищу бади' },
+    'recTEST123',
+  );
+  assert.ok(!/https?:\/\//.test(n.message), 'в message появился URL — письмо перестанет доходить');
+  assert.ok(!/https?:\/\//.test(n._subject), 'в теме появился URL');
 });
 
 test('buildBuddyNotification: пустые Location/About → прочерк', () => {

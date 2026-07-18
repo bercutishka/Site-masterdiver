@@ -119,18 +119,22 @@ const FORMSPREE_URL = 'https://formspree.io/f/xykagdvo';
 
 // Версия для ?action=health — обновлять при изменении воркера,
 // чтобы снаружи было видно, что за код реально задеплоен.
-const VERSION = '2026-07-18-notify-1';
+const VERSION = '2026-07-18-notify-2';
 
 // Статус последней попытки отправить письмо (память изолята, без хранилища).
 // Отдаётся в ?action=health — сразу после smoke --full там виден результат
 // Formspree-запроса ИЗ воркера (изолят обычно ещё тот же).
 let lastNotify = null;
 
+// ⚠️ В письме сознательно НЕТ ссылок (и никаких http/https): Formspree принимает
+// сабмишн с ответом ok:true, но его спам-фильтр молча отбрасывает письма с
+// URL, отправленные с серверных IP (Cloudflare Workers) — письмо не приходит,
+// хотя API ответил успехом. Инцидент июль 2026. Не добавлять ссылки в письмо!
 export function buildBuddyNotification(fields, recordId) {
   return {
-    _subject: `Новая заявка бади: ${fields.Name} (${fields.Telegram})`,
+    _subject: `Новая заявка бади: ${fields.Name}`,
     message: [
-      'Новая заявка на поиск бади — ждёт модерации (галочка Approved).',
+      'Новая заявка на сайте «Глубже».',
       '',
       `Имя: ${fields.Name}`,
       `Telegram: ${fields.Telegram}`,
@@ -138,8 +142,7 @@ export function buildBuddyNotification(fields, recordId) {
       `Локация: ${fields.Location || '—'}`,
       `О себе: ${fields.About || '—'}`,
       '',
-      `Запись: ${recordId}`,
-      `Модерация: https://airtable.com/${BASE_BUDDIES}/${TABLE_BUDDIES}`,
+      `Запись ${recordId} ждёт модерации — галочка Approved в таблице Buddies (Airtable).`,
     ].join('\n'),
   };
 }
